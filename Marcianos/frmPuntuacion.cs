@@ -135,7 +135,8 @@ namespace Marcianos
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                timerPuntuacion.Stop();
+                MessageBox.Show("Save file modified", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
