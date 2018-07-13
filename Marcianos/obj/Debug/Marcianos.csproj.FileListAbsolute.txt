@@ -1,0 +1,14 @@
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.csprojAssemblyReference.cache
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.frmMarcianos.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.Properties.Resources.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.csproj.GenerateResource.cache
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.csproj.CoreCompileInputs.cache
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.frmPuntuacion.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.frmMenu.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.frmShop.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Marcianos.frmPause.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\bin\Debug\Space Invaders.exe.config
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\bin\Debug\Space Invaders.exe
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\bin\Debug\Space Invaders.pdb
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Space Invaders.exe
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Debug\Space Invaders.pdb

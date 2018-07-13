@@ -1,0 +1,10 @@
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\bin\Release\Marcianos.exe.config
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\bin\Release\Marcianos.exe
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\bin\Release\Marcianos.pdb
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Release\Marcianos.frmMarcianos.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Release\Marcianos.frmPuntuacion.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Release\Marcianos.Properties.Resources.resources
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Release\Marcianos.csproj.GenerateResource.cache
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Release\Marcianos.csproj.CoreCompileInputs.cache
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Release\Marcianos.exe
+C:\Users\sacebalm\Desktop\Workspace\C#\Marcianos\Marcianos\obj\Release\Marcianos.pdb
