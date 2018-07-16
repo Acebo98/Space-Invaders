@@ -56,7 +56,7 @@
             // timerJuego
             // 
             this.timerJuego.Enabled = true;
-            this.timerJuego.Interval = 20;
+            this.timerJuego.Interval = 1;
             this.timerJuego.Tick += new System.EventHandler(this.timerJuego_Tick);
             // 
             // labScore

@@ -27,7 +27,8 @@ namespace Marcianos
         int naveSkin;                               //Indica la skin de la nave
         int score = 0;                              //Puntuación
         int velozBala = 20;                         //Velocidad de la bala del personaje
-        int velozPersonaje = 20;                    //Velocidad del personaje
+        int velozPersonaje = 10;                    //Velocidad del personaje
+        int velozMeteoro = 5;                       //Velocidad del meteoro
         int velozTie = 10;                          //Velocidad del caza TIE
         int velozStar = 1;                          //Velocidad de la estrella
         int derrapeTie = 1;                         //Derrape caza TIE
@@ -288,7 +289,7 @@ namespace Marcianos
             foreach (Control cn in this.Controls)
             {
                 if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "<3"))
-                    cn.Top += 10;
+                    cn.Top += this.velozMeteoro;
             }
         }
 
