@@ -26,8 +26,8 @@ namespace Marcianos
         bool enemigos = true;                       //Determina si aparecen enemigos / meteoros
         int naveSkin;                               //Indica la skin de la nave
         int score = 0;                              //Puntuación
-        int velozBala = 10;                         //Velocidad de la bala del personaje
-        int velozPersonaje = 20;                    //Velocidad del personaje
+        int velozBala = 15;                         //Velocidad de la bala del personaje
+        int velozPersonaje = 10;                    //Velocidad del personaje
         int velozMeteoro = 5;                       //Velocidad del meteoro
         int velozTie = 7;                           //Velocidad del caza TIE
         int velozStar = 1;                          //Velocidad de la estrella
