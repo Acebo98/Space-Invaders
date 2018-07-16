@@ -172,7 +172,7 @@
             // timerEstrellas
             // 
             this.timerEstrellas.Enabled = true;
-            this.timerEstrellas.Interval = 20;
+            this.timerEstrellas.Interval = 1;
             this.timerEstrellas.Tick += new System.EventHandler(this.timerEstrellas_Tick_1);
             // 
             // frmShop
