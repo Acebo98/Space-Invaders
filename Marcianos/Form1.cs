@@ -335,7 +335,10 @@ namespace Marcianos
                                 if (m.Tag == "tie")
                                     this.datos[0]++;
                                 else
+                                {
                                     this.datos[1]++;
+                                    if (this.rnd.Next(0, 11) == 5) this.creaAmmo((PictureBox)m);        //Creamos municion
+                                }
                             }
                         }
                     }
@@ -580,6 +583,22 @@ namespace Marcianos
             pbHearth.Location = new Point(rnd.Next(0, this.Width), 0 - pbHearth.Height);
             this.Controls.Add(pbHearth);
             pbHearth.BringToFront();
+        }
+
+        //Creamos municion
+        private void creaAmmo(PictureBox pbMeteoro)
+        {
+            Bitmap ammo = new Bitmap(Properties.Resources.ammo);
+            ammo.MakeTransparent();
+            PictureBox pbAmmo = new PictureBox();
+            pbAmmo.Image = ammo;
+
+            pbAmmo.Size = new Size(10, 30);
+            pbAmmo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbAmmo.Tag = "ammo";
+            pbAmmo.Location = new Point(pbMeteoro.Location.X, pbMeteoro.Location.Y);
+            this.Controls.Add(pbAmmo);
+            pbAmmo.BringToFront();
         }
 
         //Creamos estrellas al principio
