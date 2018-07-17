@@ -239,7 +239,7 @@ namespace Marcianos
             this.borraObjetos();
 
             //Power-upds
-            if (rnd.Next(0, 801) == 400)
+            if (rnd.Next(0, 1001) == 500)
                 if (this.powers)
                     this.crearPowerUp();
             this.muevePower();
@@ -631,6 +631,7 @@ namespace Marcianos
                                     labGod.Visible = true;
                                     labGod.Text = "God: 30";
                                     timerInvencible.Start();
+                                    this.powers = false;
                                 }
                                 break;
                             case "disparo":
@@ -639,6 +640,7 @@ namespace Marcianos
                                     labShoot.Visible = true;
                                     labShoot.Text = "Shoot: 30";
                                     timerDisparo.Start();
+                                    this.powers = false;
                                 }
                                 break;
                             case "velocidad":
@@ -648,23 +650,15 @@ namespace Marcianos
                                     labSpeed.Visible = true;
                                     labSpeed.Text = "Speed: 30";
                                     timerVelocidad.Start();
+                                    this.powers = false;
                                 }
                                 break;
-                            case "<3":
-                                {
-                                    barVidaNave.Increment(25);
-                                    this.Controls.Remove(cn);
-                                }
+                            case "<3": barVidaNave.Increment(25);
                                 break;
-                            case "ammo":
-                                {
-                                    barAmmo.Increment(50);
-                                    this.Controls.Remove(cn);
-                                }
+                            case "ammo": barAmmo.Increment(50);
                                 break;
                         }
                         this.Controls.Remove(cn);
-                        this.powers = false;
                     }
                 }
             }
