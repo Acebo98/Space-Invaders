@@ -26,12 +26,13 @@ namespace Marcianos
         bool enemigos = true;                       //Determina si aparecen enemigos / meteoros
         int naveSkin;                               //Indica la skin de la nave
         int score = 0;                              //Puntuación
-        int velozBala = 20;                         //Velocidad de la bala del personaje
-        int velozPersonaje = 20;                    //Velocidad del personaje
-        int velozTie = 10;                          //Velocidad del caza TIE
+        int velozBala = 15;                         //Velocidad de la bala del personaje
+        int velozPersonaje = 10;                    //Velocidad del personaje
+        int velozMeteoro = 5;                       //Velocidad del meteoro
+        int velozTie = 7;                           //Velocidad del caza TIE
         int velozStar = 1;                          //Velocidad de la estrella
         int derrapeTie = 1;                         //Derrape caza TIE
-        int velozBalaTie = 20;                      //Velocidad de la bala del TIE
+        int velozBalaTie = 15;                      //Velocidad de la bala del TIE
         int bajasParaBoss = 0;                      //Bajas necesarias para que aparezca el boss
         int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida
         int[] tiempos = new int[] { 30, 30, 30 };   //Tiempos de los power-ups
@@ -288,7 +289,7 @@ namespace Marcianos
             foreach (Control cn in this.Controls)
             {
                 if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "<3"))
-                    cn.Top += 10;
+                    cn.Top += this.velozMeteoro;
             }
         }
 
@@ -616,7 +617,7 @@ namespace Marcianos
                                 break;
                             case "disparo":
                                 {
-                                    this.velozBala = 30;
+                                    this.velozBala += 10;
                                     labShoot.Visible = true;
                                     labShoot.Text = "Shoot: 30";
                                     timerDisparo.Start();
@@ -625,7 +626,7 @@ namespace Marcianos
                             case "velocidad":
                                 {
                                     this.velozStar = 3;
-                                    this.velozPersonaje = 30;
+                                    this.velozPersonaje += 10;
                                     labSpeed.Visible = true;
                                     labSpeed.Text = "Speed: 30";
                                     timerVelocidad.Start();
@@ -654,7 +655,7 @@ namespace Marcianos
             {
                 this.tiempos[1] = 30;
                 this.powers = true;
-                this.velozBala = 20;
+                this.velozBala -= 10;
                 labShoot.Visible = false;
                 timerDisparo.Stop();
             }
@@ -670,7 +671,7 @@ namespace Marcianos
                 this.velozStar = 1;
                 this.tiempos[2] = 30;
                 this.powers = true;
-                this.velozPersonaje = 20;
+                this.velozPersonaje -= 10;
                 labSpeed.Visible = false;
                 timerVelocidad.Stop();
             }
