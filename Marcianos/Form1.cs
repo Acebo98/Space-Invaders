@@ -268,6 +268,7 @@ namespace Marcianos
             barVidaNave.BringToFront();
             barVidaBoss.BringToFront();
             pbHP.BringToFront();
+            pbAmmo.BringToFront();
         }
 
         #region Movimiento

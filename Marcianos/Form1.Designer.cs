@@ -46,9 +46,13 @@
             this.timerBorraPum = new System.Windows.Forms.Timer(this.components);
             this.timerTransicion = new System.Windows.Forms.Timer(this.components);
             this.iLNaves = new System.Windows.Forms.ImageList(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.barAmmo = new System.Windows.Forms.ProgressBar();
+            this.pbAmmo = new System.Windows.Forms.PictureBox();
             this.pbHP = new System.Windows.Forms.PictureBox();
             this.pbBoss = new System.Windows.Forms.PictureBox();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
@@ -175,6 +179,27 @@
             this.iLNaves.Images.SetKeyName(2, "x_wing_3.png");
             this.iLNaves.Images.SetKeyName(3, "x_wing_4.png");
             // 
+            // barAmmo
+            // 
+            this.barAmmo.ForeColor = System.Drawing.Color.Red;
+            this.barAmmo.Location = new System.Drawing.Point(37, 609);
+            this.barAmmo.Name = "barAmmo";
+            this.barAmmo.Size = new System.Drawing.Size(124, 23);
+            this.barAmmo.Step = 25;
+            this.barAmmo.TabIndex = 9;
+            this.barAmmo.Value = 100;
+            // 
+            // pbAmmo
+            // 
+            this.pbAmmo.BackColor = System.Drawing.Color.Transparent;
+            this.pbAmmo.Image = global::Marcianos.Properties.Resources.ammo;
+            this.pbAmmo.Location = new System.Drawing.Point(11, 609);
+            this.pbAmmo.Name = "pbAmmo";
+            this.pbAmmo.Size = new System.Drawing.Size(16, 23);
+            this.pbAmmo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAmmo.TabIndex = 10;
+            this.pbAmmo.TabStop = false;
+            // 
             // pbHP
             // 
             this.pbHP.BackColor = System.Drawing.Color.Transparent;
@@ -213,6 +238,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 673);
+            this.Controls.Add(this.pbAmmo);
+            this.Controls.Add(this.barAmmo);
             this.Controls.Add(this.pbHP);
             this.Controls.Add(this.barVidaNave);
             this.Controls.Add(this.barVidaBoss);
@@ -228,6 +255,7 @@
             this.Load += new System.EventHandler(this.frmMarcianos_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMarcianos_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMarcianos_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).EndInit();
@@ -257,6 +285,9 @@
         private System.Windows.Forms.Timer timerTransicion;
         private System.Windows.Forms.ImageList iLNaves;
         private System.Windows.Forms.PictureBox pbHP;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ProgressBar barAmmo;
+        private System.Windows.Forms.PictureBox pbAmmo;
     }
 }
 

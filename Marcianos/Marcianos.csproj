@@ -171,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hp-bar.png" />
+    <None Include="Resources\ammo.png" />
     <Content Include="space-invaders.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
