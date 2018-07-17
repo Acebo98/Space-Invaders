@@ -618,7 +618,7 @@ namespace Marcianos
         {
             foreach (Control cn in this.Controls)
             {
-                if (cn is PictureBox && (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad" || cn.Tag == "<3"))
+                if (cn is PictureBox && (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad" || cn.Tag == "<3" || cn.Tag == "ammo"))
                 {
                     if (pbPlayer.Bounds.IntersectsWith(cn.Bounds))
                     {

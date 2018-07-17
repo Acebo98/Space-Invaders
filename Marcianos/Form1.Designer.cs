@@ -68,7 +68,7 @@
             // 
             this.labScore.AutoSize = true;
             this.labScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labScore.Location = new System.Drawing.Point(515, 531);
+            this.labScore.Location = new System.Drawing.Point(519, 461);
             this.labScore.Name = "labScore";
             this.labScore.Size = new System.Drawing.Size(94, 26);
             this.labScore.TabIndex = 1;
@@ -97,7 +97,7 @@
             // 
             this.labShoot.AutoSize = true;
             this.labShoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labShoot.Location = new System.Drawing.Point(497, 609);
+            this.labShoot.Location = new System.Drawing.Point(499, 64);
             this.labShoot.Name = "labShoot";
             this.labShoot.Size = new System.Drawing.Size(114, 26);
             this.labShoot.TabIndex = 2;
@@ -112,7 +112,7 @@
             // 
             this.labSpeed.AutoSize = true;
             this.labSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labSpeed.Location = new System.Drawing.Point(491, 557);
+            this.labSpeed.Location = new System.Drawing.Point(493, 12);
             this.labSpeed.Name = "labSpeed";
             this.labSpeed.Size = new System.Drawing.Size(120, 26);
             this.labSpeed.TabIndex = 3;
@@ -127,7 +127,7 @@
             // 
             this.labGod.AutoSize = true;
             this.labGod.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labGod.Location = new System.Drawing.Point(515, 583);
+            this.labGod.Location = new System.Drawing.Point(517, 38);
             this.labGod.Name = "labGod";
             this.labGod.Size = new System.Drawing.Size(96, 26);
             this.labGod.TabIndex = 4;
@@ -182,7 +182,7 @@
             // barAmmo
             // 
             this.barAmmo.ForeColor = System.Drawing.Color.Red;
-            this.barAmmo.Location = new System.Drawing.Point(37, 609);
+            this.barAmmo.Location = new System.Drawing.Point(485, 638);
             this.barAmmo.Name = "barAmmo";
             this.barAmmo.Size = new System.Drawing.Size(124, 23);
             this.barAmmo.Step = 25;
@@ -192,8 +192,8 @@
             // pbAmmo
             // 
             this.pbAmmo.BackColor = System.Drawing.Color.Transparent;
-            this.pbAmmo.Image = global::Marcianos.Properties.Resources.ammo;
-            this.pbAmmo.Location = new System.Drawing.Point(11, 609);
+            this.pbAmmo.Image = ((System.Drawing.Image)(resources.GetObject("pbAmmo.Image")));
+            this.pbAmmo.Location = new System.Drawing.Point(463, 638);
             this.pbAmmo.Name = "pbAmmo";
             this.pbAmmo.Size = new System.Drawing.Size(16, 23);
             this.pbAmmo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
