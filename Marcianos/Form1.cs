@@ -97,6 +97,7 @@ namespace Marcianos
                         {
                             this.creaBalaBuena();
                             this.disparo = true;
+                            barAmmo.Increment(-1);
                         }
                         break;
                     }
@@ -286,7 +287,7 @@ namespace Marcianos
         {
             foreach (Control cn in this.Controls)
             {
-                if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "<3"))
+                if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "<3" || cn.Tag == "ammo"))
                     cn.Top += this.velozMeteoro;
             }
         }
@@ -652,6 +653,12 @@ namespace Marcianos
                             case "<3":
                                 {
                                     barVidaNave.Increment(25);
+                                    this.Controls.Remove(cn);
+                                }
+                                break;
+                            case "ammo":
+                                {
+                                    barAmmo.Increment(50);
                                     this.Controls.Remove(cn);
                                 }
                                 break;
