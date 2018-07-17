@@ -93,7 +93,7 @@ namespace Marcianos
                     break;
                 case (char)Keys.Space:
                     {
-                        if (!this.disparo)
+                        if (!this.disparo && barAmmo.Value > 0)
                         {
                             this.creaBalaBuena();
                             this.disparo = true;
