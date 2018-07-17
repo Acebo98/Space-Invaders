@@ -265,11 +265,21 @@ namespace Marcianos
             if (rnd.Next(0, 801) == 400 && barVidaNave.Value < 100)
                 this.creaCorazon();
 
-            //Fixes
+            //Fixes del HUD
+            confiHUD();
+        }
+
+        //Interfaz
+        private void confiHUD()
+        {
+            barAmmo.BringToFront();
             barVidaNave.BringToFront();
             barVidaBoss.BringToFront();
             pbHP.BringToFront();
             pbAmmo.BringToFront();
+            labGod.BringToFront();
+            labScore.BringToFront();
+            labShoot.BringToFront();
         }
 
         #region Movimiento
