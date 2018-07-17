@@ -43,12 +43,13 @@
             this.timerBoss = new System.Windows.Forms.Timer(this.components);
             this.barVidaBoss = new System.Windows.Forms.ProgressBar();
             this.barVidaNave = new System.Windows.Forms.ProgressBar();
-            this.labVida = new System.Windows.Forms.Label();
             this.timerBorraPum = new System.Windows.Forms.Timer(this.components);
             this.timerTransicion = new System.Windows.Forms.Timer(this.components);
+            this.iLNaves = new System.Windows.Forms.ImageList(this.components);
+            this.pbHP = new System.Windows.Forms.PictureBox();
             this.pbBoss = new System.Windows.Forms.PictureBox();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
-            this.iLNaves = new System.Windows.Forms.ImageList(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
             this.SuspendLayout();
@@ -147,22 +148,12 @@
             // barVidaNave
             // 
             this.barVidaNave.ForeColor = System.Drawing.Color.Red;
-            this.barVidaNave.Location = new System.Drawing.Point(12, 638);
+            this.barVidaNave.Location = new System.Drawing.Point(37, 638);
             this.barVidaNave.Name = "barVidaNave";
             this.barVidaNave.Size = new System.Drawing.Size(124, 23);
             this.barVidaNave.Step = 25;
             this.barVidaNave.TabIndex = 7;
             this.barVidaNave.Value = 100;
-            // 
-            // labVida
-            // 
-            this.labVida.AutoSize = true;
-            this.labVida.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labVida.Location = new System.Drawing.Point(12, 609);
-            this.labVida.Name = "labVida";
-            this.labVida.Size = new System.Drawing.Size(81, 26);
-            this.labVida.TabIndex = 8;
-            this.labVida.Text = "Health";
             // 
             // timerBorraPum
             // 
@@ -174,6 +165,26 @@
             // 
             this.timerTransicion.Interval = 2000;
             this.timerTransicion.Tick += new System.EventHandler(this.timerTransicion_Tick);
+            // 
+            // iLNaves
+            // 
+            this.iLNaves.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iLNaves.ImageStream")));
+            this.iLNaves.TransparentColor = System.Drawing.Color.Transparent;
+            this.iLNaves.Images.SetKeyName(0, "x_wing.png");
+            this.iLNaves.Images.SetKeyName(1, "x_wing_2.png");
+            this.iLNaves.Images.SetKeyName(2, "x_wing_3.png");
+            this.iLNaves.Images.SetKeyName(3, "x_wing_4.png");
+            // 
+            // pbHP
+            // 
+            this.pbHP.BackColor = System.Drawing.Color.Transparent;
+            this.pbHP.Image = global::Marcianos.Properties.Resources.hp_bar;
+            this.pbHP.Location = new System.Drawing.Point(6, 638);
+            this.pbHP.Name = "pbHP";
+            this.pbHP.Size = new System.Drawing.Size(25, 23);
+            this.pbHP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHP.TabIndex = 8;
+            this.pbHP.TabStop = false;
             // 
             // pbBoss
             // 
@@ -197,21 +208,12 @@
             this.pbPlayer.TabIndex = 0;
             this.pbPlayer.TabStop = false;
             // 
-            // iLNaves
-            // 
-            this.iLNaves.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iLNaves.ImageStream")));
-            this.iLNaves.TransparentColor = System.Drawing.Color.Transparent;
-            this.iLNaves.Images.SetKeyName(0, "x_wing.png");
-            this.iLNaves.Images.SetKeyName(1, "x_wing_2.png");
-            this.iLNaves.Images.SetKeyName(2, "x_wing_3.png");
-            this.iLNaves.Images.SetKeyName(3, "x_wing_4.png");
-            // 
             // frmMarcianos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 673);
-            this.Controls.Add(this.labVida);
+            this.Controls.Add(this.pbHP);
             this.Controls.Add(this.barVidaNave);
             this.Controls.Add(this.barVidaBoss);
             this.Controls.Add(this.pbBoss);
@@ -226,6 +228,7 @@
             this.Load += new System.EventHandler(this.frmMarcianos_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMarcianos_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmMarcianos_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pbHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).EndInit();
             this.ResumeLayout(false);
@@ -250,10 +253,10 @@
         private System.Windows.Forms.Timer timerBoss;
         private System.Windows.Forms.ProgressBar barVidaBoss;
         private System.Windows.Forms.ProgressBar barVidaNave;
-        private System.Windows.Forms.Label labVida;
         private System.Windows.Forms.Timer timerBorraPum;
         private System.Windows.Forms.Timer timerTransicion;
         private System.Windows.Forms.ImageList iLNaves;
+        private System.Windows.Forms.PictureBox pbHP;
     }
 }
 

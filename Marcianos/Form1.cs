@@ -72,9 +72,6 @@ namespace Marcianos
             barVidaBoss.Visible = false;
             pbBoss.Top = 0 - pbBoss.Height;
 
-            //Vida del persona
-            labVida.Visible = true;
-
             //Skin
             this.skin();
 
@@ -270,7 +267,7 @@ namespace Marcianos
             //Fixes
             barVidaNave.BringToFront();
             barVidaBoss.BringToFront();
-            labVida.BringToFront();
+            pbHP.BringToFront();
         }
 
         #region Movimiento

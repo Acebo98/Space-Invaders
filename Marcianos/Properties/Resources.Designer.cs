@@ -133,6 +133,16 @@ namespace Marcianos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hp_bar {
+            get {
+                object obj = ResourceManager.GetObject("hp_bar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap inmunidad {
             get {
                 object obj = ResourceManager.GetObject("inmunidad", resourceCulture);
