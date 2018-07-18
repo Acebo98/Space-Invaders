@@ -52,6 +52,7 @@
             this.pbHP = new System.Windows.Forms.PictureBox();
             this.pbBoss = new System.Windows.Forms.PictureBox();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
+            this.timerDificultad = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
@@ -233,6 +234,11 @@
             this.pbPlayer.TabIndex = 0;
             this.pbPlayer.TabStop = false;
             // 
+            // timerDificultad
+            // 
+            this.timerDificultad.Interval = 15000;
+            this.timerDificultad.Tick += new System.EventHandler(this.timerDificultad_Tick);
+            // 
             // frmMarcianos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -288,6 +294,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ProgressBar barAmmo;
         private System.Windows.Forms.PictureBox pbAmmo;
+        private System.Windows.Forms.Timer timerDificultad;
     }
 }
 

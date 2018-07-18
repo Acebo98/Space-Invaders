@@ -29,11 +29,8 @@ namespace Marcianos
         int score = 0;                              //Puntuación
         int velozBala = 15;                         //Velocidad de la bala del personaje
         int velozPersonaje = 10;                    //Velocidad del personaje
-        int velozMeteoro = 5;                       //Velocidad del meteoro
-        int velozTie = 7;                           //Velocidad del caza TIE
         int velozStar = 1;                          //Velocidad de la estrella
         int derrapeTie = 1;                         //Derrape caza TIE
-        int velozBalaTie = 15;                      //Velocidad de la bala del TIE
         int bajasParaBoss = 0;                      //Bajas necesarias para que aparezca el boss
         int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida
         int[] tiempos = new int[] { 30, 30, 30 };   //Tiempos de los power-ups
@@ -877,6 +874,19 @@ namespace Marcianos
         private void timerTransicion_Tick(object sender, EventArgs e) => this.gameOver();
         #endregion
 
+        #region Dificultad
+        int velozMeteoro = 3;                          //Velocidad del meteoro
+        int velozTie = 3;                              //Velocidad del caza TIE
+        int velozBalaTie = 15;                          //Velocidad de la bala del TIE
+
+        //Aumentamos la dificultad
+        private void timerDificultad_Tick(object sender, EventArgs e)
+        {
+            this.velozMeteoro++;
+            this.velozTie++;
+        }
+        #endregion
+
         #region Game Over
         //Game Over
         private void gameOver()
@@ -893,5 +903,7 @@ namespace Marcianos
             labScore.Text = "Score: " + this.score.ToString();
         }
         #endregion
+
+
     }
 }
