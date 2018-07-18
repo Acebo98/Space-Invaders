@@ -80,11 +80,11 @@ namespace Marcianos
             this.estrellasInicio();
 
             //Sonido start
-            SoundPlayer start = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\start.wav");
-            start.Play();
+            //SoundPlayer start = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\start.wav");
+            //start.Play();
 
             //Tema
-            SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\juego-theme.wav");
+            SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\theme.wav");
             theme.PlayLooping();
         }
 
@@ -105,8 +105,8 @@ namespace Marcianos
                         if (!this.disparo && barAmmo.Value > 0)
                         {
                             //Sonido de disparo
-                            SoundPlayer disparar = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_nave.wav");
-                            disparar.Play();
+                            //SoundPlayer disparar = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_nave.wav");
+                            //disparar.Play();
 
                             this.creaBalaBuena();
                             this.disparo = true;
@@ -354,8 +354,8 @@ namespace Marcianos
                             if (((PictureBox)b).Bounds.IntersectsWith(m.Bounds))
                             {
                                 //Sonido
-                                SoundPlayer pummm = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\destroy.wav");
-                                pummm.Play();
+                                //SoundPlayer pummm = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\destroy.wav");
+                                //pummm.Play();
 
                                 //Quitamos
                                 this.creaExplosion((PictureBox)m);
@@ -389,8 +389,9 @@ namespace Marcianos
                     cn.Left += this.derrapeTie;
                     if (rnd.Next(0, 51) == 25)
                     {
-                        SoundPlayer disparoTie = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_tie.wav");
-                        disparoTie.Play();
+                        //Sonido
+                        //SoundPlayer disparoTie = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_tie.wav");
+                        //disparoTie.Play();
                         this.creaBalaTie((PictureBox)cn);
                     }
                 }
@@ -695,6 +696,7 @@ namespace Marcianos
                         }
 
                         //Sonidos
+                        /*
                         if (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad")
                         {
                             SoundPlayer power = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\power-up.wav");
@@ -708,6 +710,7 @@ namespace Marcianos
                                 heal.Play();
                             }
                         }
+                        */
                         this.Controls.Remove(cn);
                     }
                 }
