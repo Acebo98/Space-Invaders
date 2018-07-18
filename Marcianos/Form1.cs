@@ -22,7 +22,7 @@ namespace Marcianos
         bool enemigos = true;                       //Determina si aparecen enemigos / meteoros
         int naveSkin;                               //Indica la skin de la nave
         int score = 0;                              //Puntuación
-        int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida
+        int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
         int[] tiempos = new int[] { 30, 30, 30 };   //Tiempos de los power-ups
 
         public frmMarcianos(int naveID)
@@ -265,6 +265,13 @@ namespace Marcianos
             //Corazon
             if (rnd.Next(0, 1001) == 400 && barVidaNave.Value < 100)
                 this.creaCorazon();
+
+            //Aumentamos la dificultad
+            if (this.datos[1] == this.bajasAumentar)
+            {
+                this.bajasAumentar += 15;
+                this.aumenaDificultad();
+            }
         }
 
         //Interfaz
@@ -517,7 +524,6 @@ namespace Marcianos
             trans.MakeTransparent();
             PictureBox pbTIE = new PictureBox();
             pbTIE.Image = trans;
-
             pbTIE.Size = new Size(50, 50);
             pbTIE.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTIE.Tag = "tie";
@@ -572,7 +578,6 @@ namespace Marcianos
             trans.MakeTransparent();
             PictureBox pbEstrella = new PictureBox();
             pbEstrella.Image = trans;
-
             pbEstrella.SizeMode = PictureBoxSizeMode.StretchImage;
             pbEstrella.Size = new Size(10, 10);
             pbEstrella.Tag = "star";
@@ -588,7 +593,6 @@ namespace Marcianos
             trans.MakeTransparent();
             PictureBox pbEstrella = new PictureBox();
             pbEstrella.Image = trans;
-
             pbEstrella.SizeMode = PictureBoxSizeMode.StretchImage;
             pbEstrella.Size = new Size(10, 10);
             pbEstrella.Tag = "star";
@@ -604,7 +608,6 @@ namespace Marcianos
             trans.MakeTransparent();
             PictureBox pbPum = new PictureBox();
             pbPum.Image = trans;
-
             pbPum.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPum.Size = new Size(70, 70);
             pbPum.Tag = "pum";
@@ -620,7 +623,6 @@ namespace Marcianos
             hearth.MakeTransparent();
             PictureBox pbHearth = new PictureBox();
             pbHearth.Image = hearth;
-
             pbHearth.Size = new Size(30, 30);
             pbHearth.SizeMode = PictureBoxSizeMode.StretchImage;
             pbHearth.Tag = "<3";
@@ -636,7 +638,6 @@ namespace Marcianos
             ammo.MakeTransparent();
             PictureBox pbAmmo = new PictureBox();
             pbAmmo.Image = ammo;
-
             pbAmmo.Size = new Size(10, 30);
             pbAmmo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbAmmo.Tag = "ammo";
@@ -889,22 +890,22 @@ namespace Marcianos
         #endregion
 
         #region Dificultad
-        int spawnMeteoro = 101;                         //Probabilidad aparición meteoro (min 30)
-        int spawnTie = 431;                             //Probabilidad aparición tie (min 200)
-        int velozMeteoro = 3;                           //Velocidad del meteoro
-        int velozTie = 3;                               //Velocidad del caza TIE
+        int bajasAumentar = 15;                         //Bajas necesarias para aumentar la dificultad (múltiplos de 15)
+        int spawnMeteoro = 81;                          //Probabilidad aparición meteoro (min 30)
+        int spawnTie = 451;                             //Probabilidad aparición tie (min 200)
+        int velozMeteoro = 2;                           //Velocidad del meteoro
+        int velozTie = 2;                               //Velocidad del caza TIE
         int velozBalaTie = 15;                          //Velocidad de la bala del TIE
 
         //Aumentamos la dificultad
-        private void timerDificultad_Tick(object sender, EventArgs e)
+        private void aumenaDificultad()
         {
             if (this.velozMeteoro < 7) this.velozMeteoro++;
             if (this.velozTie < 7) this.velozTie++;
 
-            this.spawnMeteoro -= 3;
-            this.spawnTie -= 15;
+            if (this.spawnMeteoro > 31) this.spawnMeteoro -= 10;
+            if (this.spawnTie > 201) this.spawnTie -= 50;
         }
-
 
         //Confi de los tie
         private void confiTie()
