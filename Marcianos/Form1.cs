@@ -881,8 +881,8 @@ namespace Marcianos
         //Aumentamos la dificultad
         private void timerDificultad_Tick(object sender, EventArgs e)
         {
-            this.velozMeteoro++;
-            this.velozTie++;
+            if (this.velozMeteoro < 7) this.velozMeteoro++;
+            if (this.velozTie < 7) this.velozTie++;
 
             this.spawnMeteoro -= 3;
             this.spawnTie -= 15;
@@ -892,7 +892,7 @@ namespace Marcianos
         //Confi de los tie
         private void confiTie()
         {
-            if (rnd.Next(0, this.spawnTie) == this.spawnTie / 2 && this.enemigos)
+            if ((rnd.Next(0, this.spawnTie) == this.spawnTie / 2) && this.enemigos)
                 this.creaTie();
             this.mueveTie();
         }
@@ -900,7 +900,7 @@ namespace Marcianos
         //Confi de los meteoros
         private void confiMeteoro()
         {
-            if (rnd.Next(0, this.spawnMeteoro) == this.spawnMeteoro / 2 && this.enemigos)
+            if ((rnd.Next(0, this.spawnMeteoro) == this.spawnMeteoro / 2) && this.enemigos)
                 this.creaMeteoro();
             this.mueveMeteoro();
             this.choqueNave();
