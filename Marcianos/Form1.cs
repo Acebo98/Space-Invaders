@@ -940,7 +940,7 @@ namespace Marcianos
         //Aumentamos la dificultad
         private void aumenaDificultad()
         {
-            if (this.velozMeteoro < 7) this.velozMeteoro++;
+            if (this.velozMeteoro < 5) this.velozMeteoro++;
             if (this.velozTie < 7) this.velozTie++;
 
             if (this.spawnMeteoro > 31) this.spawnMeteoro -= 10;
