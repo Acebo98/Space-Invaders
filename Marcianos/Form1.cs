@@ -82,6 +82,10 @@ namespace Marcianos
             //Sonido start
             SoundPlayer start = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\start.wav");
             start.Play();
+
+            //Tema
+            SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\juego-theme.wav");
+            theme.PlayLooping();
         }
 
         #region Controles
@@ -349,6 +353,11 @@ namespace Marcianos
                         {
                             if (((PictureBox)b).Bounds.IntersectsWith(m.Bounds))
                             {
+                                //Sonido
+                                SoundPlayer pummm = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\destroy.wav");
+                                pummm.Play();
+
+                                //Quitamos
                                 this.creaExplosion((PictureBox)m);
                                 this.Controls.Remove(m);
                                 this.Controls.Remove(b);
@@ -378,8 +387,12 @@ namespace Marcianos
                 {
                     cn.Top += this.velozTie;
                     cn.Left += this.derrapeTie;
-                    if (rnd.Next(0, 21) == 10)
+                    if (rnd.Next(0, 51) == 25)
+                    {
+                        SoundPlayer disparoTie = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_tie.wav");
+                        disparoTie.Play();
                         this.creaBalaTie((PictureBox)cn);
+                    }
                 }
             }
         }
