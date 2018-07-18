@@ -19,19 +19,9 @@ namespace Marcianos
     public partial class frmMarcianos : Form
     {
         Random rnd = new Random();                  //Objeto para numeros aleatorios
-        bool disparo = false;                       //Disparo infinito
-        bool powers = true;                         //Aparición power-ups
-        bool god = false;                           //Invencible
-        bool drcha = false;                         //Ir drcha
-        bool izq = false;                           //Ir izq
         bool enemigos = true;                       //Determina si aparecen enemigos / meteoros
         int naveSkin;                               //Indica la skin de la nave
         int score = 0;                              //Puntuación
-        int velozBala = 15;                         //Velocidad de la bala del personaje
-        int velozPersonaje = 10;                    //Velocidad del personaje
-        int velozStar = 1;                          //Velocidad de la estrella
-        int derrapeTie = 1;                         //Derrape caza TIE
-        int bajasParaBoss = 0;                      //Bajas necesarias para que aparezca el boss
         int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida
         int[] tiempos = new int[] { 30, 30, 30 };   //Tiempos de los power-ups
 
@@ -86,6 +76,10 @@ namespace Marcianos
         }
 
         #region Controles
+        bool disparo = false;                       //Disparo infinito
+        bool drcha = false;                         //Ir drcha
+        bool izq = false;                           //Ir izq
+
         //Presionamos las teclas para movernos
         private void frmMarcianos_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -293,6 +287,11 @@ namespace Marcianos
         }
 
         #region Movimiento
+        int velozBala = 15;                         //Velocidad de la bala del personaje
+        int velozPersonaje = 10;                    //Velocidad del personaje
+        int velozStar = 1;                          //Velocidad de la estrella
+        int derrapeTie = 1;                         //Derrape caza TIE
+
         //Movimiento de la nave
         private void mueveNave()
         {
@@ -646,6 +645,9 @@ namespace Marcianos
         #endregion
 
         #region Powe-Ups     
+        bool powers = true;                         //Aparición power-ups
+        bool god = false;                           //Invencible
+
         //Golpeamos un power-up
         private void golpeaPower()
         {
@@ -763,12 +765,13 @@ namespace Marcianos
         #endregion
 
         #region Boss       
-        bool bossSpawn = false;         //Aparece el boss
-        bool disparaBoss = true;        //Dispara el boss
-        bool muertoBoss = false;        //Boss muerto
-        int dx = 1;                     //Velocidad lateral del boss
-        int dy = 1;                     //Velocidad vertical del boss
-        int velozBallaBoss = 20;        //Velocidad de la bala del boss
+        bool bossSpawn = false;                     //Aparece el boss
+        bool disparaBoss = true;                    //Dispara el boss
+        bool muertoBoss = false;                    //Boss muerto
+        int dx = 1;                                 //Velocidad lateral del boss
+        int dy = 1;                                 //Velocidad vertical del boss
+        int velozBallaBoss = 20;                    //Velocidad de la bala del boss
+        int bajasParaBoss = 0;                      //Bajas necesarias para que aparezca el boss
 
         //Movimiento
         private void movimientoBoss() => pbBoss.Left += this.dx;
@@ -875,8 +878,10 @@ namespace Marcianos
         #endregion
 
         #region Dificultad
-        int velozMeteoro = 3;                          //Velocidad del meteoro
-        int velozTie = 3;                              //Velocidad del caza TIE
+        int spawnMeteoro = 5;                           //Probabilidad aparición meteoro
+        int spawnTie = 5;                               //Probabilidad aparición tie
+        int velozMeteoro = 3;                           //Velocidad del meteoro
+        int velozTie = 3;                               //Velocidad del caza TIE
         int velozBalaTie = 15;                          //Velocidad de la bala del TIE
 
         //Aumentamos la dificultad
@@ -903,7 +908,5 @@ namespace Marcianos
             labScore.Text = "Score: " + this.score.ToString();
         }
         #endregion
-
-
     }
 }
