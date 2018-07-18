@@ -97,7 +97,7 @@ namespace Marcianos
                         {
                             this.creaBalaBuena();
                             this.disparo = true;
-                            barAmmo.Increment(-1);
+                            if (!this.god) barAmmo.Increment(-1);
                         }
                         break;
                     }
