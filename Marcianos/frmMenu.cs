@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Marcianos
 {
@@ -42,6 +43,10 @@ namespace Marcianos
             this.confiLab();
             this.muestraControles();
             this.estrellasInicio();
+
+            //Sonido
+            SoundPlayer menu = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\menu.wav");
+            menu.PlayLooping();
         }
 
         //Configuración de los labels del formulario
