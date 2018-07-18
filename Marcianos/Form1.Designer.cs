@@ -236,6 +236,7 @@
             // 
             // timerDificultad
             // 
+            this.timerDificultad.Enabled = true;
             this.timerDificultad.Interval = 10000;
             this.timerDificultad.Tick += new System.EventHandler(this.timerDificultad_Tick);
             // 

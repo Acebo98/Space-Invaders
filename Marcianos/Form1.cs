@@ -263,7 +263,7 @@ namespace Marcianos
             }
 
             //Corazon
-            if (rnd.Next(0, 801) == 400 && barVidaNave.Value < 100)
+            if (rnd.Next(0, 1001) == 400 && barVidaNave.Value < 100)
                 this.creaCorazon();
         }
 
@@ -469,14 +469,31 @@ namespace Marcianos
             trans.MakeTransparent();
             PictureBox pbMeteoro = new PictureBox();
             pbMeteoro.Image = trans;
-
             pbMeteoro.Size = new Size(40, 40);
             pbMeteoro.SizeMode = PictureBoxSizeMode.StretchImage;
             pbMeteoro.Tag = "meteoro";
             pbMeteoro.Left = rnd.Next(0, posX);
             pbMeteoro.Top = 0 - pbMeteoro.Height;
-            this.Controls.Add(pbMeteoro);
-            pbMeteoro.BringToFront();
+
+            //Vemos que no colisione con ningun otro sprite de meteorito
+            if (!this.colisionEntreMeteoros(pbMeteoro))
+            {
+                this.Controls.Add(pbMeteoro);
+                pbMeteoro.BringToFront();
+            }
+        }
+
+        //Vemos que no colisionen meteoros
+        private bool colisionEntreMeteoros(PictureBox pbMeteoro)
+        {
+            bool colision = false;
+
+            foreach (Control cn in this.Controls)
+                if (cn is PictureBox && cn.Tag == "meteoro")
+                    if (cn.Bounds.IntersectsWith(pbMeteoro.Bounds))
+                        colision = true;
+
+            return colision;
         }
 
         //Creamos una bala de la nave principal
