@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Marcianos
 {
@@ -95,6 +96,10 @@ namespace Marcianos
                     {
                         if (!this.disparo && barAmmo.Value > 0)
                         {
+                            //Sonido de disparo
+                            SoundPlayer disparar = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_nave.wav");
+                            disparar.Play();
+
                             this.creaBalaBuena();
                             this.disparo = true;
                             if (!this.god) barAmmo.Increment(-1);
@@ -635,6 +640,10 @@ namespace Marcianos
                 {
                     if (pbPlayer.Bounds.IntersectsWith(cn.Bounds))
                     {
+                        //Sonido
+                        SoundPlayer power = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\power-up.wav");
+                        power.Play();
+
                         switch (cn.Tag)
                         {
                             case "invencible":
