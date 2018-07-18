@@ -56,7 +56,7 @@ namespace Marcianos
             }
 
             //Boss
-            this.bajasParaBoss = this.rnd.Next(50, 130);
+            this.bajasParaBoss = 105;
             barVidaBoss.Visible = false;
             pbBoss.Top = 0 - pbBoss.Height;
 
@@ -252,7 +252,6 @@ namespace Marcianos
             confiHUD();
 
             //Boss
-            /*
             if (this.datos[1] == this.bajasParaBoss)
             {
                 pbBoss.BringToFront();
@@ -262,8 +261,6 @@ namespace Marcianos
                 barVidaBoss.Visible = true;
                 this.bossSpawn = true;
             }
-            */
-
 
             //Corazon
             if (rnd.Next(0, 1001) == 400 && barVidaNave.Value < 100)
@@ -277,7 +274,7 @@ namespace Marcianos
             }
 
             //Activamos los tie avanzados
-            if (this.datos[1] >= 45)
+            if (this.datos[1] >= 45 && this.enemigos)
                 if (rnd.Next(0, 401) == 200)
                     this.creaTieAvanzado();
             this.mueveTieAvanzado();
