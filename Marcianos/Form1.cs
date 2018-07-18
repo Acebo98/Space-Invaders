@@ -220,20 +220,14 @@ namespace Marcianos
             this.mueveNave();
 
             //Meteoro
-            Random rnd = new Random();
-            if (rnd.Next(0, 31) == 15 && this.enemigos)
-                this.creaMeteoro();
-            this.mueveMeteoro();
-            this.choqueNave();
+            confiMeteoro();
 
             //Balas del personaje
             this.mueveBalaBuena();
             this.colisionBalaNave();
 
             //Caza tie
-            if (rnd.Next(0, 201) == 50 && this.enemigos)
-                this.creaTie();
-            this.mueveTie();
+            confiTie();
 
             //Balas tie
             this.mueveBalaTie();
@@ -878,8 +872,8 @@ namespace Marcianos
         #endregion
 
         #region Dificultad
-        int spawnMeteoro = 5;                           //Probabilidad aparición meteoro
-        int spawnTie = 5;                               //Probabilidad aparición tie
+        int spawnMeteoro = 101;                         //Probabilidad aparición meteoro (min 30)
+        int spawnTie = 431;                             //Probabilidad aparición tie (min 200)
         int velozMeteoro = 3;                           //Velocidad del meteoro
         int velozTie = 3;                               //Velocidad del caza TIE
         int velozBalaTie = 15;                          //Velocidad de la bala del TIE
@@ -889,6 +883,27 @@ namespace Marcianos
         {
             this.velozMeteoro++;
             this.velozTie++;
+
+            this.spawnMeteoro -= 3;
+            this.spawnTie -= 15;
+        }
+
+
+        //Confi de los tie
+        private void confiTie()
+        {
+            if (rnd.Next(0, this.spawnTie) == this.spawnTie / 2 && this.enemigos)
+                this.creaTie();
+            this.mueveTie();
+        }
+
+        //Confi de los meteoros
+        private void confiMeteoro()
+        {
+            if (rnd.Next(0, this.spawnMeteoro) == this.spawnMeteoro / 2 && this.enemigos)
+                this.creaMeteoro();
+            this.mueveMeteoro();
+            this.choqueNave();
         }
         #endregion
 
