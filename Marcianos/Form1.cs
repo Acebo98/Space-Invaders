@@ -802,6 +802,7 @@ namespace Marcianos
                 {
                     if (pbBoss.Bounds.IntersectsWith(bullet.Bounds) && pbBoss.Visible)
                     {
+                        if (this.rnd.Next(0, 21) == 5) this.creaAmmo((PictureBox)bullet);
                         this.creaExplosion((PictureBox)bullet);
                         this.Controls.Remove(bullet);
                         barVidaBoss.Increment(-1);
