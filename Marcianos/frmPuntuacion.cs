@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
 
 namespace Marcianos
 {
@@ -66,6 +67,18 @@ namespace Marcianos
 
             //Skin
             this.skin();
+
+            //Sonido
+            if (this.jefeMuerto)
+            {
+                SoundPlayer victoria = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\you-win.wav");
+                victoria.Play();
+            }
+            else
+            {
+                SoundPlayer gameOver = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\game-over.wav");
+                gameOver.Play();
+            }
         }
 
         //Configuramos el color de los labels

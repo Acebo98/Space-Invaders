@@ -78,6 +78,10 @@ namespace Marcianos
 
             //Estrellas iniciales
             this.estrellasInicio();
+
+            //Sonido start
+            SoundPlayer start = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\start.wav");
+            start.Play();
         }
 
         #region Controles
@@ -640,10 +644,6 @@ namespace Marcianos
                 {
                     if (pbPlayer.Bounds.IntersectsWith(cn.Bounds))
                     {
-                        //Sonido
-                        SoundPlayer power = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\power-up.wav");
-                        power.Play();
-
                         switch (cn.Tag)
                         {
                             case "invencible":
@@ -679,6 +679,21 @@ namespace Marcianos
                                 break;
                             case "ammo": barAmmo.Increment(50);
                                 break;
+                        }
+
+                        //Sonidos
+                        if (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad")
+                        {
+                            SoundPlayer power = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\power-up.wav");
+                            power.Play();
+                        }
+                        else
+                        {
+                            if (cn.Tag == "<3")
+                            {
+                                SoundPlayer heal = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\heal.wav");
+                                heal.Play();
+                            }
                         }
                         this.Controls.Remove(cn);
                     }
