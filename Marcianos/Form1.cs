@@ -344,7 +344,10 @@ namespace Marcianos
                                 this.Controls.Remove(m);
                                 this.Controls.Remove(b);
                                 if (m.Tag == "tie")
+                                {
                                     this.datos[0]++;
+                                    if (this.rnd.Next(0, 2) == 1) this.creaAmmo((PictureBox)m);
+                                }
                                 else
                                 {
                                     this.datos[1]++;
