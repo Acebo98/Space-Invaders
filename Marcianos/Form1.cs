@@ -252,6 +252,7 @@ namespace Marcianos
             confiHUD();
 
             //Boss
+            /*
             if (this.datos[1] == this.bajasParaBoss)
             {
                 pbBoss.BringToFront();
@@ -261,6 +262,8 @@ namespace Marcianos
                 barVidaBoss.Visible = true;
                 this.bossSpawn = true;
             }
+            */
+
 
             //Corazon
             if (rnd.Next(0, 1001) == 400 && barVidaNave.Value < 100)
@@ -272,6 +275,12 @@ namespace Marcianos
                 this.bajasAumentar += 15;
                 this.aumenaDificultad();
             }
+
+            //Activamos los tie avanzados
+            if (this.datos[1] >= 45)
+                if (rnd.Next(0, 401) == 200)
+                    this.creaTieAvanzado();
+            this.mueveTieAvanzado();
         }
 
         //Interfaz
@@ -317,7 +326,7 @@ namespace Marcianos
         {
             foreach (Control cn in this.Controls)
             {
-                if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "tie"))
+                if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "tie" || cn.Tag == "tieA"))
                     if (((PictureBox)cn).Bounds.IntersectsWith(pbPlayer.Bounds) && !this.god)
                     {
                         this.creaExplosion(pbPlayer);
@@ -344,7 +353,7 @@ namespace Marcianos
             {
                 foreach (Control b in this.Controls)
                 {
-                    if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie"))
+                    if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA"))
                     {
                         if (b is PictureBox && b.Tag == "balaB")
                         {
@@ -358,7 +367,7 @@ namespace Marcianos
                                 this.creaExplosion((PictureBox)m);
                                 this.Controls.Remove(m);
                                 this.Controls.Remove(b);
-                                if (m.Tag == "tie")
+                                if (m.Tag == "tie" || m.Tag == "tieA")
                                 {
                                     this.datos[0]++;
                                     if (this.rnd.Next(0, 2) == 1) this.creaAmmo((PictureBox)m);
@@ -463,6 +472,23 @@ namespace Marcianos
                 if (pum is PictureBox && pum.Tag == "pum")
                     this.Controls.Remove(pum);
             }
+        }
+
+        //Movimiento del tie avanzado
+        private void mueveTieAvanzado()
+        {
+            foreach (Control tie in this.Controls)
+                if (tie is PictureBox && tie.Tag == "tieA")
+                {
+                    tie.Top += this.velozTie;
+                    if (tie.Top < this.Height / 2 - tie.Height)
+                        tie.Left = pbPlayer.Left;
+                    else tie.Left -= this.velozTie;
+
+                    //Dispara el tie
+                    if (this.rnd.Next(0, 51) == 25)
+                        this.creaBalaTie((PictureBox)tie);
+                }
         }
         #endregion
 
@@ -653,6 +679,23 @@ namespace Marcianos
 
             for (int i = 0; i < stars; i++)
                 this.creaEstrella(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
+        }
+
+        //Creamos el tie avanzado
+        private void creaTieAvanzado()
+        {
+            int pox = rnd.Next(0, this.Width);      //Posición X
+
+            Bitmap trans = new Bitmap(Properties.Resources.tie_avanzado);
+            trans.MakeTransparent();
+            PictureBox pbTIEA = new PictureBox();
+            pbTIEA.Image = trans;
+            pbTIEA.Size = new Size(50, 50);
+            pbTIEA.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbTIEA.Tag = "tieA";
+            pbTIEA.Location = new Point(pox, 0 - pbTIEA.Height);
+            this.Controls.Add(pbTIEA);
+            pbTIEA.BringToFront();
         }
         #endregion
 
@@ -895,7 +938,7 @@ namespace Marcianos
         int spawnTie = 451;                             //Probabilidad aparición tie (min 200)
         int velozMeteoro = 2;                           //Velocidad del meteoro
         int velozTie = 2;                               //Velocidad del caza TIE
-        int velozBalaTie = 15;                          //Velocidad de la bala del TIE
+        int velozBalaTie = 10;                          //Velocidad de la bala del TIE
 
         //Aumentamos la dificultad
         private void aumenaDificultad()

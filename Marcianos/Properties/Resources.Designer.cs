@@ -193,6 +193,16 @@ namespace Marcianos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tie_avanzado {
+            get {
+                object obj = ResourceManager.GetObject("tie_avanzado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap x_wing {
             get {
                 object obj = ResourceManager.GetObject("x_wing", resourceCulture);
