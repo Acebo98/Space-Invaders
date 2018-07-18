@@ -263,6 +263,9 @@ namespace Marcianos
                 this.creaEstrella();
             this.mueveEstrella();
 
+            //Fixes del HUD
+            confiHUD();
+
             //Boss
             if (this.datos[1] == this.bajasParaBoss)
             {
@@ -277,9 +280,6 @@ namespace Marcianos
             //Corazon
             if (rnd.Next(0, 801) == 400 && barVidaNave.Value < 100)
                 this.creaCorazon();
-
-            //Fixes del HUD
-            confiHUD();
         }
 
         //Interfaz
