@@ -23,7 +23,6 @@ namespace Marcianos
         int naveSkin;                               //Indica la skin de la nave
         int score = 0;                              //Puntuación
         int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
-        //int[] tiempos = new int[] { 30, 30, 30 };   //Tiempos de los power-ups
         int tiempoPower = 30;                       //Tiempo del power up     
 
         public frmMarcianos(int naveID)
@@ -274,6 +273,7 @@ namespace Marcianos
             }
 
             //Movimiento de los potenciadores
+            barPotenciador.Value = this.tiempoPower;
             this.muevePower();
             this.golpeaPower();
 
