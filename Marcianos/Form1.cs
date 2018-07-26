@@ -714,7 +714,6 @@ namespace Marcianos
             pbTIEA.BringToFront();
         }
 
-
         //Metodo que comprueba si 2 pb del mismo tipo colisionan uno con el otro
         private bool colisionEntrePBIguales(PictureBox pb2)
         {
