@@ -53,6 +53,7 @@
             this.pbBoss = new System.Windows.Forms.PictureBox();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
             this.labNoAmmo = new System.Windows.Forms.Label();
+            this.barPotenciador = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
@@ -245,11 +246,19 @@
             this.labNoAmmo.TabIndex = 11;
             this.labNoAmmo.Text = "(no ammo)";
             // 
+            // barPotenciador
+            // 
+            this.barPotenciador.Location = new System.Drawing.Point(485, 257);
+            this.barPotenciador.Name = "barPotenciador";
+            this.barPotenciador.Size = new System.Drawing.Size(124, 23);
+            this.barPotenciador.TabIndex = 12;
+            // 
             // frmMarcianos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 673);
+            this.Controls.Add(this.barPotenciador);
             this.Controls.Add(this.labNoAmmo);
             this.Controls.Add(this.pbAmmo);
             this.Controls.Add(this.barAmmo);
@@ -302,6 +311,7 @@
         private System.Windows.Forms.ProgressBar barAmmo;
         private System.Windows.Forms.PictureBox pbAmmo;
         private System.Windows.Forms.Label labNoAmmo;
+        private System.Windows.Forms.ProgressBar barPotenciador;
     }
 }
 

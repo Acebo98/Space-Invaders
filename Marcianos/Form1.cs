@@ -23,7 +23,8 @@ namespace Marcianos
         int naveSkin;                               //Indica la skin de la nave
         int score = 0;                              //Puntuación
         int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
-        int[] tiempos = new int[] { 30, 30, 30 };   //Tiempos de los power-ups
+        //int[] tiempos = new int[] { 30, 30, 30 };   //Tiempos de los power-ups
+        int tiempoPower = 30;                       //Tiempo del power up     
 
         public frmMarcianos(int naveID)
         {
@@ -69,6 +70,10 @@ namespace Marcianos
             //Tema
             SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\theme.wav");
             theme.PlayLooping();
+
+            //Barra potenciador
+            barPotenciador.Maximum = 30;
+            barPotenciador.Value = barPotenciador.Maximum;
         }
 
         #region Controles
@@ -189,9 +194,9 @@ namespace Marcianos
             timerCuentaSegundos.Start();
 
             //Powers
-            if (this.tiempos[0] < 30) timerInvencible.Start();
-            if (this.tiempos[1] < 30) timerDisparo.Start();
-            if (this.tiempos[2] < 30) timerVelocidad.Start();
+            if (this.tiempoPower < 30) timerInvencible.Start();
+            if (this.tiempoPower < 30) timerDisparo.Start();
+            if (this.tiempoPower < 30) timerVelocidad.Start();
 
             //Boss
             if (this.bossSpawn) timerBoss.Start();
@@ -826,11 +831,11 @@ namespace Marcianos
         //Powe-up de disparo
         private void timerDisparo_Tick(object sender, EventArgs e)
         {
-            this.tiempos[1]--;
-            labShoot.Text = "Shoot: " + this.tiempos[1];
-            if (this.tiempos[1] < 0)
+            this.tiempoPower--;
+            labShoot.Text = "Shoot: " + this.tiempoPower;
+            if (this.tiempoPower == 0)
             {
-                this.tiempos[1] = 30;
+                this.tiempoPower = 30;
                 this.powers = true;
                 this.velozBala -= 10;
                 labShoot.Visible = false;
@@ -841,12 +846,12 @@ namespace Marcianos
         //Velocidad de la nave
         private void timerVelocidad_Tick(object sender, EventArgs e)
         {
-            this.tiempos[2]--;
-            labSpeed.Text = "Speed: " + this.tiempos[2];
-            if (this.tiempos[2] < 0)
+            this.tiempoPower--;
+            labSpeed.Text = "Speed: " + this.tiempoPower;
+            if (this.tiempoPower == 0)
             {
                 this.velozStar = 1;
-                this.tiempos[2] = 30;
+                this.tiempoPower = 30;
                 this.powers = true;
                 this.velozPersonaje -= 10;
                 labSpeed.Visible = false;
@@ -857,11 +862,11 @@ namespace Marcianos
         //Invencible
         private void timerInvencible_Tick(object sender, EventArgs e)
         {
-            this.tiempos[0]--;
-            labGod.Text = "God: " + this.tiempos[0];
-            if (this.tiempos[0] < 0)
+            this.tiempoPower--;
+            labGod.Text = "God: " + this.tiempoPower;
+            if (this.tiempoPower == 0)
             {
-                this.tiempos[0] = 30;
+                this.tiempoPower = 30;
                 this.powers = true;
                 this.god = false;
                 this.skin();
