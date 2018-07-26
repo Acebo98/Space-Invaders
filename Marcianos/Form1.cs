@@ -21,7 +21,6 @@ namespace Marcianos
         Random rnd = new Random();                  //Objeto para numeros aleatorios
         bool enemigos = true;                       //Determina si aparecen enemigos / meteoros
         int naveSkin;                               //Indica la skin de la nave
-        int score = 0;                              //Puntuación
         int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
         int tiempoPower = 30;                       //Tiempo del power up     
 
