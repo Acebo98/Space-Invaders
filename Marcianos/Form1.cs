@@ -56,7 +56,7 @@ namespace Marcianos
             }
 
             //Boss
-            this.bajasParaBoss = 105;
+            this.bajasParaBoss = this.rnd.Next(105, 120);
             barVidaBoss.Visible = false;
             pbBoss.Top = 0 - pbBoss.Height;
 
@@ -248,7 +248,7 @@ namespace Marcianos
             confiHUD();
 
             //Boss
-            if (this.datos[1] == this.bajasParaBoss)
+            if (this.datos[1] == this.bajasParaBoss && !this.bossSpawn)
             {
                 pbBoss.BringToFront();
                 timerBoss.Start();
@@ -256,6 +256,10 @@ namespace Marcianos
                 this.enemigos = false;
                 barVidaBoss.Visible = true;
                 this.bossSpawn = true;
+
+                //Musica del jefe
+                SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\boss.wav");
+                theme.PlayLooping();
             }
 
             //Corazon
