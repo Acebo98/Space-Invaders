@@ -749,6 +749,21 @@ namespace Marcianos
             }
         }
 
+        //Creamos las nuevas balas del potenciador de disparo triple (3 balas en total)
+        private void creaBalasShotgun()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                PictureBox pbBalaShotgun = new PictureBox();
+                pbBalaShotgun.Image = Properties.Resources.bullet_shotgun;
+                pbBalaShotgun.SizeMode = PictureBoxSizeMode.AutoSize;
+                pbBalaShotgun.Tag = "balaShootgun" + i;
+                pbBalaShotgun.Location = new Point(pbPlayer.Location.X + pbPlayer.Width / 2, pbPlayer.Location.Y);
+                this.Controls.Add(pbBalaShotgun);
+                pbBalaShotgun.BringToFront();
+            }
+        }
+
         //Metodo que comprueba si 2 pb del mismo tipo colisionan uno con el otro
         private bool colisionEntrePBIguales(PictureBox pb2)
         {
