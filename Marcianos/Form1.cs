@@ -232,13 +232,6 @@ namespace Marcianos
             //Optimizamos
             this.borraObjetos();
 
-            //Power-upds
-            if (rnd.Next(0, 1001) == 500)
-                if (this.powers)
-                    this.crearPowerUp();
-            this.muevePower();
-            this.golpeaPower();
-
             //Estrellas
             if (rnd.Next(0, 51) == 25)
                 this.creaEstrella();
@@ -262,9 +255,22 @@ namespace Marcianos
                 theme.PlayLooping();
             }
 
-            //Corazon
-            if (rnd.Next(0, 1001) == 400 && barVidaNave.Value < 100)
-                this.creaCorazon();
+            //Solo 1 potenciador en pantalla
+            if (this.sumaPotenciadores() == 0)
+            {
+                //Corazon
+                if (rnd.Next(0, 1001) == 400 && barVidaNave.Value < 100)
+                    this.creaCorazon();
+
+                //Power-upds
+                if (rnd.Next(0, 1001) == 500)
+                    if (this.powers)
+                        this.crearPowerUp();
+            }
+
+            //Movimiento de los potenciadores
+            this.muevePower();
+            this.golpeaPower();
 
             //Aumentamos la dificultad
             if (this.datos[1] == this.bajasAumentar)
@@ -862,6 +868,19 @@ namespace Marcianos
                 labGod.Visible = false;
                 timerInvencible.Stop();
             }
+        }
+
+        //Sumamos el numero de potenciadores en pantalla
+        private int sumaPotenciadores()
+        {
+            int sum = 0;
+
+            foreach (Control potenciador in this.Controls)
+                if (potenciador is PictureBox && (potenciador.Tag == "invencible" || potenciador.Tag == "disparo"
+                    || potenciador.Tag == "velocidad" || potenciador.Tag == "<3" || potenciador.Tag == "ammo"))
+                    sum++;
+
+            return sum;
         }
         #endregion
 
