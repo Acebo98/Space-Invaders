@@ -547,8 +547,13 @@ namespace Marcianos
             pbTIE.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTIE.Tag = "tie";
             pbTIE.Location = new Point(pox, 0 - pbTIE.Height);
-            this.Controls.Add(pbTIE);
-            pbTIE.BringToFront();
+
+            //No haya colisiones entre los tie
+            if (!this.colisionEntrePBIguales(pbTIE))
+            {
+                this.Controls.Add(pbTIE);
+                pbTIE.BringToFront();
+            }
         }
 
         //Creamos la bala del tie
@@ -714,8 +719,13 @@ namespace Marcianos
             pbTIEA.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTIEA.Tag = "tieA";
             pbTIEA.Location = new Point(pox, 0 - pbTIEA.Height);
-            this.Controls.Add(pbTIEA);
-            pbTIEA.BringToFront();
+
+            //No haya colisiones entre los tie avanzados
+            if (!this.colisionEntrePBIguales(pbTIEA))
+            {
+                this.Controls.Add(pbTIEA);
+                pbTIEA.BringToFront();
+            }
         }
 
         //Metodo que comprueba si 2 pb del mismo tipo colisionan uno con el otro
