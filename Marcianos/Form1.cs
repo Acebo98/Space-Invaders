@@ -279,6 +279,10 @@ namespace Marcianos
             if (barAmmo.Value == 0)
                 if (rnd.Next(0, 501) == 250)
                     this.creaAmmo();
+
+            //Mostramos que el grafismo de no hay ammo
+            if (barAmmo.Value == 0) labNoAmmo.Visible = true;
+            else labNoAmmo.Visible = false;
         }
 
         //Interfaz
@@ -507,24 +511,11 @@ namespace Marcianos
             pbMeteoro.Top = 0 - pbMeteoro.Height;
 
             //Vemos que no colisione con ningun otro sprite de meteorito
-            if (!this.colisionEntreMeteoros(pbMeteoro))
+            if (!this.colisionEntrePBIguales(pbMeteoro))
             {
                 this.Controls.Add(pbMeteoro);
                 pbMeteoro.BringToFront();
             }
-        }
-
-        //Vemos que no colisionen meteoros
-        private bool colisionEntreMeteoros(PictureBox pbMeteoro)
-        {
-            bool colision = false;
-
-            foreach (Control cn in this.Controls)
-                if (cn is PictureBox && cn.Tag == "meteoro")
-                    if (cn.Bounds.IntersectsWith(pbMeteoro.Bounds))
-                        colision = true;
-
-            return colision;
         }
 
         //Creamos una bala de la nave principal
@@ -564,8 +555,13 @@ namespace Marcianos
             pbBalaTie.SizeMode = PictureBoxSizeMode.AutoSize;
             pbBalaTie.Tag = "balaM";
             pbBalaTie.Location = new Point(pbTie.Location.X + pbTie.Width / 2, pbTie.Location.Y + pbTie.Height);
-            this.Controls.Add(pbBalaTie);
-            pbBalaTie.BringToFront();
+
+            //No haya colisiones entre las balas de tie
+            if (!this.colisionEntrePBIguales(pbBalaTie))
+            {
+                this.Controls.Add(pbBalaTie);
+                pbBalaTie.BringToFront();
+            }
         }
 
         //Creamos un power-up
@@ -716,6 +712,23 @@ namespace Marcianos
             pbTIEA.Location = new Point(pox, 0 - pbTIEA.Height);
             this.Controls.Add(pbTIEA);
             pbTIEA.BringToFront();
+        }
+
+
+        //Metodo que comprueba si 2 pb del mismo tipo colisionan uno con el otro
+        private bool colisionEntrePBIguales(PictureBox pb2)
+        {
+            bool colision = false;
+
+            foreach (Control pb in this.Controls)
+                if (pb is PictureBox && pb.Tag == pb2.Tag)
+                    if (pb.Bounds.IntersectsWith(pb2.Bounds))
+                    {
+                        colision = true;
+                        break;
+                    }
+
+            return colision;
         }
         #endregion
 

@@ -52,6 +52,7 @@
             this.pbHP = new System.Windows.Forms.PictureBox();
             this.pbBoss = new System.Windows.Forms.PictureBox();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
+            this.labNoAmmo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
@@ -233,11 +234,23 @@
             this.pbPlayer.TabIndex = 0;
             this.pbPlayer.TabStop = false;
             // 
+            // labNoAmmo
+            // 
+            this.labNoAmmo.AutoSize = true;
+            this.labNoAmmo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labNoAmmo.ForeColor = System.Drawing.Color.Red;
+            this.labNoAmmo.Location = new System.Drawing.Point(500, 615);
+            this.labNoAmmo.Name = "labNoAmmo";
+            this.labNoAmmo.Size = new System.Drawing.Size(94, 20);
+            this.labNoAmmo.TabIndex = 11;
+            this.labNoAmmo.Text = "(no ammo)";
+            // 
             // frmMarcianos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 673);
+            this.Controls.Add(this.labNoAmmo);
             this.Controls.Add(this.pbAmmo);
             this.Controls.Add(this.barAmmo);
             this.Controls.Add(this.pbHP);
@@ -288,6 +301,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ProgressBar barAmmo;
         private System.Windows.Forms.PictureBox pbAmmo;
+        private System.Windows.Forms.Label labNoAmmo;
     }
 }
 
