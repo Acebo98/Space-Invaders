@@ -66,10 +66,6 @@ namespace Marcianos
             //Estrellas iniciales
             this.estrellasInicio();
 
-            //Sonido start
-            //SoundPlayer start = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\start.wav");
-            //start.Play();
-
             //Tema
             SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\theme.wav");
             theme.PlayLooping();
@@ -278,6 +274,11 @@ namespace Marcianos
                 if (rnd.Next(0, 401) == 200)
                     this.creaTieAvanzado();
             this.mueveTieAvanzado();
+
+            //Si no tenemos municion hacemos que aparezca
+            if (barAmmo.Value == 0)
+                if (rnd.Next(0, 501) == 250)
+                    this.creaAmmo();
         }
 
         //Interfaz
@@ -669,6 +670,21 @@ namespace Marcianos
             pbAmmo.BringToFront();
         }
 
+        //Creamos municion cuando no se tiene
+        private void creaAmmo()
+        {
+            Bitmap ammo = new Bitmap(Properties.Resources.ammo);
+            ammo.MakeTransparent();
+            PictureBox pbAmmo = new PictureBox();
+            pbAmmo.Image = ammo;
+            pbAmmo.Size = new Size(10, 30);
+            pbAmmo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbAmmo.Tag = "ammo";
+            pbAmmo.Location = new Point(rnd.Next(0, this.Width), 0 - pbAmmo.Height);
+            this.Controls.Add(pbAmmo);
+            pbAmmo.BringToFront();
+        }
+
         //Creamos estrellas al principio
         private void estrellasInicio()
         {
@@ -864,6 +880,9 @@ namespace Marcianos
                 this.muereBoss();
                 timerTransicion.Start();
             }
+
+            //Confi del hud
+            this.confiHUD();
         }
 
         //Creamos las balas del boss
