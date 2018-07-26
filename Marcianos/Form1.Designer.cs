@@ -227,7 +227,7 @@
             // 
             this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pbPlayer.Image = global::Marcianos.Properties.Resources.x_wing;
-            this.pbPlayer.Location = new System.Drawing.Point(268, 591);
+            this.pbPlayer.Location = new System.Drawing.Point(272, 565);
             this.pbPlayer.Name = "pbPlayer";
             this.pbPlayer.Size = new System.Drawing.Size(70, 70);
             this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
