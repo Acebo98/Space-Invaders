@@ -94,10 +94,7 @@ namespace Marcianos
                     {
                         if (!this.disparo && barAmmo.Value > 0)
                         {
-                            //Sonido de disparo
-                            //SoundPlayer disparar = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_nave.wav");
-                            //disparar.Play();
-
+                            this.creaBalasShotgun();
                             this.creaBalaBuena();
                             this.disparo = true;
                             if (!this.god) barAmmo.Increment(-1);
@@ -307,6 +304,8 @@ namespace Marcianos
             //Mostramos que el grafismo de no hay ammo
             if (barAmmo.Value == 0) labNoAmmo.Visible = true;
             else labNoAmmo.Visible = false;
+
+            this.mueveShootgun();
         }
 
         //Interfaz
@@ -515,6 +514,20 @@ namespace Marcianos
                     //Dispara el tie
                     if (this.rnd.Next(0, 51) == 25)
                         this.creaBalaTie((PictureBox)tie);
+                }
+        }
+
+        //Movimiento de las balas de shootgun
+        private void mueveShootgun()
+        {
+            foreach (Control bullet in this.Controls)
+                if (bullet is PictureBox && (bullet.Tag == "balaShootgun0" || bullet.Tag == "balaShootgun1" || bullet.Tag == "balaShootgun2"))
+                {
+                    bullet.Top -= this.velozBala;       //Todas se mueven hacia arriba
+
+                    //Las que se mueven de forma diagonal
+                    if (bullet.Tag.ToString() == "balaShootgun0") bullet.Left -= 10;
+                    else if (bullet.Tag.ToString() == "balaShootgun2") bullet.Left += 10;
                 }
         }
         #endregion
