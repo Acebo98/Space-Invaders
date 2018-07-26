@@ -73,6 +73,7 @@ namespace Marcianos
             //Barra potenciador
             barPotenciador.Maximum = 30;
             barPotenciador.Value = barPotenciador.Maximum;
+            barPotenciador.Visible = false;
         }
 
         #region Controles
@@ -308,9 +309,8 @@ namespace Marcianos
             barVidaBoss.BringToFront();
             pbHP.BringToFront();
             pbAmmo.BringToFront();
-            labGod.BringToFront();
             labScore.BringToFront();
-            labShoot.BringToFront();
+            labPotenciador.BringToFront();
         }
 
         #region Movimiento
@@ -775,29 +775,32 @@ namespace Marcianos
                                 {
                                     pbPlayer.Image = Properties.Resources.x_wing_invencible;
                                     this.god = true;
-                                    labGod.Visible = true;
-                                    labGod.Text = "God: 30";
+                                    labPotenciador.Visible = true;
+                                    labPotenciador.Text = "God";
                                     timerInvencible.Start();
                                     this.powers = false;
+                                    barPotenciador.Visible = true;
                                 }
                                 break;
                             case "disparo":
                                 {
                                     this.velozBala += 10;
-                                    labShoot.Visible = true;
-                                    labShoot.Text = "Shoot: 30";
+                                    labPotenciador.Visible = true;
+                                    labPotenciador.Text = "Shoot";
                                     timerDisparo.Start();
                                     this.powers = false;
+                                    barPotenciador.Visible = true;
                                 }
                                 break;
                             case "velocidad":
                                 {
                                     this.velozStar = 3;
                                     this.velozPersonaje += 10;
-                                    labSpeed.Visible = true;
-                                    labSpeed.Text = "Speed: 30";
+                                    labPotenciador.Visible = true;
+                                    labPotenciador.Text = "Speed";
                                     timerVelocidad.Start();
                                     this.powers = false;
+                                    barPotenciador.Visible = true;
                                 }
                                 break;
                             case "<3": barVidaNave.Increment(25);
@@ -832,13 +835,13 @@ namespace Marcianos
         private void timerDisparo_Tick(object sender, EventArgs e)
         {
             this.tiempoPower--;
-            labShoot.Text = "Shoot: " + this.tiempoPower;
             if (this.tiempoPower == 0)
             {
                 this.tiempoPower = 30;
                 this.powers = true;
                 this.velozBala -= 10;
-                labShoot.Visible = false;
+                labPotenciador.Visible = false;
+                barPotenciador.Visible = false;
                 timerDisparo.Stop();
             }
         }
@@ -847,14 +850,14 @@ namespace Marcianos
         private void timerVelocidad_Tick(object sender, EventArgs e)
         {
             this.tiempoPower--;
-            labSpeed.Text = "Speed: " + this.tiempoPower;
             if (this.tiempoPower == 0)
             {
                 this.velozStar = 1;
                 this.tiempoPower = 30;
                 this.powers = true;
                 this.velozPersonaje -= 10;
-                labSpeed.Visible = false;
+                labPotenciador.Visible = false;
+                barPotenciador.Visible = false;
                 timerVelocidad.Stop();
             }
         }
@@ -863,14 +866,14 @@ namespace Marcianos
         private void timerInvencible_Tick(object sender, EventArgs e)
         {
             this.tiempoPower--;
-            labGod.Text = "God: " + this.tiempoPower;
             if (this.tiempoPower == 0)
             {
                 this.tiempoPower = 30;
                 this.powers = true;
                 this.god = false;
                 this.skin();
-                labGod.Visible = false;
+                labPotenciador.Visible = false;
+                barPotenciador.Visible = false;
                 timerInvencible.Stop();
             }
         }

@@ -35,11 +35,8 @@
             this.timerCuentaSegundos = new System.Windows.Forms.Timer(this.components);
             this.iLpowerups = new System.Windows.Forms.ImageList(this.components);
             this.timerDisparo = new System.Windows.Forms.Timer(this.components);
-            this.labShoot = new System.Windows.Forms.Label();
             this.timerVelocidad = new System.Windows.Forms.Timer(this.components);
-            this.labSpeed = new System.Windows.Forms.Label();
             this.timerInvencible = new System.Windows.Forms.Timer(this.components);
-            this.labGod = new System.Windows.Forms.Label();
             this.timerBoss = new System.Windows.Forms.Timer(this.components);
             this.barVidaBoss = new System.Windows.Forms.ProgressBar();
             this.barVidaNave = new System.Windows.Forms.ProgressBar();
@@ -54,6 +51,7 @@
             this.pbPlayer = new System.Windows.Forms.PictureBox();
             this.labNoAmmo = new System.Windows.Forms.Label();
             this.barPotenciador = new System.Windows.Forms.ProgressBar();
+            this.labPotenciador = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
@@ -95,45 +93,15 @@
             this.timerDisparo.Interval = 1000;
             this.timerDisparo.Tick += new System.EventHandler(this.timerDisparo_Tick);
             // 
-            // labShoot
-            // 
-            this.labShoot.AutoSize = true;
-            this.labShoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labShoot.Location = new System.Drawing.Point(499, 64);
-            this.labShoot.Name = "labShoot";
-            this.labShoot.Size = new System.Drawing.Size(114, 26);
-            this.labShoot.TabIndex = 2;
-            this.labShoot.Text = "Shoot: 30";
-            // 
             // timerVelocidad
             // 
             this.timerVelocidad.Interval = 1000;
             this.timerVelocidad.Tick += new System.EventHandler(this.timerVelocidad_Tick);
             // 
-            // labSpeed
-            // 
-            this.labSpeed.AutoSize = true;
-            this.labSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labSpeed.Location = new System.Drawing.Point(493, 12);
-            this.labSpeed.Name = "labSpeed";
-            this.labSpeed.Size = new System.Drawing.Size(120, 26);
-            this.labSpeed.TabIndex = 3;
-            this.labSpeed.Text = "Speed: 30";
-            // 
             // timerInvencible
             // 
             this.timerInvencible.Interval = 1000;
             this.timerInvencible.Tick += new System.EventHandler(this.timerInvencible_Tick);
-            // 
-            // labGod
-            // 
-            this.labGod.AutoSize = true;
-            this.labGod.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labGod.Location = new System.Drawing.Point(517, 38);
-            this.labGod.Name = "labGod";
-            this.labGod.Size = new System.Drawing.Size(96, 26);
-            this.labGod.TabIndex = 4;
-            this.labGod.Text = "God: 30";
             // 
             // timerBoss
             // 
@@ -248,16 +216,27 @@
             // 
             // barPotenciador
             // 
-            this.barPotenciador.Location = new System.Drawing.Point(485, 257);
+            this.barPotenciador.Location = new System.Drawing.Point(547, 12);
             this.barPotenciador.Name = "barPotenciador";
-            this.barPotenciador.Size = new System.Drawing.Size(124, 23);
+            this.barPotenciador.Size = new System.Drawing.Size(62, 23);
             this.barPotenciador.TabIndex = 12;
+            // 
+            // labPotenciador
+            // 
+            this.labPotenciador.AutoSize = true;
+            this.labPotenciador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labPotenciador.Location = new System.Drawing.Point(483, 15);
+            this.labPotenciador.Name = "labPotenciador";
+            this.labPotenciador.Size = new System.Drawing.Size(58, 20);
+            this.labPotenciador.TabIndex = 13;
+            this.labPotenciador.Text = "Power";
             // 
             // frmMarcianos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 673);
+            this.Controls.Add(this.labPotenciador);
             this.Controls.Add(this.barPotenciador);
             this.Controls.Add(this.labNoAmmo);
             this.Controls.Add(this.pbAmmo);
@@ -266,9 +245,6 @@
             this.Controls.Add(this.barVidaNave);
             this.Controls.Add(this.barVidaBoss);
             this.Controls.Add(this.pbBoss);
-            this.Controls.Add(this.labGod);
-            this.Controls.Add(this.labSpeed);
-            this.Controls.Add(this.labShoot);
             this.Controls.Add(this.labScore);
             this.Controls.Add(this.pbPlayer);
             this.Name = "frmMarcianos";
@@ -294,11 +270,8 @@
         private System.Windows.Forms.Timer timerCuentaSegundos;
         private System.Windows.Forms.ImageList iLpowerups;
         private System.Windows.Forms.Timer timerDisparo;
-        private System.Windows.Forms.Label labShoot;
         private System.Windows.Forms.Timer timerVelocidad;
-        private System.Windows.Forms.Label labSpeed;
         private System.Windows.Forms.Timer timerInvencible;
-        private System.Windows.Forms.Label labGod;
         private System.Windows.Forms.PictureBox pbBoss;
         private System.Windows.Forms.Timer timerBoss;
         private System.Windows.Forms.ProgressBar barVidaBoss;
@@ -312,6 +285,7 @@
         private System.Windows.Forms.PictureBox pbAmmo;
         private System.Windows.Forms.Label labNoAmmo;
         private System.Windows.Forms.ProgressBar barPotenciador;
+        private System.Windows.Forms.Label labPotenciador;
     }
 }
 
