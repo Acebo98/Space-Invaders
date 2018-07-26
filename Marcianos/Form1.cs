@@ -39,10 +39,8 @@ namespace Marcianos
             this.MinimizeBox = false;
             this.ControlBox = false;
             this.BackColor = System.Drawing.Color.Black;
-            labScore.Visible = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Text = "Space Invaders";
-            this.muestraPuntuacion(0);
 
             //Power-ups hud
             foreach (Control cn in this.Controls)
@@ -307,10 +305,11 @@ namespace Marcianos
             barAmmo.BringToFront();
             barVidaNave.BringToFront();
             barVidaBoss.BringToFront();
+            barPotenciador.BringToFront();
             pbHP.BringToFront();
             pbAmmo.BringToFront();
-            labScore.BringToFront();
             labPotenciador.BringToFront();
+            labNoAmmo.BringToFront();
         }
 
         #region Movimiento
@@ -1037,13 +1036,6 @@ namespace Marcianos
             frmPuntuacion muestraPuntuacion = new frmPuntuacion(this.datos[0], this.datos[1], this.datos[2], this.muertoBoss, this.naveSkin);
             muestraPuntuacion.Show();
             this.Close();
-        }
-
-        //Mostramos la puntuacion
-        private void muestraPuntuacion(int suma)
-        {
-            this.score += suma;
-            labScore.Text = "Score: " + this.score.ToString();
         }
         #endregion
     }

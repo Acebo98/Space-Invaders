@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMarcianos));
             this.timerJuego = new System.Windows.Forms.Timer(this.components);
-            this.labScore = new System.Windows.Forms.Label();
             this.timerCuentaSegundos = new System.Windows.Forms.Timer(this.components);
             this.iLpowerups = new System.Windows.Forms.ImageList(this.components);
             this.timerDisparo = new System.Windows.Forms.Timer(this.components);
@@ -63,16 +62,6 @@
             this.timerJuego.Enabled = true;
             this.timerJuego.Interval = 1;
             this.timerJuego.Tick += new System.EventHandler(this.timerJuego_Tick);
-            // 
-            // labScore
-            // 
-            this.labScore.AutoSize = true;
-            this.labScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labScore.Location = new System.Drawing.Point(519, 461);
-            this.labScore.Name = "labScore";
-            this.labScore.Size = new System.Drawing.Size(94, 26);
-            this.labScore.TabIndex = 1;
-            this.labScore.Text = "Score:_";
             // 
             // timerCuentaSegundos
             // 
@@ -245,7 +234,6 @@
             this.Controls.Add(this.barVidaNave);
             this.Controls.Add(this.barVidaBoss);
             this.Controls.Add(this.pbBoss);
-            this.Controls.Add(this.labScore);
             this.Controls.Add(this.pbPlayer);
             this.Name = "frmMarcianos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -266,7 +254,6 @@
 
         private System.Windows.Forms.PictureBox pbPlayer;
         private System.Windows.Forms.Timer timerJuego;
-        private System.Windows.Forms.Label labScore;
         private System.Windows.Forms.Timer timerCuentaSegundos;
         private System.Windows.Forms.ImageList iLpowerups;
         private System.Windows.Forms.Timer timerDisparo;
