@@ -191,9 +191,17 @@ namespace Marcianos
             timerCuentaSegundos.Start();
 
             //Powers
-            if (this.tiempoPower < 30) timerInvencible.Start();
-            if (this.tiempoPower < 30) timerDisparo.Start();
-            if (this.tiempoPower < 30) timerVelocidad.Start();
+            switch (this.potencioadorActivo)
+            {
+                case 1:
+                    timerVelocidad.Start();
+                    break;
+                case 2:
+                    timerDisparo.Start();
+                    break;
+                case 3: timerInvencible.Start();
+                    break;
+            }
 
             //Boss
             if (this.bossSpawn) timerBoss.Start();
@@ -755,6 +763,7 @@ namespace Marcianos
         #endregion
 
         #region Powe-Ups     
+        int potencioadorActivo = 0;                 //Potenciador activo (0 ninguno, 1 disparo, 2 velocidad, 3 invencibilidad)
         bool powers = true;                         //Aparición power-ups
         bool god = false;                           //Invencible
 
@@ -772,6 +781,7 @@ namespace Marcianos
                             case "invencible":
                                 {
                                     pbPlayer.Image = Properties.Resources.x_wing_invencible;
+                                    this.potencioadorActivo = 3;
                                     this.god = true;
                                     labPotenciador.Text = "God";
                                     timerInvencible.Start();
@@ -779,6 +789,7 @@ namespace Marcianos
                                 break;
                             case "disparo":
                                 {
+                                    this.potencioadorActivo = 1;
                                     this.velozBala += 10;
                                     labPotenciador.Text = "Shoot";
                                     timerDisparo.Start();
@@ -786,6 +797,7 @@ namespace Marcianos
                                 break;
                             case "velocidad":
                                 {
+                                    this.potencioadorActivo = 2;
                                     this.velozStar = 3;
                                     this.velozPersonaje += 10;
                                     labPotenciador.Text = "Speed";
@@ -822,6 +834,7 @@ namespace Marcianos
                 this.velozBala -= 10;
                 labPotenciador.Visible = false;
                 barPotenciador.Visible = false;
+                this.potencioadorActivo = 0;
                 timerDisparo.Stop();
             }
         }
@@ -838,6 +851,7 @@ namespace Marcianos
                 this.velozPersonaje -= 10;
                 labPotenciador.Visible = false;
                 barPotenciador.Visible = false;
+                this.potencioadorActivo = 0;
                 timerVelocidad.Stop();
             }
         }
@@ -854,6 +868,7 @@ namespace Marcianos
                 this.skin();
                 labPotenciador.Visible = false;
                 barPotenciador.Visible = false;
+                this.potencioadorActivo = 0;
                 timerInvencible.Stop();
             }
         }
