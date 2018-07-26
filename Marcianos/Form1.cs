@@ -931,6 +931,10 @@ namespace Marcianos
                 this.dx = 3;
                 this.muereBoss();
                 timerTransicion.Start();
+
+                //Musica de explosión
+                SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\boss_death.wav");
+                theme.Play();
             }
 
             //Confi del hud
