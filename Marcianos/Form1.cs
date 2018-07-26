@@ -775,32 +775,23 @@ namespace Marcianos
                                 {
                                     pbPlayer.Image = Properties.Resources.x_wing_invencible;
                                     this.god = true;
-                                    labPotenciador.Visible = true;
                                     labPotenciador.Text = "God";
                                     timerInvencible.Start();
-                                    this.powers = false;
-                                    barPotenciador.Visible = true;
                                 }
                                 break;
                             case "disparo":
                                 {
                                     this.velozBala += 10;
-                                    labPotenciador.Visible = true;
                                     labPotenciador.Text = "Shoot";
                                     timerDisparo.Start();
-                                    this.powers = false;
-                                    barPotenciador.Visible = true;
                                 }
                                 break;
                             case "velocidad":
                                 {
                                     this.velozStar = 3;
                                     this.velozPersonaje += 10;
-                                    labPotenciador.Visible = true;
                                     labPotenciador.Text = "Speed";
                                     timerVelocidad.Start();
-                                    this.powers = false;
-                                    barPotenciador.Visible = true;
                                 }
                                 break;
                             case "<3": barVidaNave.Increment(25);
@@ -809,22 +800,13 @@ namespace Marcianos
                                 break;
                         }
 
-                        //Sonidos
-                        /*
-                        if (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad")
+                        //Configuracion conjunta para los potenciadores
+                        if (cn.Tag != "<3" && cn.Tag != "ammo")
                         {
-                            SoundPlayer power = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\power-up.wav");
-                            power.Play();
+                            barPotenciador.Visible = true;
+                            this.powers = false;
+                            labPotenciador.Visible = true;
                         }
-                        else
-                        {
-                            if (cn.Tag == "<3")
-                            {
-                                SoundPlayer heal = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\heal.wav");
-                                heal.Play();
-                            }
-                        }
-                        */
                         this.Controls.Remove(cn);
                     }
                 }
