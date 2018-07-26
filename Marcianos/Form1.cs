@@ -53,9 +53,10 @@ namespace Marcianos
             }
 
             //Boss
-            this.bajasParaBoss = this.rnd.Next(105, 120);
+            this.bajasParaBoss = this.rnd.Next(105, 121);
             barVidaBoss.Visible = false;
             pbBoss.Top = 0 - pbBoss.Height;
+            pbSkull.Visible = false;
 
             //Skin
             this.skin();
@@ -254,8 +255,8 @@ namespace Marcianos
             if (this.datos[1] == this.bajasParaBoss && !this.bossSpawn)
             {
                 pbBoss.BringToFront();
-                timerBoss.Start();
                 pbBoss.Visible = true;
+                pbSkull.Visible = true;
                 this.enemigos = false;
                 barVidaBoss.Visible = true;
                 this.bossSpawn = true;
@@ -263,6 +264,8 @@ namespace Marcianos
                 //Musica del jefe
                 SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\boss.wav");
                 theme.PlayLooping();
+
+                timerBoss.Start();
             }
 
             //Solo 1 potenciador en pantalla
@@ -315,6 +318,7 @@ namespace Marcianos
             barPotenciador.BringToFront();
             pbHP.BringToFront();
             pbAmmo.BringToFront();
+            pbSkull.BringToFront();
             labPotenciador.BringToFront();
             labNoAmmo.BringToFront();
         }
@@ -1001,6 +1005,7 @@ namespace Marcianos
             //Quitamos los sprites del boss
             this.Controls.Remove(pbBoss);
             this.Controls.Remove(barVidaBoss);
+            this.Controls.Remove(pbSkull);
         }
 
         //Ganamos la partida
