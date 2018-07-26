@@ -521,7 +521,8 @@ namespace Marcianos
         private void mueveShootgun()
         {
             foreach (Control bullet in this.Controls)
-                if (bullet is PictureBox && (bullet.Tag == "balaShootgun0" || bullet.Tag == "balaShootgun1" || bullet.Tag == "balaShootgun2"))
+                if (bullet is PictureBox && (bullet.Tag == "balaShootgun0" || bullet.Tag == "balaShootgun1" 
+                    || bullet.Tag == "balaShootgun2"))
                 {
                     bullet.Top -= this.velozBala;       //Todas se mueven hacia arriba
 
