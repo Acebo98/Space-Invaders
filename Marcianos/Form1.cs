@@ -571,22 +571,29 @@ namespace Marcianos
         //Creamos un power-up
         private void crearPowerUp()
         {
-            int power = rnd.Next(0, 3);         //Power-up que saldrá
+            int power = rnd.Next(0, 11);         //Power-up que saldrá
 
             PictureBox pbPower = new PictureBox();
-            pbPower.Image = iLpowerups.Images[power];
             pbPower.SizeMode = PictureBoxSizeMode.AutoSize;
-            switch (power)
+
+            //Probabilidad de aparición de cada potenciador
+            if (power == 10 || power == 9)
             {
-                case 0:
-                    pbPower.Tag = "invencible";
-                    break;
-                case 1:
+                pbPower.Image = iLpowerups.Images[0];
+                pbPower.Tag = "invencible";
+            }
+            else
+            {
+                if (power >= 0 || power <= 4)
+                {
+                    pbPower.Image = iLpowerups.Images[1];
                     pbPower.Tag = "velocidad";
-                    break;
-                case 2:
+                }
+                else
+                {
+                    pbPower.Image = iLpowerups.Images[2];
                     pbPower.Tag = "disparo";
-                    break;
+                }
             }
             pbPower.Location = new Point(rnd.Next(0, this.Width), 0 - pbPower.Height);
             this.Controls.Add(pbPower);
