@@ -94,8 +94,8 @@ namespace Marcianos
                     {
                         if (!this.disparo && barAmmo.Value > 0)
                         {
-                            this.creaBalasShotgun();
-                            this.creaBalaBuena();
+                            if (!this.shotgun) this.creaBalaBuena();
+                            else this.creaBalasShotgun();                        
                             this.disparo = true;
                             if (!this.god) barAmmo.Increment(-1);
                         }
@@ -516,21 +516,6 @@ namespace Marcianos
                         this.creaBalaTie((PictureBox)tie);
                 }
         }
-
-        //Movimiento de las balas de shootgun
-        private void mueveShootgun()
-        {
-            foreach (Control bullet in this.Controls)
-                if (bullet is PictureBox && (bullet.Tag == "balaShootgun0" || bullet.Tag == "balaShootgun1" 
-                    || bullet.Tag == "balaShootgun2"))
-                {
-                    bullet.Top -= this.velozBala;       //Todas se mueven hacia arriba
-
-                    //Las que se mueven de forma diagonal
-                    if (bullet.Tag.ToString() == "balaShootgun0") bullet.Left -= 10;
-                    else if (bullet.Tag.ToString() == "balaShootgun2") bullet.Left += 10;
-                }
-        }
         #endregion
 
         #region Crear objetos
@@ -763,21 +748,6 @@ namespace Marcianos
             }
         }
 
-        //Creamos las nuevas balas del potenciador de disparo triple (3 balas en total)
-        private void creaBalasShotgun()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                PictureBox pbBalaShotgun = new PictureBox();
-                pbBalaShotgun.Image = Properties.Resources.bullet_shotgun;
-                pbBalaShotgun.SizeMode = PictureBoxSizeMode.AutoSize;
-                pbBalaShotgun.Tag = "balaShootgun" + i;
-                pbBalaShotgun.Location = new Point(pbPlayer.Location.X + pbPlayer.Width / 2, pbPlayer.Location.Y);
-                this.Controls.Add(pbBalaShotgun);
-                pbBalaShotgun.BringToFront();
-            }
-        }
-
         //Metodo que comprueba si 2 pb del mismo tipo colisionan uno con el otro
         private bool colisionEntrePBIguales(PictureBox pb2)
         {
@@ -799,6 +769,7 @@ namespace Marcianos
         int potencioadorActivo = 0;                 //Potenciador activo (0 ninguno, 1 disparo, 2 velocidad, 3 invencibilidad)
         bool powers = true;                         //Aparición power-ups
         bool god = false;                           //Invencible
+        bool shotgun = false;                       //Potenciador de disparo
 
         //Golpeamos un power-up
         private void golpeaPower()
@@ -822,8 +793,8 @@ namespace Marcianos
                                 break;
                             case "disparo":
                                 {
+                                    this.shotgun = true;
                                     this.potencioadorActivo = 1;
-                                    this.velozBala += 10;
                                     labPotenciador.Text = "Shoot";
                                     timerDisparo.Start();
                                 }
@@ -862,9 +833,9 @@ namespace Marcianos
             this.tiempoPower--;
             if (this.tiempoPower == 0)
             {
+                this.shotgun = false;
                 this.tiempoPower = 30;
                 this.powers = true;
-                this.velozBala -= 10;
                 labPotenciador.Visible = false;
                 barPotenciador.Visible = false;
                 this.potencioadorActivo = 0;
@@ -917,6 +888,35 @@ namespace Marcianos
                     sum++;
 
             return sum;
+        }
+
+        //Movimiento de las balas de shootgun
+        private void mueveShootgun()
+        {
+            foreach (Control bullet in this.Controls)
+                if (bullet is PictureBox && (bullet.Tag == "balaS0"))
+                {
+                    bullet.Top -= this.velozBala;       //Todas se mueven hacia arriba
+
+                    //Las que se mueven de forma diagonal
+                    if (bullet.Tag.ToString() == "balaS0") bullet.Left -= 10;
+                    else if (bullet.Tag.ToString() == "balaS2") bullet.Left += 10;
+                }
+        }
+
+        //Creamos las nuevas balas del potenciador de disparo triple (3 balas en total)
+        private void creaBalasShotgun()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                PictureBox pbBalaShotgun = new PictureBox();
+                pbBalaShotgun.Image = Properties.Resources.bullet_shotgun;
+                pbBalaShotgun.SizeMode = PictureBoxSizeMode.AutoSize;
+                pbBalaShotgun.Tag = "balaS" + i.ToString();
+                pbBalaShotgun.Location = new Point(pbPlayer.Location.X + pbPlayer.Width / 2, pbPlayer.Location.Y);
+                this.Controls.Add(pbBalaShotgun);
+                pbBalaShotgun.BringToFront();
+            }
         }
         #endregion
 
