@@ -94,7 +94,7 @@ namespace Marcianos
                     {
                         if (!this.disparo && barAmmo.Value > 0)
                         {
-                            if (!this.shotgun) this.creaBalaBuena();
+                            if (this.shotgun) this.creaBalaBuena();
                             else this.creaBalasShotgun();                        
                             this.disparo = true;
                             if (!this.god) barAmmo.Increment(-1);
@@ -282,6 +282,7 @@ namespace Marcianos
             barPotenciador.Value = this.tiempoPower;
             this.muevePower();
             this.golpeaPower();
+            this.mueveShootgun();
 
             //Aumentamos la dificultad
             if (this.datos[1] == this.bajasAumentar)
@@ -303,9 +304,7 @@ namespace Marcianos
 
             //Mostramos que el grafismo de no hay ammo
             if (barAmmo.Value == 0) labNoAmmo.Visible = true;
-            else labNoAmmo.Visible = false;
-
-            this.mueveShootgun();
+            else labNoAmmo.Visible = false;           
         }
 
         //Interfaz
@@ -766,6 +765,7 @@ namespace Marcianos
         #endregion
 
         #region Powe-Ups     
+        int velozLateral = 5;                       //Velocidad lateral de las balas triples
         int potencioadorActivo = 0;                 //Potenciador activo (0 ninguno, 1 disparo, 2 velocidad, 3 invencibilidad)
         bool powers = true;                         //Aparición power-ups
         bool god = false;                           //Invencible
@@ -893,15 +893,17 @@ namespace Marcianos
         //Movimiento de las balas de shootgun
         private void mueveShootgun()
         {
-            foreach (Control bullet in this.Controls)
-                if (bullet is PictureBox && (bullet.Tag == "balaS0"))
+            foreach (Control pbBala in this.Controls)
+            {
+                if (pbBala is PictureBox && (pbBala.Tag == "balaShA" || pbBala.Tag == "balaShB" || pbBala.Tag == "balaShC"))
                 {
-                    bullet.Top -= this.velozBala;       //Todas se mueven hacia arriba
+                    pbBala.Top -= this.velozBala;       //Todas se mueven hacia arriba
 
                     //Las que se mueven de forma diagonal
-                    if (bullet.Tag.ToString() == "balaS0") bullet.Left -= 10;
-                    else if (bullet.Tag.ToString() == "balaS2") bullet.Left += 10;
+                    if (pbBala.Tag.ToString() == "balaShA") pbBala.Left -= this.velozLateral;
+                    else if (pbBala.Tag.ToString() == "balaShC") pbBala.Left += this.velozLateral;
                 }
+            }
         }
 
         //Creamos las nuevas balas del potenciador de disparo triple (3 balas en total)
@@ -912,7 +914,18 @@ namespace Marcianos
                 PictureBox pbBalaShotgun = new PictureBox();
                 pbBalaShotgun.Image = Properties.Resources.bullet_shotgun;
                 pbBalaShotgun.SizeMode = PictureBoxSizeMode.AutoSize;
-                pbBalaShotgun.Tag = "balaS" + i.ToString();
+
+                //Tags para la dirección
+                switch (i)
+                {
+                    case 0: pbBalaShotgun.Tag = "balaShA";
+                        break;
+                    case 1: pbBalaShotgun.Tag = "balaShB";
+                        break;
+                    case 2: pbBalaShotgun.Tag = "balaShC";
+                        break;
+                }
+
                 pbBalaShotgun.Location = new Point(pbPlayer.Location.X + pbPlayer.Width / 2, pbPlayer.Location.Y);
                 this.Controls.Add(pbBalaShotgun);
                 pbBalaShotgun.BringToFront();
