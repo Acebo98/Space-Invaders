@@ -278,7 +278,7 @@ namespace Marcianos
                         this.crearPowerUp();
             }
 
-            //Movimiento de los potenciadores
+            //Potenciadores
             barPotenciador.Value = this.tiempoPower;
             this.muevePower();
             this.golpeaPower();
@@ -380,14 +380,10 @@ namespace Marcianos
                 {
                     if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA"))
                     {
-                        if (b is PictureBox && b.Tag == "balaB")
+                        if (b is PictureBox && b.Tag == "balaB" || (b.Tag == "balaShA" || b.Tag == "balaShB" || b.Tag == "balaShC"))
                         {
                             if (((PictureBox)b).Bounds.IntersectsWith(m.Bounds))
                             {
-                                //Sonido
-                                //SoundPlayer pummm = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\destroy.wav");
-                                //pummm.Play();
-
                                 //Quitamos
                                 this.creaExplosion((PictureBox)m);
                                 this.Controls.Remove(m);
