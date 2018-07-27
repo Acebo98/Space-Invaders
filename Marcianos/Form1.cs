@@ -94,7 +94,7 @@ namespace Marcianos
                     {
                         if (!this.disparo && barAmmo.Value > 0)
                         {
-                            if (this.shotgun) this.creaBalaBuena();
+                            if (!this.shotgun) this.creaBalaBuena();
                             else this.creaBalasShotgun();                        
                             this.disparo = true;
                             if (!this.god) barAmmo.Increment(-1);
@@ -604,7 +604,7 @@ namespace Marcianos
             }
             else
             {
-                if (power >= 0 || power <= 4)
+                if (power >= 0 && power <= 4)
                 {
                     pbPower.Image = iLpowerups.Images[1];
                     pbPower.Tag = "velocidad";
@@ -772,7 +772,8 @@ namespace Marcianos
         {
             foreach (Control cn in this.Controls)
             {
-                if (cn is PictureBox && (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad" || cn.Tag == "<3" || cn.Tag == "ammo"))
+                if (cn is PictureBox && (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad" || 
+                    cn.Tag == "<3" || cn.Tag == "ammo"))
                 {
                     if (pbPlayer.Bounds.IntersectsWith(cn.Bounds))
                     {
@@ -1013,11 +1014,12 @@ namespace Marcianos
         {
             foreach (Control bullet in this.Controls)
             {
-                if (bullet is PictureBox && bullet.Tag == "balaB")
+                if (bullet is PictureBox && bullet.Tag == "balaB" || (bullet.Tag == "balaShA" || 
+                    bullet.Tag == "balaShB" || bullet.Tag == "balaShC"))
                 {
                     if (pbBoss.Bounds.IntersectsWith(bullet.Bounds) && pbBoss.Visible)
                     {
-                        if (this.rnd.Next(0, 21) == 5) this.creaAmmo((PictureBox)bullet);
+                        if (this.rnd.Next(0, 21) == 10) this.creaAmmo((PictureBox)bullet);
                         this.creaExplosion((PictureBox)bullet);
                         this.Controls.Remove(bullet);
                         barVidaBoss.Increment(-1);
