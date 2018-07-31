@@ -338,12 +338,13 @@ namespace Marcianos
                 pbPlayer.Left -= this.velozPersonaje;
         }
 
-        //Movimiento de los meteoros hacia abajo
-        private void mueveMeteoro()
+        //Movimiento de los objetos que se mueven hacia abajo
+        private void mueveHaciaAbajo()
         {
             foreach (Control cn in this.Controls)
             {
-                if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "<3" || cn.Tag == "ammo"))
+                if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "<3" 
+                    || cn.Tag == "ammo" || cn.Tag == "iman"))
                     cn.Top += this.velozMeteoro;
             }
         }
@@ -382,7 +383,8 @@ namespace Marcianos
                 {
                     if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA"))
                     {
-                        if (b is PictureBox && b.Tag == "balaB" || (b.Tag == "balaShA" || b.Tag == "balaShB" || b.Tag == "balaShC"))
+                        if (b is PictureBox && b.Tag == "balaB" || (b.Tag == "balaShA" 
+                            || b.Tag == "balaShB" || b.Tag == "balaShC"))
                         {
                             if (((PictureBox)b).Bounds.IntersectsWith(m.Bounds))
                             {
@@ -790,7 +792,7 @@ namespace Marcianos
             foreach (Control cn in this.Controls)
             {
                 if (cn is PictureBox && (cn.Tag == "invencible" || cn.Tag == "disparo" || cn.Tag == "velocidad" || 
-                    cn.Tag == "<3" || cn.Tag == "ammo"))
+                    cn.Tag == "<3" || cn.Tag == "ammo" || cn.Tag == "iman"))
                 {
                     if (pbPlayer.Bounds.IntersectsWith(cn.Bounds))
                     {
@@ -947,6 +949,17 @@ namespace Marcianos
                 pbBalaShotgun.BringToFront();
             }
         }
+
+        //Seguimiento de los objetos hacia la nave cuando se tiene el imán activado
+        private void sigueNaveIman()
+        {
+            foreach (Control objeto in this.Controls)
+                if (objeto is PictureBox && (objeto.Tag == "ammo" || objeto.Tag == "<3"))
+                {
+                    if (objeto.Left < pbPlayer.Left) objeto.Left += 1;
+                    else if (objeto.Left > pbPlayer.Left) objeto.Left -= 1;
+                }
+        }
         #endregion
 
         #region Boss       
@@ -1102,7 +1115,7 @@ namespace Marcianos
         {
             if ((rnd.Next(0, this.spawnMeteoro) == this.spawnMeteoro / 2) && this.enemigos)
                 this.creaMeteoro();
-            this.mueveMeteoro();
+            this.mueveHaciaAbajo();
             this.choqueNave();
         }
         #endregion
