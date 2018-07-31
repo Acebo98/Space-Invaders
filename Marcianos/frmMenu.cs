@@ -46,7 +46,7 @@ namespace Marcianos
 
             //Sonido
             SoundPlayer menu = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\menu.wav");
-            menu.PlayLooping();
+            //menu.PlayLooping();
         }
 
         //Configuración de los labels del formulario

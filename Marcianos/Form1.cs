@@ -66,7 +66,7 @@ namespace Marcianos
 
             //Tema
             SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\theme.wav");
-            theme.PlayLooping();
+            //theme.PlayLooping();
 
             //Barra potenciador
             barPotenciador.Maximum = 30;
@@ -781,8 +781,8 @@ namespace Marcianos
                         {
                             case "invencible":
                                 {
-                                    pbPlayer.Image = Properties.Resources.x_wing_invencible;
                                     this.potencioadorActivo = 3;
+                                    pbPlayer.Image = Properties.Resources.x_wing_invencible;                                 
                                     this.god = true;
                                     labPotenciador.Text = "God";
                                     timerInvencible.Start();
@@ -790,8 +790,8 @@ namespace Marcianos
                                 break;
                             case "disparo":
                                 {
-                                    this.shotgun = true;
                                     this.potencioadorActivo = 1;
+                                    this.shotgun = true;                                 
                                     labPotenciador.Text = "Shoot";
                                     timerDisparo.Start();
                                 }
@@ -801,6 +801,7 @@ namespace Marcianos
                                     this.potencioadorActivo = 2;
                                     this.velozStar = 3;
                                     this.velozPersonaje += 10;
+                                    this.velozBala *= 2;
                                     labPotenciador.Text = "Speed";
                                     timerVelocidad.Start();
                                 }
@@ -850,6 +851,7 @@ namespace Marcianos
                 this.tiempoPower = 30;
                 this.powers = true;
                 this.velozPersonaje -= 10;
+                this.velozBala /= 2;
                 labPotenciador.Visible = false;
                 barPotenciador.Visible = false;
                 this.potencioadorActivo = 0;
