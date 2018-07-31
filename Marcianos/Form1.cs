@@ -306,7 +306,9 @@ namespace Marcianos
             if (barAmmo.Value == 0) labNoAmmo.Visible = true;
             else labNoAmmo.Visible = false;
 
-            if (rnd.Next(0, 100) == 50) this.creaIman();
+            //Imán
+            if (rnd.Next(0, 700) == 50) this.creaIman();
+            if (this.iman) this.sigueNaveIman();
         }
 
         //Interfaz
@@ -785,6 +787,7 @@ namespace Marcianos
         bool powers = true;                         //Aparición power-ups
         bool god = false;                           //Invencible
         bool shotgun = false;                       //Potenciador de disparo
+        bool iman = false;                          //Iman de seguimiento
 
         //Golpeamos un power-up
         private void golpeaPower()
@@ -829,10 +832,12 @@ namespace Marcianos
                                 break;
                             case "ammo": barAmmo.Increment(50);
                                 break;
+                            case "iman": this.iman = true;
+                                break;
                         }
 
                         //Configuracion conjunta para los potenciadores
-                        if (cn.Tag != "<3" && cn.Tag != "ammo")
+                        if (cn.Tag != "<3" && cn.Tag != "ammo" && cn.Tag != "iman")
                         {
                             barPotenciador.Visible = true;
                             this.powers = false;
@@ -956,8 +961,8 @@ namespace Marcianos
             foreach (Control objeto in this.Controls)
                 if (objeto is PictureBox && (objeto.Tag == "ammo" || objeto.Tag == "<3"))
                 {
-                    if (objeto.Left < pbPlayer.Left) objeto.Left += 1;
-                    else if (objeto.Left > pbPlayer.Left) objeto.Left -= 1;
+                    if (objeto.Left < pbPlayer.Left) objeto.Left += 5;
+                    else if (objeto.Left > pbPlayer.Left) objeto.Left -= 4;
                 }
         }
         #endregion
