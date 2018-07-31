@@ -175,6 +175,7 @@
     <None Include="Resources\tie_avanzado.png" />
     <None Include="Resources\skull_boss.png" />
     <None Include="Resources\bullet_shotgun.png" />
+    <None Include="Resources\iman.png" />
     <Content Include="space-invaders.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

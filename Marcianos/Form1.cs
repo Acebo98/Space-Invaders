@@ -304,7 +304,9 @@ namespace Marcianos
 
             //Mostramos que el grafismo de no hay ammo
             if (barAmmo.Value == 0) labNoAmmo.Visible = true;
-            else labNoAmmo.Visible = false;           
+            else labNoAmmo.Visible = false;
+
+            if (rnd.Next(0, 100) == 50) this.creaIman();
         }
 
         //Interfaz
@@ -757,6 +759,21 @@ namespace Marcianos
                     }
 
             return colision;
+        }
+
+        //Creamos un imán
+        private void creaIman()
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.iman);
+            trans.MakeTransparent();
+            PictureBox pbIman = new PictureBox();
+            pbIman.Image = trans;
+            pbIman.Size = new Size(40, 40);
+            pbIman.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbIman.Tag = "iman";
+            pbIman.Location = new Point(rnd.Next(0, this.Width), 0 - pbIman.Height);
+            this.Controls.Add(pbIman);
+            pbIman.BringToFront();
         }
         #endregion
 
