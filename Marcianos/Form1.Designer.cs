@@ -52,6 +52,9 @@
             this.pbBoss = new System.Windows.Forms.PictureBox();
             this.pbPlayer = new System.Windows.Forms.PictureBox();
             this.pbSkull = new System.Windows.Forms.PictureBox();
+            this.timerIman = new System.Windows.Forms.Timer(this.components);
+            this.barIman = new System.Windows.Forms.ProgressBar();
+            this.labIman = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
@@ -103,9 +106,10 @@
             // 
             this.barVidaBoss.BackColor = System.Drawing.SystemColors.Control;
             this.barVidaBoss.ForeColor = System.Drawing.Color.Red;
-            this.barVidaBoss.Location = new System.Drawing.Point(37, 12);
+            this.barVidaBoss.Location = new System.Drawing.Point(25, 8);
+            this.barVidaBoss.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.barVidaBoss.Name = "barVidaBoss";
-            this.barVidaBoss.Size = new System.Drawing.Size(124, 25);
+            this.barVidaBoss.Size = new System.Drawing.Size(83, 16);
             this.barVidaBoss.Step = 1;
             this.barVidaBoss.TabIndex = 6;
             this.barVidaBoss.Value = 100;
@@ -113,9 +117,10 @@
             // barVidaNave
             // 
             this.barVidaNave.ForeColor = System.Drawing.Color.Red;
-            this.barVidaNave.Location = new System.Drawing.Point(37, 638);
+            this.barVidaNave.Location = new System.Drawing.Point(25, 415);
+            this.barVidaNave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.barVidaNave.Name = "barVidaNave";
-            this.barVidaNave.Size = new System.Drawing.Size(124, 23);
+            this.barVidaNave.Size = new System.Drawing.Size(83, 15);
             this.barVidaNave.Step = 25;
             this.barVidaNave.TabIndex = 7;
             this.barVidaNave.Value = 100;
@@ -143,9 +148,10 @@
             // barAmmo
             // 
             this.barAmmo.ForeColor = System.Drawing.Color.Red;
-            this.barAmmo.Location = new System.Drawing.Point(485, 638);
+            this.barAmmo.Location = new System.Drawing.Point(323, 415);
+            this.barAmmo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.barAmmo.Name = "barAmmo";
-            this.barAmmo.Size = new System.Drawing.Size(124, 23);
+            this.barAmmo.Size = new System.Drawing.Size(83, 15);
             this.barAmmo.Step = 25;
             this.barAmmo.TabIndex = 9;
             this.barAmmo.Value = 100;
@@ -155,26 +161,29 @@
             this.labNoAmmo.AutoSize = true;
             this.labNoAmmo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labNoAmmo.ForeColor = System.Drawing.Color.Red;
-            this.labNoAmmo.Location = new System.Drawing.Point(500, 615);
+            this.labNoAmmo.Location = new System.Drawing.Point(333, 400);
+            this.labNoAmmo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labNoAmmo.Name = "labNoAmmo";
-            this.labNoAmmo.Size = new System.Drawing.Size(94, 20);
+            this.labNoAmmo.Size = new System.Drawing.Size(65, 13);
             this.labNoAmmo.TabIndex = 11;
             this.labNoAmmo.Text = "(no ammo)";
             // 
             // barPotenciador
             // 
-            this.barPotenciador.Location = new System.Drawing.Point(547, 12);
+            this.barPotenciador.Location = new System.Drawing.Point(365, 8);
+            this.barPotenciador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.barPotenciador.Name = "barPotenciador";
-            this.barPotenciador.Size = new System.Drawing.Size(62, 23);
+            this.barPotenciador.Size = new System.Drawing.Size(41, 15);
             this.barPotenciador.TabIndex = 12;
             // 
             // labPotenciador
             // 
             this.labPotenciador.AutoSize = true;
             this.labPotenciador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labPotenciador.Location = new System.Drawing.Point(483, 15);
+            this.labPotenciador.Location = new System.Drawing.Point(322, 10);
+            this.labPotenciador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labPotenciador.Name = "labPotenciador";
-            this.labPotenciador.Size = new System.Drawing.Size(58, 20);
+            this.labPotenciador.Size = new System.Drawing.Size(42, 13);
             this.labPotenciador.TabIndex = 13;
             this.labPotenciador.Text = "Power";
             // 
@@ -182,9 +191,10 @@
             // 
             this.pbAmmo.BackColor = System.Drawing.Color.Transparent;
             this.pbAmmo.Image = ((System.Drawing.Image)(resources.GetObject("pbAmmo.Image")));
-            this.pbAmmo.Location = new System.Drawing.Point(463, 638);
+            this.pbAmmo.Location = new System.Drawing.Point(309, 415);
+            this.pbAmmo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbAmmo.Name = "pbAmmo";
-            this.pbAmmo.Size = new System.Drawing.Size(16, 23);
+            this.pbAmmo.Size = new System.Drawing.Size(11, 15);
             this.pbAmmo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAmmo.TabIndex = 10;
             this.pbAmmo.TabStop = false;
@@ -193,9 +203,10 @@
             // 
             this.pbHP.BackColor = System.Drawing.Color.Transparent;
             this.pbHP.Image = global::Marcianos.Properties.Resources.hp_bar;
-            this.pbHP.Location = new System.Drawing.Point(6, 638);
+            this.pbHP.Location = new System.Drawing.Point(4, 415);
+            this.pbHP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbHP.Name = "pbHP";
-            this.pbHP.Size = new System.Drawing.Size(25, 23);
+            this.pbHP.Size = new System.Drawing.Size(17, 15);
             this.pbHP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbHP.TabIndex = 8;
             this.pbHP.TabStop = false;
@@ -204,9 +215,10 @@
             // 
             this.pbBoss.BackColor = System.Drawing.Color.Transparent;
             this.pbBoss.Image = global::Marcianos.Properties.Resources.boss;
-            this.pbBoss.Location = new System.Drawing.Point(54, 12);
+            this.pbBoss.Location = new System.Drawing.Point(36, 8);
+            this.pbBoss.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbBoss.Name = "pbBoss";
-            this.pbBoss.Size = new System.Drawing.Size(508, 221);
+            this.pbBoss.Size = new System.Drawing.Size(339, 144);
             this.pbBoss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBoss.TabIndex = 5;
             this.pbBoss.TabStop = false;
@@ -215,9 +227,10 @@
             // 
             this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pbPlayer.Image = global::Marcianos.Properties.Resources.x_wing;
-            this.pbPlayer.Location = new System.Drawing.Point(272, 565);
+            this.pbPlayer.Location = new System.Drawing.Point(181, 367);
+            this.pbPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbPlayer.Name = "pbPlayer";
-            this.pbPlayer.Size = new System.Drawing.Size(70, 70);
+            this.pbPlayer.Size = new System.Drawing.Size(47, 45);
             this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPlayer.TabIndex = 0;
             this.pbPlayer.TabStop = false;
@@ -226,18 +239,45 @@
             // 
             this.pbSkull.BackColor = System.Drawing.Color.Transparent;
             this.pbSkull.Image = global::Marcianos.Properties.Resources.skull_boss;
-            this.pbSkull.Location = new System.Drawing.Point(6, 12);
+            this.pbSkull.Location = new System.Drawing.Point(4, 8);
+            this.pbSkull.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbSkull.Name = "pbSkull";
-            this.pbSkull.Size = new System.Drawing.Size(25, 23);
+            this.pbSkull.Size = new System.Drawing.Size(17, 15);
             this.pbSkull.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSkull.TabIndex = 14;
             this.pbSkull.TabStop = false;
             // 
+            // timerIman
+            // 
+            this.timerIman.Interval = 1000;
+            this.timerIman.Tick += new System.EventHandler(this.timerIman_Tick);
+            // 
+            // barIman
+            // 
+            this.barIman.Location = new System.Drawing.Point(365, 25);
+            this.barIman.Margin = new System.Windows.Forms.Padding(2);
+            this.barIman.Name = "barIman";
+            this.barIman.Size = new System.Drawing.Size(41, 15);
+            this.barIman.TabIndex = 15;
+            // 
+            // labIman
+            // 
+            this.labIman.AutoSize = true;
+            this.labIman.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labIman.Location = new System.Drawing.Point(315, 27);
+            this.labIman.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labIman.Name = "labIman";
+            this.labIman.Size = new System.Drawing.Size(49, 13);
+            this.labIman.TabIndex = 16;
+            this.labIman.Text = "Magnet";
+            // 
             // frmMarcianos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 673);
+            this.ClientSize = new System.Drawing.Size(417, 437);
+            this.Controls.Add(this.labIman);
+            this.Controls.Add(this.barIman);
             this.Controls.Add(this.pbSkull);
             this.Controls.Add(this.labPotenciador);
             this.Controls.Add(this.barPotenciador);
@@ -249,6 +289,7 @@
             this.Controls.Add(this.barVidaBoss);
             this.Controls.Add(this.pbBoss);
             this.Controls.Add(this.pbPlayer);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmMarcianos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -289,6 +330,9 @@
         private System.Windows.Forms.ProgressBar barPotenciador;
         private System.Windows.Forms.Label labPotenciador;
         private System.Windows.Forms.PictureBox pbSkull;
+        private System.Windows.Forms.Timer timerIman;
+        private System.Windows.Forms.ProgressBar barIman;
+        private System.Windows.Forms.Label labIman;
     }
 }
 

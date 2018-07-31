@@ -72,6 +72,9 @@ namespace Marcianos
             barPotenciador.Maximum = 30;
             barPotenciador.Value = barPotenciador.Maximum;
             barPotenciador.Visible = false;
+            barIman.Maximum = 30;
+            barIman.Value = barIman.Maximum;
+            barIman.Visible = false;
         }
 
         #region Controles
@@ -318,11 +321,13 @@ namespace Marcianos
             barVidaNave.BringToFront();
             barVidaBoss.BringToFront();
             barPotenciador.BringToFront();
+            barIman.BringToFront();
             pbHP.BringToFront();
             pbAmmo.BringToFront();
             pbSkull.BringToFront();
             labPotenciador.BringToFront();
             labNoAmmo.BringToFront();
+            labIman.BringToFront();
         }
 
         #region Movimiento
@@ -832,7 +837,13 @@ namespace Marcianos
                                 break;
                             case "ammo": barAmmo.Increment(50);
                                 break;
-                            case "iman": this.iman = true;
+                            case "iman":
+                                {
+                                    this.iman = true;
+                                    labIman.Visible = true;
+                                    barIman.Visible = true;
+                                    timerIman.Start();
+                                }
                                 break;
                         }
 
@@ -900,6 +911,20 @@ namespace Marcianos
             }
         }
 
+        //Timer del iman
+        private void timerIman_Tick(object sender, EventArgs e)
+        {
+            this.barIman.Value--;
+            if (this.barIman.Value == 0)
+            {
+                this.iman = false;
+                this.barIman.Value = 30;
+                labIman.Visible = false;
+                barIman.Visible = false;
+                timerIman.Stop();
+            }
+        }
+
         //Sumamos el numero de potenciadores en pantalla
         private int sumaPotenciadores()
         {
@@ -964,7 +989,7 @@ namespace Marcianos
                     || objeto.Tag == "velocidad"))
                 {
                     if (objeto.Left < pbPlayer.Left) objeto.Left += 5;
-                    else if (objeto.Left > pbPlayer.Left) objeto.Left -= 4;
+                    else if (objeto.Left > pbPlayer.Left) objeto.Left -= 5;
                 }
         }
         #endregion
@@ -1136,5 +1161,7 @@ namespace Marcianos
             this.Close();
         }
         #endregion
+
+
     }
 }
