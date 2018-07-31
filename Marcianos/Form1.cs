@@ -307,7 +307,7 @@ namespace Marcianos
             else labNoAmmo.Visible = false;
 
             //Imán
-            if (rnd.Next(0, 700) == 50) this.creaIman();
+            if (rnd.Next(0, 700) == 50 && !this.iman) this.creaIman();
             if (this.iman) this.sigueNaveIman();
         }
 
@@ -959,7 +959,9 @@ namespace Marcianos
         private void sigueNaveIman()
         {
             foreach (Control objeto in this.Controls)
-                if (objeto is PictureBox && (objeto.Tag == "ammo" || objeto.Tag == "<3"))
+                if (objeto is PictureBox && (objeto.Tag == "ammo" || objeto.Tag == "<3" 
+                    || objeto.Tag == "invencible" || objeto.Tag == "disparo"
+                    || objeto.Tag == "velocidad"))
                 {
                     if (objeto.Left < pbPlayer.Left) objeto.Left += 5;
                     else if (objeto.Left > pbPlayer.Left) objeto.Left -= 4;
