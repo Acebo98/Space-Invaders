@@ -309,7 +309,8 @@ namespace Marcianos
             this.mueveTieAvanzado();
 
             //Tie rebotador
-            if (rnd.Next(0, 201) == 100) this.creaTieRebotador();
+            if (this.cuentaObjetosTag("tieRE") == 0)
+                if (rnd.Next(0, 201) == 100) this.creaTieRebotador();
 
             //Si no tenemos municion hacemos que aparezca
             if (barAmmo.Value == 0)
@@ -532,6 +533,18 @@ namespace Marcianos
                     if (this.rnd.Next(0, 51) == 25)
                         this.creaBalaTie((PictureBox)tie);
                 }
+        }
+
+        //Determina cuantos objetos hay en pantalla con un determinado tag
+        private int cuentaObjetosTag(string tag)
+        {
+            int i = 0;
+
+            foreach (Control cn in this.Controls)
+                if (cn is PictureBox && cn.Tag == tag)
+                    i++;
+
+            return i;
         }
         #endregion
 
