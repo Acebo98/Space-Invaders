@@ -481,13 +481,18 @@ namespace Marcianos
         {
             foreach (Control cn in this.Controls)
             {
-                if (cn is PictureBox && (cn.Tag == "balaM" || cn.Tag == "balaBoss"))
+                if (cn is PictureBox && (cn.Tag == "balaM" || cn.Tag == "balaBoss" || cn.Tag == "rebotadora"))
                 {
                     if (cn.Bounds.IntersectsWith(pbPlayer.Bounds) && !this.god)
                     {
                         this.creaExplosion(pbPlayer);
                         this.Controls.Remove(cn);
-                        barVidaNave.Increment(-25);
+
+                        //Quitamos vida dependiendo de la bala
+                        if (cn.Tag == "balaM" || cn.Tag == "balaBoss")
+                            barVidaNave.Increment(-25);
+                        else
+                            barVidaNave.Increment(-50);
                     }
                 }
             }
