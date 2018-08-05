@@ -318,12 +318,20 @@ namespace Marcianos
                 this.mueveTieRebotador();              
             }
            
-            //Bala rebotadora
-            if (this.cuentaObjetosTag("rebotadora") == 1)
+            //Bala rebotadora (solo puede haber una en pantalla)
+            if (this.cuentaObjetosTag("rebotadora") >= 1)
             {
-
+                //movemos la pelota :D
             }
             else
+            {
+                if (rnd.Next(0, 101) == 50)
+                {
+                    foreach (Control cn in this.Controls)
+                        if (cn is PictureBox && cn.Tag == "tieRE")
+                            this.creaBalaRebotadora((PictureBox)cn);
+                }
+            }
 
             //Si no tenemos municion hacemos que aparezca
             if (barAmmo.Value == 0)
@@ -553,6 +561,12 @@ namespace Marcianos
             foreach (Control cn in this.Controls)
                 if (cn is PictureBox && cn.Tag == "tieRE")
                     cn.Left -= this.velozLateralRebotador;
+        }
+
+        //Movimiento de la bala rebotadora
+        private void mueveRebotadora()
+        {
+
         }
 
         //Determina cuantos objetos hay en pantalla con un determinado tag
