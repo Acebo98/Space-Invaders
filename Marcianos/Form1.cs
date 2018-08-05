@@ -66,7 +66,7 @@ namespace Marcianos
 
             //Tema
             SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\theme.wav");
-            //theme.PlayLooping();
+            theme.PlayLooping();
 
             //Barra potenciador
             barPotenciador.Maximum = 30;
@@ -304,20 +304,21 @@ namespace Marcianos
 
             //Activamos los tie avanzados
             if (this.datos[1] >= 45 && this.enemigos)
-                if (rnd.Next(0, 401) == 200)
+                if (rnd.Next(0, 501) == 250)
                     this.creaTieAvanzado();
             this.mueveTieAvanzado();
 
             //Tie rebotador
-            if (this.cuentaObjetosTag("tieRE") == 0 && 
-                this.cuentaObjetosTag("rebotadora") == 0)
+            if (this.datos[1] >= 75 && this.enemigos)
             {
-                if (rnd.Next(0, 201) == 100) this.creaTieRebotador();
+                if (this.cuentaObjetosTag("tieRE") == 0 && this.cuentaObjetosTag("rebotadora") == 0)
+                {
+                    if (this.rnd.Next(0, 501) == 250)
+                        this.creaTieRebotador();
+                }              
             }
-            else
-            {
-                this.mueveTieRebotador();              
-            }
+            this.mueveTieRebotador();              
+
            
             //Bala rebotadora (solo puede haber una en pantalla)
             if (this.cuentaObjetosTag("rebotadora") >= 1)
@@ -432,6 +433,8 @@ namespace Marcianos
                                 this.creaExplosion((PictureBox)m);
                                 this.Controls.Remove(m);
                                 this.Controls.Remove(b);
+
+                                //Dependiendo de si golpeamos tie o meteoro
                                 if (m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE")
                                 {
                                     this.datos[0]++;
