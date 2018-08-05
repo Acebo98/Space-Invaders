@@ -103,6 +103,16 @@ namespace Marcianos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bullet_rebotadora {
+            get {
+                object obj = ResourceManager.GetObject("bullet_rebotadora", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bullet_shotgun {
             get {
                 object obj = ResourceManager.GetObject("bullet_shotgun", resourceCulture);

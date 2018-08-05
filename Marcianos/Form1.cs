@@ -310,8 +310,20 @@ namespace Marcianos
 
             //Tie rebotador
             if (this.cuentaObjetosTag("tieRE") == 0)
+            {
                 if (rnd.Next(0, 201) == 100) this.creaTieRebotador();
-            this.mueveTieRebotador();
+            }
+            else
+            {
+                this.mueveTieRebotador();              
+            }
+           
+            //Bala rebotadora
+            if (this.cuentaObjetosTag("rebotadora") == 1)
+            {
+
+            }
+            else
 
             //Si no tenemos municion hacemos que aparezca
             if (barAmmo.Value == 0)
@@ -441,9 +453,6 @@ namespace Marcianos
                     cn.Left += this.derrapeTie;
                     if (rnd.Next(0, 51) == 25)
                     {
-                        //Sonido
-                        //SoundPlayer disparoTie = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\shoot_tie.wav");
-                        //disparoTie.Play();
                         this.creaBalaTie((PictureBox)cn);
                     }
                 }
@@ -838,6 +847,22 @@ namespace Marcianos
                 this.Controls.Add(pbTIER);
                 pbTIER.BringToFront();
             }
+        }
+
+        //Creamos una bala rebotador en el tie recibido como parámetro
+        private void creaBalaRebotadora(PictureBox pbTie)
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.bullet_rebotadora);
+            trans.MakeTransparent();
+            PictureBox pbRebotadora = new PictureBox();
+            pbRebotadora.Image = trans;
+            pbRebotadora.Size = new Size(20, 20);
+            pbRebotadora.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbRebotadora.Tag = "rebotadora";
+            pbRebotadora.Location = new Point(pbTie.Left, pbTie.Top);
+
+            this.Controls.Add(pbRebotadora);
+            pbRebotadora.BringToFront();
         }
         #endregion
 
