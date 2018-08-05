@@ -107,7 +107,7 @@
             this.barVidaBoss.BackColor = System.Drawing.SystemColors.Control;
             this.barVidaBoss.ForeColor = System.Drawing.Color.Red;
             this.barVidaBoss.Location = new System.Drawing.Point(25, 8);
-            this.barVidaBoss.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barVidaBoss.Margin = new System.Windows.Forms.Padding(2);
             this.barVidaBoss.Name = "barVidaBoss";
             this.barVidaBoss.Size = new System.Drawing.Size(83, 16);
             this.barVidaBoss.Step = 1;
@@ -118,7 +118,7 @@
             // 
             this.barVidaNave.ForeColor = System.Drawing.Color.Red;
             this.barVidaNave.Location = new System.Drawing.Point(25, 415);
-            this.barVidaNave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barVidaNave.Margin = new System.Windows.Forms.Padding(2);
             this.barVidaNave.Name = "barVidaNave";
             this.barVidaNave.Size = new System.Drawing.Size(83, 15);
             this.barVidaNave.Step = 25;
@@ -148,8 +148,8 @@
             // barAmmo
             // 
             this.barAmmo.ForeColor = System.Drawing.Color.Red;
-            this.barAmmo.Location = new System.Drawing.Point(323, 415);
-            this.barAmmo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barAmmo.Location = new System.Drawing.Point(596, 415);
+            this.barAmmo.Margin = new System.Windows.Forms.Padding(2);
             this.barAmmo.Name = "barAmmo";
             this.barAmmo.Size = new System.Drawing.Size(83, 15);
             this.barAmmo.Step = 25;
@@ -161,7 +161,7 @@
             this.labNoAmmo.AutoSize = true;
             this.labNoAmmo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labNoAmmo.ForeColor = System.Drawing.Color.Red;
-            this.labNoAmmo.Location = new System.Drawing.Point(333, 400);
+            this.labNoAmmo.Location = new System.Drawing.Point(603, 399);
             this.labNoAmmo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labNoAmmo.Name = "labNoAmmo";
             this.labNoAmmo.Size = new System.Drawing.Size(65, 13);
@@ -170,8 +170,8 @@
             // 
             // barPotenciador
             // 
-            this.barPotenciador.Location = new System.Drawing.Point(365, 8);
-            this.barPotenciador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barPotenciador.Location = new System.Drawing.Point(638, 8);
+            this.barPotenciador.Margin = new System.Windows.Forms.Padding(2);
             this.barPotenciador.Name = "barPotenciador";
             this.barPotenciador.Size = new System.Drawing.Size(41, 15);
             this.barPotenciador.TabIndex = 12;
@@ -180,7 +180,7 @@
             // 
             this.labPotenciador.AutoSize = true;
             this.labPotenciador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labPotenciador.Location = new System.Drawing.Point(322, 10);
+            this.labPotenciador.Location = new System.Drawing.Point(592, 9);
             this.labPotenciador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labPotenciador.Name = "labPotenciador";
             this.labPotenciador.Size = new System.Drawing.Size(42, 13);
@@ -191,8 +191,8 @@
             // 
             this.pbAmmo.BackColor = System.Drawing.Color.Transparent;
             this.pbAmmo.Image = ((System.Drawing.Image)(resources.GetObject("pbAmmo.Image")));
-            this.pbAmmo.Location = new System.Drawing.Point(309, 415);
-            this.pbAmmo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbAmmo.Location = new System.Drawing.Point(581, 415);
+            this.pbAmmo.Margin = new System.Windows.Forms.Padding(2);
             this.pbAmmo.Name = "pbAmmo";
             this.pbAmmo.Size = new System.Drawing.Size(11, 15);
             this.pbAmmo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -204,7 +204,7 @@
             this.pbHP.BackColor = System.Drawing.Color.Transparent;
             this.pbHP.Image = global::Marcianos.Properties.Resources.hp_bar;
             this.pbHP.Location = new System.Drawing.Point(4, 415);
-            this.pbHP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbHP.Margin = new System.Windows.Forms.Padding(2);
             this.pbHP.Name = "pbHP";
             this.pbHP.Size = new System.Drawing.Size(17, 15);
             this.pbHP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -215,8 +215,8 @@
             // 
             this.pbBoss.BackColor = System.Drawing.Color.Transparent;
             this.pbBoss.Image = global::Marcianos.Properties.Resources.boss;
-            this.pbBoss.Location = new System.Drawing.Point(36, 8);
-            this.pbBoss.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbBoss.Location = new System.Drawing.Point(171, 9);
+            this.pbBoss.Margin = new System.Windows.Forms.Padding(2);
             this.pbBoss.Name = "pbBoss";
             this.pbBoss.Size = new System.Drawing.Size(339, 144);
             this.pbBoss.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,8 +227,8 @@
             // 
             this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pbPlayer.Image = global::Marcianos.Properties.Resources.x_wing;
-            this.pbPlayer.Location = new System.Drawing.Point(181, 367);
-            this.pbPlayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbPlayer.Location = new System.Drawing.Point(313, 367);
+            this.pbPlayer.Margin = new System.Windows.Forms.Padding(2);
             this.pbPlayer.Name = "pbPlayer";
             this.pbPlayer.Size = new System.Drawing.Size(47, 45);
             this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -240,7 +240,7 @@
             this.pbSkull.BackColor = System.Drawing.Color.Transparent;
             this.pbSkull.Image = global::Marcianos.Properties.Resources.skull_boss;
             this.pbSkull.Location = new System.Drawing.Point(4, 8);
-            this.pbSkull.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbSkull.Margin = new System.Windows.Forms.Padding(2);
             this.pbSkull.Name = "pbSkull";
             this.pbSkull.Size = new System.Drawing.Size(17, 15);
             this.pbSkull.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -254,7 +254,7 @@
             // 
             // barIman
             // 
-            this.barIman.Location = new System.Drawing.Point(365, 25);
+            this.barIman.Location = new System.Drawing.Point(638, 25);
             this.barIman.Margin = new System.Windows.Forms.Padding(2);
             this.barIman.Name = "barIman";
             this.barIman.Size = new System.Drawing.Size(41, 15);
@@ -264,7 +264,7 @@
             // 
             this.labIman.AutoSize = true;
             this.labIman.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labIman.Location = new System.Drawing.Point(315, 27);
+            this.labIman.Location = new System.Drawing.Point(585, 25);
             this.labIman.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labIman.Name = "labIman";
             this.labIman.Size = new System.Drawing.Size(49, 13);
@@ -275,7 +275,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 437);
+            this.ClientSize = new System.Drawing.Size(690, 437);
             this.Controls.Add(this.labIman);
             this.Controls.Add(this.barIman);
             this.Controls.Add(this.pbSkull);
@@ -289,7 +289,7 @@
             this.Controls.Add(this.barVidaBoss);
             this.Controls.Add(this.pbBoss);
             this.Controls.Add(this.pbPlayer);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMarcianos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
