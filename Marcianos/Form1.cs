@@ -242,7 +242,8 @@ namespace Marcianos
             this.colisionBalaNave();
 
             //Caza tie
-            confiTie();
+            if (this.datos[1] > 10)
+                confiTie();
 
             //Balas tie
             this.mueveBalaTie();
@@ -280,7 +281,7 @@ namespace Marcianos
             if (this.sumaPotenciadores() == 0)
             {
                 //Corazon
-                if (rnd.Next(0, 1001) == 400 && barVidaNave.Value < 100)
+                if (rnd.Next(0, 1001) == 500 && barVidaNave.Value < 100)
                     this.creaCorazon();
 
                 //Power-upds
@@ -343,7 +344,8 @@ namespace Marcianos
             else labNoAmmo.Visible = false;
 
             //Imán
-            if (rnd.Next(0, 700) == 50 && !this.iman) this.creaIman();
+            if (rnd.Next(0, 1001) == 500 && !this.iman && this.cuentaObjetosTag("iman") == 0)
+                this.creaIman();
             if (this.iman) this.sigueNaveIman();
         }
 
