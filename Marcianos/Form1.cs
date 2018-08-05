@@ -854,30 +854,10 @@ namespace Marcianos
             pbTIER.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTIER.Tag = "tieRE";
             pbTIER.Location = new Point(this.Width + pbTIER.Width, 100);
-
-            //No haya colisiones entre los tie avanzados
-            if (!this.colisionEntrePBIguales(pbTIER))
-            {
-                this.Controls.Add(pbTIER);
-                pbTIER.BringToFront();
-            }
-        }
-
-        //Creamos una bala rebotador en el tie recibido como parámetro
-        private void creaBalaRebotadora(PictureBox pbTie)
-        {
-            Bitmap trans = new Bitmap(Properties.Resources.bullet_rebotadora);
-            trans.MakeTransparent();
-            PictureBox pbRebotadora = new PictureBox();
-            pbRebotadora.Image = trans;
-            pbRebotadora.Size = new Size(20, 20);
-            pbRebotadora.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbRebotadora.Tag = "rebotadora";
-            pbRebotadora.Location = new Point(pbTie.Left, pbTie.Top);
-
-            this.Controls.Add(pbRebotadora);
-            pbRebotadora.BringToFront();
-        }
+       
+            this.Controls.Add(pbTIER);
+            pbTIER.BringToFront();
+        }      
         #endregion
 
         #region Powe-Ups     
@@ -1244,6 +1224,28 @@ namespace Marcianos
             this.mueveHaciaAbajo();
             this.choqueNave();
         }
+        #endregion
+
+        #region Rebotadora
+        int vXRebotador;                            //Velocidad X rebotador
+        int vYRebotador;                            //Velocidad Y rebotador
+
+        //Creamos una bala rebotador en el tie recibido como parámetro
+        private void creaBalaRebotadora(PictureBox pbTie)
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.bullet_rebotadora);
+            trans.MakeTransparent();
+            PictureBox pbRebotadora = new PictureBox();
+            pbRebotadora.Image = trans;
+            pbRebotadora.Size = new Size(20, 20);
+            pbRebotadora.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbRebotadora.Tag = "rebotadora";
+            pbRebotadora.Location = new Point(pbTie.Left, pbTie.Top);
+
+            this.Controls.Add(pbRebotadora);
+            pbRebotadora.BringToFront();
+        }
+
         #endregion
 
         #region Game Over
