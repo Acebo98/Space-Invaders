@@ -311,6 +311,7 @@ namespace Marcianos
             //Tie rebotador
             if (this.cuentaObjetosTag("tieRE") == 0)
                 if (rnd.Next(0, 201) == 100) this.creaTieRebotador();
+            this.mueveTieRebotador();
 
             //Si no tenemos municion hacemos que aparezca
             if (barAmmo.Value == 0)
@@ -347,6 +348,7 @@ namespace Marcianos
         int velozPersonaje = 10;                    //Velocidad del personaje
         int velozStar = 1;                          //Velocidad de la estrella
         int derrapeTie = 1;                         //Derrape caza TIE
+        int velozLateralRebotador = 2;              //Velocidad lateral del tie rebotador
 
         //Movimiento de la nave
         private void mueveNave()
@@ -482,7 +484,8 @@ namespace Marcianos
             {
                 if (cn is PictureBox)
                 {
-                    if (cn.Top > this.Height + cn.Height || cn.Top < 0 - cn.Height)
+                    if (cn.Top > this.Height + cn.Height || cn.Top < 0 - cn.Height || 
+                        cn.Left < 0 - cn.Width || cn.Left > this.Width + cn.Width)
                         this.Controls.Remove(cn);
                 }
             }
@@ -533,6 +536,14 @@ namespace Marcianos
                     if (this.rnd.Next(0, 51) == 25)
                         this.creaBalaTie((PictureBox)tie);
                 }
+        }
+
+        //Movimiento del tie rebotador de forma lateral
+        private void mueveTieRebotador()
+        {
+            foreach (Control cn in this.Controls)
+                if (cn is PictureBox && cn.Tag == "tieRE")
+                    cn.Left -= this.velozLateralRebotador;
         }
 
         //Determina cuantos objetos hay en pantalla con un determinado tag
@@ -819,7 +830,7 @@ namespace Marcianos
             pbTIER.Size = new Size(50, 50);
             pbTIER.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTIER.Tag = "tieRE";
-            pbTIER.Location = new Point(100, 100);
+            pbTIER.Location = new Point(this.Width + pbTIER.Width, 100);
 
             //No haya colisiones entre los tie avanzados
             if (!this.colisionEntrePBIguales(pbTIER))
