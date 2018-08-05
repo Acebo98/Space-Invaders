@@ -151,10 +151,11 @@ namespace Marcianos
             //Opción elegida
             switch (this.opcionP)
             {
-                case 0: this.reanudaCronos();
+                case 0: this.reanudaCronos();       //Reanudamos los cronometros
                     break;
                 case 1:
                     {
+                        //Reiniciamos el formulario de nuevo
                         frmMarcianos nuevoJuego = new frmMarcianos(this.naveSkin);
                         nuevoJuego.Show();
                         this.Close();
@@ -162,6 +163,11 @@ namespace Marcianos
                     break;
                 case 2:
                     {
+                        //Paramos música del jefe
+                        SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\boss.wav");
+                        theme.Stop();
+
+                        //Menú principal
                         frmMenu menu = new frmMenu(this.naveSkin);
                         menu.Show();
                         this.Close();
@@ -219,6 +225,8 @@ namespace Marcianos
         //Temporizador del juego
         private void timerJuego_Tick(object sender, EventArgs e)
         {
+            this.Focus();       //Siempre hacemos focus al control
+
             //Vida de la nave
             if (barVidaNave.Value == 0)
                 this.gameOver();
@@ -998,8 +1006,8 @@ namespace Marcianos
         bool bossSpawn = false;                     //Aparece el boss
         bool disparaBoss = true;                    //Dispara el boss
         bool muertoBoss = false;                    //Boss muerto
-        int dx = 1;                                 //Velocidad lateral del boss
-        int dy = 1;                                 //Velocidad vertical del boss
+        int dx = 2;                                 //Velocidad lateral del boss
+        int dy = 2;                                 //Velocidad vertical del boss
         int velozBallaBoss = 20;                    //Velocidad de la bala del boss
         int bajasParaBoss = 0;                      //Bajas necesarias para que aparezca el boss
 
@@ -1161,7 +1169,5 @@ namespace Marcianos
             this.Close();
         }
         #endregion
-
-
     }
 }
