@@ -321,7 +321,7 @@ namespace Marcianos
             //Bala rebotadora (solo puede haber una en pantalla)
             if (this.cuentaObjetosTag("rebotadora") >= 1)
             {
-                //movemos la pelota :D
+                this.movimientoRebotadora();
             }
             else
             {
@@ -561,12 +561,6 @@ namespace Marcianos
             foreach (Control cn in this.Controls)
                 if (cn is PictureBox && cn.Tag == "tieRE")
                     cn.Left -= this.velozLateralRebotador;
-        }
-
-        //Movimiento de la bala rebotadora
-        private void mueveRebotadora()
-        {
-
         }
 
         //Determina cuantos objetos hay en pantalla con un determinado tag
@@ -841,22 +835,6 @@ namespace Marcianos
             pbIman.Location = new Point(rnd.Next(0, this.Width), 0 - pbIman.Height);
             this.Controls.Add(pbIman);
             pbIman.BringToFront();
-        }
-
-        //Creamos un tie rebotador
-        private void creaTieRebotador()
-        {
-            Bitmap trans = new Bitmap(Properties.Resources.tie_rebotador);
-            trans.MakeTransparent();
-            PictureBox pbTIER = new PictureBox();
-            pbTIER.Image = trans;
-            pbTIER.Size = new Size(50, 50);
-            pbTIER.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbTIER.Tag = "tieRE";
-            pbTIER.Location = new Point(this.Width + pbTIER.Width, 100);
-       
-            this.Controls.Add(pbTIER);
-            pbTIER.BringToFront();
         }      
         #endregion
 
@@ -1227,8 +1205,8 @@ namespace Marcianos
         #endregion
 
         #region Rebotadora
-        int vXRebotador;                            //Velocidad X rebotador
-        int vYRebotador;                            //Velocidad Y rebotador
+        int vXRebotador = -3;                       //Velocidad X rebotador
+        int vYRebotador = -3;                       //Velocidad Y rebotador
 
         //Creamos una bala rebotador en el tie recibido como parámetro
         private void creaBalaRebotadora(PictureBox pbTie)
@@ -1244,6 +1222,46 @@ namespace Marcianos
 
             this.Controls.Add(pbRebotadora);
             pbRebotadora.BringToFront();
+        }
+
+        //Creamos un tie rebotador
+        private void creaTieRebotador()
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.tie_rebotador);
+            trans.MakeTransparent();
+            PictureBox pbTIER = new PictureBox();
+            pbTIER.Image = trans;
+            pbTIER.Size = new Size(50, 50);
+            pbTIER.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbTIER.Tag = "tieRE";
+            pbTIER.Location = new Point(this.Width + pbTIER.Width, 100);
+
+            this.Controls.Add(pbTIER);
+            pbTIER.BringToFront();
+        }
+
+        //Movimiento de la rebotadora
+        private void movimientoRebotadora()
+        {
+            foreach (Control rebotadora in this.Controls)
+                if (rebotadora is PictureBox && rebotadora.Tag == "rebotadora")
+                {
+                    //Movimiento
+                    rebotadora.Left += this.vXRebotador;
+                    rebotadora.Top += this.vYRebotador;
+
+                    //Rebote
+                    if (rebotadora.Top < 0) this.vYRebotador *= -1;
+                    else
+                    {
+                        if (rebotadora.Left < 0) this.vXRebotador *= -1;
+                        else
+                        {
+                            if (rebotadora.Top > this.Height - rebotadora.Height) this.vYRebotador *= -1;
+                            else if (rebotadora.Left > this.Width - rebotadora.Width) this.vXRebotador *= -1;
+                        }
+                    }
+                }
         }
 
         #endregion
