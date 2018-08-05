@@ -500,7 +500,7 @@ namespace Marcianos
         {
             foreach (Control cn in this.Controls)
             {
-                if (cn is PictureBox)
+                if (cn is PictureBox && cn.Tag != "jugador")
                 {
                     if (cn.Top > this.Height + cn.Height || cn.Top < 0 - cn.Height || 
                         cn.Left < 0 - cn.Width || cn.Left > this.Width + cn.Width)
