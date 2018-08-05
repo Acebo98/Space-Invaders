@@ -402,7 +402,7 @@ namespace Marcianos
             {
                 foreach (Control b in this.Controls)
                 {
-                    if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA"))
+                    if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE"))
                     {
                         if (b is PictureBox && b.Tag == "balaB" || (b.Tag == "balaShA" 
                             || b.Tag == "balaShB" || b.Tag == "balaShC"))
@@ -413,7 +413,7 @@ namespace Marcianos
                                 this.creaExplosion((PictureBox)m);
                                 this.Controls.Remove(m);
                                 this.Controls.Remove(b);
-                                if (m.Tag == "tie" || m.Tag == "tieA")
+                                if (m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE")
                                 {
                                     this.datos[0]++;
                                     if (this.rnd.Next(0, 2) == 1) this.creaAmmo((PictureBox)m);
