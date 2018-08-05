@@ -325,6 +325,13 @@ namespace Marcianos
                 this.movimientoRebotadora();
             }
 
+            //Quitamos rebotadora
+            if (this.botes == 10)
+            {
+                this.botes = 0;
+                this.borraRebotadora();
+            }
+
             //Si no tenemos municion hacemos que aparezca
             if (barAmmo.Value == 0)
                 if (rnd.Next(0, 501) == 250)
@@ -1204,6 +1211,7 @@ namespace Marcianos
         #region Rebotadora
         int vXRebotador = -3;                       //Velocidad X rebotador
         int vYRebotador = -3;                       //Velocidad Y rebotador
+        int botes = 0;                              //Botes de la rebotadora    
 
         //Creamos una bala rebotador en el tie recibido como parámetro
         private void creaBalaRebotadora(PictureBox pbTie)
@@ -1248,19 +1256,49 @@ namespace Marcianos
                     rebotadora.Top += this.vYRebotador;
 
                     //Rebote
-                    if (rebotadora.Top < 0) this.vYRebotador *= -1;
+                    if (rebotadora.Top < 0)
+                    {
+                        this.vYRebotador *= -1;
+                        this.botes++;
+                    }
                     else
                     {
-                        if (rebotadora.Left < 0) this.vXRebotador *= -1;
+                        if (rebotadora.Left < 0)
+                        {
+                            this.vXRebotador *= -1;
+                            this.botes++;
+                        }
                         else
                         {
-                            if (rebotadora.Top > this.Height - rebotadora.Height) this.vYRebotador *= -1;
-                            else if (rebotadora.Left > this.Width - rebotadora.Width) this.vXRebotador *= -1;
+                            if (rebotadora.Top > this.Height - rebotadora.Height)
+                            {
+                                this.vYRebotador *= -1;
+                                this.botes++;
+                            }
+                            else
+                            {
+                                if (rebotadora.Left > this.Width - rebotadora.Width)
+                                {
+                                    this.vXRebotador *= -1;
+                                    this.botes++;
+                                }
+                            }
                         }
                     }
                 }
         }
 
+        //Borramos la rebotadora
+        private void borraRebotadora()
+        {
+            foreach (Control cn in this.Controls)
+                if (cn is PictureBox && cn.Tag == "rebotadora")
+                {
+                    this.creaExplosion((PictureBox)cn);
+                    this.Controls.Remove(cn);
+                    break;
+                }
+        }
         #endregion
 
         #region Game Over
