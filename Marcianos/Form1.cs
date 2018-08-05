@@ -570,7 +570,7 @@ namespace Marcianos
                 {
                     cn.Left -= this.velozLateralRebotador;
 
-                    if (this.rnd.Next(0, 101) == 50 && this.cuentaObjetosTag("rebotadora") == 0)
+                    if (cn.Left < this.Width / 2 && this.cuentaObjetosTag("rebotadora") == 0)
                         this.creaBalaRebotadora((PictureBox)cn);
                 }
         }
