@@ -233,6 +233,16 @@ namespace Marcianos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tie_rebotador {
+            get {
+                object obj = ResourceManager.GetObject("tie_rebotador", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap x_wing {
             get {
                 object obj = ResourceManager.GetObject("x_wing", resourceCulture);

@@ -308,6 +308,9 @@ namespace Marcianos
                     this.creaTieAvanzado();
             this.mueveTieAvanzado();
 
+            //Tie rebotador
+            if (rnd.Next(0, 201) == 100) this.creaTieRebotador();
+
             //Si no tenemos municion hacemos que aparezca
             if (barAmmo.Value == 0)
                 if (rnd.Next(0, 501) == 250)
@@ -791,6 +794,26 @@ namespace Marcianos
             pbIman.Location = new Point(rnd.Next(0, this.Width), 0 - pbIman.Height);
             this.Controls.Add(pbIman);
             pbIman.BringToFront();
+        }
+
+        //Creamos un tie rebotador
+        private void creaTieRebotador()
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.tie_rebotador);
+            trans.MakeTransparent();
+            PictureBox pbTIER = new PictureBox();
+            pbTIER.Image = trans;
+            pbTIER.Size = new Size(50, 50);
+            pbTIER.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbTIER.Tag = "tieRE";
+            pbTIER.Location = new Point(100, 100);
+
+            //No haya colisiones entre los tie avanzados
+            if (!this.colisionEntrePBIguales(pbTIER))
+            {
+                this.Controls.Add(pbTIER);
+                pbTIER.BringToFront();
+            }
         }
         #endregion
 
