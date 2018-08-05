@@ -234,6 +234,7 @@
             this.pbPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPlayer.TabIndex = 0;
             this.pbPlayer.TabStop = false;
+            this.pbPlayer.Tag = "jugador";
             // 
             // pbSkull
             // 

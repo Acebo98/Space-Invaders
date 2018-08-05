@@ -309,7 +309,8 @@ namespace Marcianos
             this.mueveTieAvanzado();
 
             //Tie rebotador
-            if (this.cuentaObjetosTag("tieRE") == 0)
+            if (this.cuentaObjetosTag("tieRE") == 0 && 
+                this.cuentaObjetosTag("rebotadora") == 0)
             {
                 if (rnd.Next(0, 201) == 100) this.creaTieRebotador();
             }
@@ -1234,7 +1235,7 @@ namespace Marcianos
             pbTIER.Size = new Size(50, 50);
             pbTIER.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTIER.Tag = "tieRE";
-            pbTIER.Location = new Point(this.Width + pbTIER.Width, 100);
+            pbTIER.Location = new Point(this.Width + pbTIER.Width, this.rnd.Next(50, 151));
 
             this.Controls.Add(pbTIER);
             pbTIER.BringToFront();
