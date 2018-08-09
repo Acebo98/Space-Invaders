@@ -236,6 +236,7 @@ namespace Marcianos
 
             //Meteoro
             confiMeteoro();
+            this.mueveMiniMeteoros();
 
             //Balas del personaje
             this.mueveBalaBuena();
@@ -575,6 +576,20 @@ namespace Marcianos
 
                     if (cn.Left < this.Width / 2 && this.cuentaObjetosTag("rebotadora") == 0)
                         this.creaBalaRebotadora((PictureBox)cn);
+                }
+        }
+
+        //Movimiento de los mini meteoros
+        private void mueveMiniMeteoros()
+        {
+            foreach (Control cn in this.Controls)
+                if (cn is PictureBox && (cn.Tag == "miniMeteoroA" || cn.Tag == "miniMeteoroB"))
+                {
+                    cn.Top += this.velozMeteoro;
+
+                    //Velocidad lateral
+                    if (cn.Tag == "miniMeteoroA") cn.Left -= 2;
+                    else cn.Left += 2;
                 }
         }
 
