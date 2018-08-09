@@ -234,9 +234,10 @@ namespace Marcianos
             //Movemos al personaje
             this.mueveNave();
 
-            //Meteoro
+            //Meteoro(s)
             confiMeteoro();
             this.mueveMiniMeteoros();
+            this.choqueMiniMeteoros();
 
             //Balas del personaje
             this.mueveBalaBuena();
@@ -447,7 +448,7 @@ namespace Marcianos
                                 {
                                     this.datos[1]++;
                                     if (this.rnd.Next(0, 11) == 5) this.creaAmmo((PictureBox)m);            //Creamos municion
-                                    if (this.rnd.Next(0, 11) == 5) this.creaMiniMeteoros((PictureBox)m);    //Minimeteoros
+                                    if (this.rnd.Next(0, 6) == 3) this.creaMiniMeteoros((PictureBox)m);     //Minimeteoros
                                 }
                             }
                         }
@@ -591,6 +592,19 @@ namespace Marcianos
                     if (cn.Tag == "miniMeteoroA") cn.Left -= 2;
                     else cn.Left += 2;
                 }
+        }
+
+        //Choque entre la nave y los minimeteoros
+        private void choqueMiniMeteoros()
+        {
+            foreach (Control cn in this.Controls)
+                if (cn is PictureBox && (cn.Tag == "miniMeteoroA" || cn.Tag == "miniMeteoroB"))
+                    if (cn.Bounds.IntersectsWith(pbPlayer.Bounds))
+                    {
+                        barVidaNave.Increment(-25);
+                        this.Controls.Remove(cn);
+                        this.creaExplosion(pbPlayer);
+                    }
         }
 
         //Determina cuantos objetos hay en pantalla con un determinado tag
