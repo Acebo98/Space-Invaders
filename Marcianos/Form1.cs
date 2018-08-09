@@ -849,7 +849,31 @@ namespace Marcianos
             pbIman.Location = new Point(rnd.Next(0, this.Width), 0 - pbIman.Height);
             this.Controls.Add(pbIman);
             pbIman.BringToFront();
-        }      
+        } 
+        
+        //Creamos los 2 mini meteoros
+        private void creaMiniMeteoros(PictureBox pbMeteoroPadre)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                Bitmap trans = new Bitmap(Properties.Resources.meteorito);
+                trans.MakeTransparent();
+                PictureBox pbMiniMeteoro = new PictureBox();
+                pbMiniMeteoro.Image = trans;
+                pbMiniMeteoro.Size = new Size(20, 20);
+                pbMiniMeteoro.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                //Tag de cada uno
+                if (i == 0) pbMiniMeteoro.Tag = "miniMeteoroA";
+                else pbMiniMeteoro.Tag = "miniMeteoroB";
+
+                //Posición
+                pbMiniMeteoro.Left = pbMeteoroPadre.Left;
+                pbMiniMeteoro.Top = pbMeteoroPadre.Top;
+                this.Controls.Add(pbMiniMeteoro);
+                pbMiniMeteoro.BringToFront();
+            }
+        }
         #endregion
 
         #region Powe-Ups     
