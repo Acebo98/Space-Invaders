@@ -426,7 +426,8 @@ namespace Marcianos
             {
                 foreach (Control b in this.Controls)
                 {
-                    if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE"))
+                    if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE" || 
+                        m.Tag == "miniMeteoroA" || m.Tag == "miniMeteoroB"))
                     {
                         if (b is PictureBox && b.Tag == "balaB" || (b.Tag == "balaShA" 
                             || b.Tag == "balaShB" || b.Tag == "balaShC"))
