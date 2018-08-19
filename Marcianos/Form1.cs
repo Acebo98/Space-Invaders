@@ -663,6 +663,7 @@ namespace Marcianos
                                 this.creaExplosionMisil((PictureBox)enemigo);
                                 this.explosionMata();
                                 this.Controls.Remove(misil);
+                                this.Controls.Remove(enemigo);
                             }
         }
 
@@ -1004,7 +1005,7 @@ namespace Marcianos
             pbExplosion.Size = new Size(300, 300);
             pbExplosion.SizeMode = PictureBoxSizeMode.StretchImage;
             pbExplosion.Tag = "explosionMisil";
-            pbExplosion.Location = new Point(colisio.Location.X - colisio.Width, colisio.Location.Y - colisio.Height);
+            pbExplosion.Location = new Point(colisio.Location.X - 150, colisio.Location.Y - 150);
             this.Controls.Add(pbExplosion);
             pbExplosion.BringToFront();
         }
