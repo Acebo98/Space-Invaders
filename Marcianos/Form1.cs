@@ -245,6 +245,10 @@ namespace Marcianos
             this.mueveBalaBuena();
             this.colisionBalaNave();
 
+            //Misiles del personaje
+            if (this.cuentaObjetosTag("misil") > 0)
+                this.mueveMisiles();
+
             //Caza tie
             if (this.datos[1] > 10)
                 confiTie();
@@ -373,6 +377,7 @@ namespace Marcianos
         int velozBala = 15;                         //Velocidad de la bala del personaje
         int velozPersonaje = 10;                    //Velocidad del personaje
         int velozStar = 1;                          //Velocidad de la estrella
+        int velozMisil = 30;                        //Velocidad del misil
         int derrapeTie = 1;                         //Derrape caza TIE
         int velozLateralRebotador = 2;              //Velocidad lateral del tie rebotador
 
@@ -608,6 +613,14 @@ namespace Marcianos
                         this.Controls.Remove(cn);
                         this.creaExplosion(pbPlayer);
                     }
+        }
+
+        //Movimiento de los misiles
+        private void mueveMisiles()
+        {
+            foreach (Control misil in this.Controls)
+                if (misil is PictureBox && misil.Tag == "misil")
+                    misil.Top -= this.velozMisil;
         }
 
         //Determina cuantos objetos hay en pantalla con un determinado tag
