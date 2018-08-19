@@ -178,6 +178,8 @@
     <None Include="Resources\iman.png" />
     <None Include="Resources\tie_rebotador.png" />
     <None Include="Resources\bullet_rebotadora.png" />
+    <None Include="Resources\misiLanzado.png" />
+    <None Include="Resources\misilLoot.png" />
     <Content Include="space-invaders.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

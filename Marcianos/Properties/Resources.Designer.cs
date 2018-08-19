@@ -203,6 +203,26 @@ namespace Marcianos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap misiLanzado {
+            get {
+                object obj = ResourceManager.GetObject("misiLanzado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap misilLoot {
+            get {
+                object obj = ResourceManager.GetObject("misilLoot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap New_Hubble_image_of_NGC_2174 {
             get {
                 object obj = ResourceManager.GetObject("New_Hubble_image_of_NGC_2174", resourceCulture);

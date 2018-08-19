@@ -104,6 +104,8 @@ namespace Marcianos
                         }
                         break;
                     }
+                case (char)Keys.Q: this.creaMisil();
+                    break;
                 case (char)Keys.Escape: menuPausa();
                     break;
             }
@@ -904,6 +906,21 @@ namespace Marcianos
                 this.Controls.Add(pbMiniMeteoro);
                 pbMiniMeteoro.BringToFront();
             }
+        }
+
+        //Creamos el sprite del misil
+        private void creaMisil()
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.misiLanzado);
+            trans.MakeTransparent();
+            PictureBox pbMisil = new PictureBox();
+            pbMisil.Image = trans;
+            pbMisil.Size = new Size(20, 50);
+            pbMisil.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbMisil.Tag = "misil";
+            pbMisil.Location = new Point(pbPlayer.Left + pbPlayer.Width / 2, pbPlayer.Top);
+            this.Controls.Add(pbMisil);
+            pbMisil.BringToFront();
         }
         #endregion
 
