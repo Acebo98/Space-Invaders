@@ -247,7 +247,11 @@ namespace Marcianos
 
             //Misiles del personaje
             if (this.cuentaObjetosTag("misil") > 0)
+            {
                 this.mueveMisiles();
+                this.choqueMisil();
+            }        
+
 
             //Caza tie
             if (this.datos[1] > 10)
@@ -623,6 +627,20 @@ namespace Marcianos
                     misil.Top -= this.velozMisil;
         }
 
+        //Choque del misil con los enemigos
+        private void choqueMisil()
+        {
+            foreach (Control misil in this.Controls)
+                foreach (Control enemigo in this.Controls)
+                    if (misil is PictureBox && misil.Tag == "misil")
+                        if (enemigo is PictureBox && enemigo.Tag == "meteoro")
+                            if (misil.Bounds.IntersectsWith(enemigo.Bounds))
+                            {
+                                this.creaExplosionMisil((PictureBox)enemigo);
+                                this.Controls.Remove(misil);
+                            }
+        }
+
         //Determina cuantos objetos hay en pantalla con un determinado tag
         private int cuentaObjetosTag(string tag)
         {
@@ -934,6 +952,22 @@ namespace Marcianos
             pbMisil.Location = new Point(pbPlayer.Left + pbPlayer.Width / 2, pbPlayer.Top);
             this.Controls.Add(pbMisil);
             pbMisil.BringToFront();
+        }
+
+        //Creamos el sprite de la explosion del misil
+        private void creaExplosionMisil(PictureBox colisio)
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.boss_explosion);
+            trans.MakeTransparent();
+            PictureBox pbExplosion = new PictureBox();
+            pbExplosion.Image = trans;
+            pbExplosion.Size = new Size(300, 300);
+            pbExplosion.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbExplosion.Tag = "explosionMisil";
+            pbExplosion.Location = new Point(colisio.Location.X - colisio.Width, 
+                colisio.Location.Y - colisio.Height);
+            this.Controls.Add(pbExplosion);
+            pbExplosion.BringToFront();
         }
         #endregion
 
