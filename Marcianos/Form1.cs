@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Collections;
 
 namespace Marcianos
 {
@@ -18,11 +19,12 @@ namespace Marcianos
     //-----------------------
     public partial class frmMarcianos : Form
     {
-        Random rnd = new Random();                  //Objeto para numeros aleatorios
-        bool enemigos = true;                       //Determina si aparecen enemigos / meteoros
-        int naveSkin;                               //Indica la skin de la nave
-        int[] datos = new int[] { 0, 0, 0 };        //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
-        int tiempoPower = 30;                       //Tiempo del power up     
+        List<string> listaEnemigos = new List<string>();    //Lista de los enemigos del juego
+        Random rnd = new Random();                          //Objeto para numeros aleatorios
+        bool enemigos = true;                               //Determina si aparecen enemigos / meteoros
+        int naveSkin;                                       //Indica la skin de la nave
+        int[] datos = new int[] { 0, 0, 0 };                //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
+        int tiempoPower = 30;                               //Tiempo del power up     
 
         public frmMarcianos(int naveID)
         {
@@ -75,6 +77,20 @@ namespace Marcianos
             barIman.Maximum = 30;
             barIman.Value = barIman.Maximum;
             barIman.Visible = false;
+
+            //Cargamos los enemigos en la lista
+            this.cargaEnemigos();
+        }
+
+        //Cargamos los enemigos del juego
+        private void cargaEnemigos()
+        {
+            this.listaEnemigos.Add("meteoro");
+            this.listaEnemigos.Add("miniMeteoroA");
+            this.listaEnemigos.Add("miniMeteoroB");
+            this.listaEnemigos.Add("tie");
+            this.listaEnemigos.Add("tieA");
+            this.listaEnemigos.Add("tieRE");
         }
 
         #region Controles
@@ -557,7 +573,7 @@ namespace Marcianos
         {
             foreach (Control pum in this.Controls)
             {
-                if (pum is PictureBox && pum.Tag == "pum")
+                if (pum is PictureBox && (pum.Tag == "pum" || pum.Tag == "explosionMisil"))
                     this.Controls.Remove(pum);
             }
         }
@@ -633,11 +649,30 @@ namespace Marcianos
             foreach (Control misil in this.Controls)
                 foreach (Control enemigo in this.Controls)
                     if (misil is PictureBox && misil.Tag == "misil")
-                        if (enemigo is PictureBox && enemigo.Tag == "meteoro")
+                        if (enemigo is PictureBox && (enemigo.Tag == "meteoro" || enemigo.Tag == "tie" 
+                            || enemigo.Tag == "tieA" || enemigo.Tag == "tieRE" || enemigo.Tag == "miniMeteoroA"
+                            || enemigo.Tag == "miniMeteoroB"))
                             if (misil.Bounds.IntersectsWith(enemigo.Bounds))
                             {
                                 this.creaExplosionMisil((PictureBox)enemigo);
+                                this.explosionMata();
+                                this.Controls.Remove(enemigo);
                                 this.Controls.Remove(misil);
+                            }
+        }
+
+        //Borramos los enemigos que estén en contacto con las explosion
+        private void explosionMata()
+        {
+            foreach (Control pummm in this.Controls)
+                foreach (Control enemigo in this.Controls)
+                    if (pummm is PictureBox && pummm.Tag == "explosionMisil")
+                        if (enemigo is PictureBox && (enemigo.Tag == "meteoro" || enemigo.Tag == "tie"
+                            || enemigo.Tag == "tieA" || enemigo.Tag == "tieRE" || enemigo.Tag == "miniMeteoroA"
+                            || enemigo.Tag == "miniMeteoroB"))
+                            if (pummm.Bounds.IntersectsWith(enemigo.Bounds))
+                            {
+                                this.Controls.Remove(enemigo);
                             }
         }
 
@@ -964,8 +999,7 @@ namespace Marcianos
             pbExplosion.Size = new Size(300, 300);
             pbExplosion.SizeMode = PictureBoxSizeMode.StretchImage;
             pbExplosion.Tag = "explosionMisil";
-            pbExplosion.Location = new Point(colisio.Location.X - colisio.Width, 
-                colisio.Location.Y - colisio.Height);
+            pbExplosion.Location = new Point(colisio.Location.X - colisio.Width, colisio.Location.Y - colisio.Height);
             this.Controls.Add(pbExplosion);
             pbExplosion.BringToFront();
         }
