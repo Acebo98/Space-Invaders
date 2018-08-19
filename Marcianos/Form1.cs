@@ -453,8 +453,8 @@ namespace Marcianos
             {
                 foreach (Control b in this.Controls)
                 {
-                    if (m is PictureBox && (m.Tag == "meteoro" || m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE" || 
-                        m.Tag == "miniMeteoroA" || m.Tag == "miniMeteoroB"))
+                    if (m is PictureBox && m.Tag != null
+                            && listaEnemigos.Contains(m.Tag.ToString()))
                     {
                         if (b is PictureBox && b.Tag == "balaB" || (b.Tag == "balaShA" 
                             || b.Tag == "balaShB" || b.Tag == "balaShC"))
@@ -649,9 +649,8 @@ namespace Marcianos
             foreach (Control misil in this.Controls)
                 foreach (Control enemigo in this.Controls)
                     if (misil is PictureBox && misil.Tag == "misil")
-                        if (enemigo is PictureBox && (enemigo.Tag == "meteoro" || enemigo.Tag == "tie" 
-                            || enemigo.Tag == "tieA" || enemigo.Tag == "tieRE" || enemigo.Tag == "miniMeteoroA"
-                            || enemigo.Tag == "miniMeteoroB"))
+                        if (enemigo is PictureBox && enemigo.Tag != null
+                            && listaEnemigos.Contains(enemigo.Tag.ToString()))
                             if (misil.Bounds.IntersectsWith(enemigo.Bounds))
                             {
                                 this.creaExplosionMisil((PictureBox)enemigo);
@@ -667,9 +666,8 @@ namespace Marcianos
             foreach (Control pummm in this.Controls)
                 foreach (Control enemigo in this.Controls)
                     if (pummm is PictureBox && pummm.Tag == "explosionMisil")
-                        if (enemigo is PictureBox && (enemigo.Tag == "meteoro" || enemigo.Tag == "tie"
-                            || enemigo.Tag == "tieA" || enemigo.Tag == "tieRE" || enemigo.Tag == "miniMeteoroA"
-                            || enemigo.Tag == "miniMeteoroB"))
+                        if (enemigo is PictureBox && enemigo.Tag != null
+                            && listaEnemigos.Contains(enemigo.Tag.ToString()))
                             if (pummm.Bounds.IntersectsWith(enemigo.Bounds))
                             {
                                 this.Controls.Remove(enemigo);
