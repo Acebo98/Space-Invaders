@@ -268,7 +268,6 @@ namespace Marcianos
                 this.choqueMisil();
             }        
 
-
             //Caza tie
             if (this.datos[1] > 10)
                 confiTie();
@@ -466,15 +465,16 @@ namespace Marcianos
                                 this.Controls.Remove(m);
                                 this.Controls.Remove(b);
 
+                                //Actualizamos puntuación
+                                this.actualizaPuntuacion((PictureBox)m);
+
                                 //Dependiendo de si golpeamos tie o meteoro
                                 if (m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE")
                                 {
-                                    this.datos[0]++;
                                     if (this.rnd.Next(0, 2) == 1) this.creaAmmo((PictureBox)m);
                                 }
                                 else
                                 {
-                                    this.datos[1]++;
                                     if (this.rnd.Next(0, 11) == 5) this.creaAmmo((PictureBox)m);            //Creamos municion
                                     if (this.rnd.Next(0, 6) == 3) this.creaMiniMeteoros((PictureBox)m);     //Minimeteoros
                                 }
@@ -483,6 +483,13 @@ namespace Marcianos
                     }
                 }
             }
+        }
+
+        //Actualizamos puntuacion
+        private void actualizaPuntuacion(PictureBox enemigo)
+        {
+            if (enemigo.Tag == "tie" || enemigo.Tag == "tieA" || enemigo.Tag == "tieRE") this.datos[0]++;
+            else this.datos[1]++;
         }
 
         //Movimiento del caza tie
@@ -655,7 +662,6 @@ namespace Marcianos
                             {
                                 this.creaExplosionMisil((PictureBox)enemigo);
                                 this.explosionMata();
-                                this.Controls.Remove(enemigo);
                                 this.Controls.Remove(misil);
                             }
         }
@@ -670,6 +676,7 @@ namespace Marcianos
                             && listaEnemigos.Contains(enemigo.Tag.ToString()))
                             if (pummm.Bounds.IntersectsWith(enemigo.Bounds))
                             {
+                                this.actualizaPuntuacion((PictureBox)enemigo);
                                 this.Controls.Remove(enemigo);
                             }
         }
