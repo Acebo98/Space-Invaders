@@ -415,7 +415,7 @@ namespace Marcianos
             foreach (Control cn in this.Controls)
             {
                 if (cn is PictureBox && (cn.Tag == "meteoro" || cn.Tag == "<3" 
-                    || cn.Tag == "ammo" || cn.Tag == "iman"))
+                    || cn.Tag == "ammo" || cn.Tag == "iman" || cn.Tag == "misilLoot"))
                     cn.Top += this.velozMeteoro;
             }
         }
