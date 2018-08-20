@@ -468,6 +468,9 @@ namespace Marcianos
                                 //Actualizamos puntuación
                                 this.actualizaPuntuacion((PictureBox)m);
 
+                                //Loot de los misiles
+                                if (this.rnd.Next(0, 11) == 5) this.creaLootMisiles((PictureBox)m);
+
                                 //Dependiendo de si golpeamos tie o meteoro
                                 if (m.Tag == "tie" || m.Tag == "tieA" || m.Tag == "tieRE")
                                 {
@@ -1008,6 +1011,21 @@ namespace Marcianos
             pbExplosion.Location = new Point(colisio.Location.X - 150, colisio.Location.Y - 150);
             this.Controls.Add(pbExplosion);
             pbExplosion.BringToFront();
+        }
+
+        //Creamos el loot de los misiles
+        private void creaLootMisiles(PictureBox enemigoMatado)
+        {
+            Bitmap trans = new Bitmap(Properties.Resources.misilLoot);
+            trans.MakeTransparent();
+            PictureBox pbMisilLoot = new PictureBox();
+            pbMisilLoot.Image = trans;
+            pbMisilLoot.Size = new Size(20, 50);
+            pbMisilLoot.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbMisilLoot.Tag = "misilLoot";
+            pbMisilLoot.Location = new Point(enemigoMatado.Left, enemigoMatado.Top);
+            this.Controls.Add(pbMisilLoot);
+            pbMisilLoot.BringToFront();
         }
         #endregion
 
