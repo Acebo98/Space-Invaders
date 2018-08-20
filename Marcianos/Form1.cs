@@ -25,6 +25,7 @@ namespace Marcianos
         int naveSkin;                                       //Indica la skin de la nave
         int[] datos = new int[] { 0, 0, 0 };                //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
         int tiempoPower = 30;                               //Tiempo del power up     
+        int numMisiles = 0;                                 //Número de misiles
 
         public frmMarcianos(int naveID)
         {
@@ -120,7 +121,14 @@ namespace Marcianos
                         }
                         break;
                     }
-                case (char)Keys.Q: this.creaMisil();
+                case (char)Keys.Q:
+                    {
+                        if (this.numMisiles > 0)
+                        {
+                            this.creaMisil();
+                            this.actualizaMisiles(-1);
+                        }
+                    }
                     break;
                 case (char)Keys.Escape: menuPausa();
                     break;
@@ -266,7 +274,8 @@ namespace Marcianos
             {
                 this.mueveMisiles();
                 this.choqueMisil();
-            }        
+            }
+            if (this.cuentaObjetosTag("misilLoot") > 0) this.recogeMisiles();
 
             //Caza tie
             if (this.datos[1] > 10)
@@ -390,6 +399,11 @@ namespace Marcianos
             labPotenciador.BringToFront();
             labNoAmmo.BringToFront();
             labIman.BringToFront();
+
+            //Hud misiles
+            labNumMisiles.Visible = true;
+            labX.Visible = true;
+            pbMisilesHUD.Visible = true;
         }
 
         #region Movimiento
@@ -683,6 +697,18 @@ namespace Marcianos
                                 this.actualizaPuntuacion((PictureBox)enemigo);
                                 this.Controls.Remove(enemigo);
                             }
+        }
+
+        //Recogemos misiles
+        private void recogeMisiles()
+        {
+            foreach (Control loot in this.Controls)
+                if (loot is PictureBox && loot.Tag == "misilLoot")
+                    if (loot.Bounds.IntersectsWith(pbPlayer.Bounds))
+                    {
+                        this.Controls.Remove(loot);
+                        this.actualizaMisiles(1);
+                    }
         }
 
         //Determina cuantos objetos hay en pantalla con un determinado tag
@@ -1497,5 +1523,12 @@ namespace Marcianos
             this.Close();
         }
         #endregion
+
+        //Actualizamos número de misiles
+        private void actualizaMisiles(int valor)
+        {
+            this.numMisiles += valor;
+            labNumMisiles.Text = this.numMisiles.ToString();
+        }
     }
 }

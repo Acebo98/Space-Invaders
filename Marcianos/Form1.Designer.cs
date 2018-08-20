@@ -55,11 +55,15 @@
             this.timerIman = new System.Windows.Forms.Timer(this.components);
             this.barIman = new System.Windows.Forms.ProgressBar();
             this.labIman = new System.Windows.Forms.Label();
+            this.labNumMisiles = new System.Windows.Forms.Label();
+            this.labX = new System.Windows.Forms.Label();
+            this.pbMisilesHUD = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAmmo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSkull)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMisilesHUD)).BeginInit();
             this.SuspendLayout();
             // 
             // timerJuego
@@ -272,11 +276,44 @@
             this.labIman.TabIndex = 16;
             this.labIman.Text = "Magnet";
             // 
+            // labNumMisiles
+            // 
+            this.labNumMisiles.AutoSize = true;
+            this.labNumMisiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labNumMisiles.Location = new System.Drawing.Point(30, 392);
+            this.labNumMisiles.Name = "labNumMisiles";
+            this.labNumMisiles.Size = new System.Drawing.Size(18, 20);
+            this.labNumMisiles.TabIndex = 17;
+            this.labNumMisiles.Text = "0";
+            // 
+            // labX
+            // 
+            this.labX.AutoSize = true;
+            this.labX.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labX.Location = new System.Drawing.Point(54, 392);
+            this.labX.Name = "labX";
+            this.labX.Size = new System.Drawing.Size(16, 20);
+            this.labX.TabIndex = 18;
+            this.labX.Text = "x";
+            // 
+            // pbMisilesHUD
+            // 
+            this.pbMisilesHUD.Image = global::Marcianos.Properties.Resources.misilLoot;
+            this.pbMisilesHUD.Location = new System.Drawing.Point(76, 378);
+            this.pbMisilesHUD.Name = "pbMisilesHUD";
+            this.pbMisilesHUD.Size = new System.Drawing.Size(17, 32);
+            this.pbMisilesHUD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMisilesHUD.TabIndex = 19;
+            this.pbMisilesHUD.TabStop = false;
+            // 
             // frmMarcianos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 437);
+            this.Controls.Add(this.pbMisilesHUD);
+            this.Controls.Add(this.labX);
+            this.Controls.Add(this.labNumMisiles);
             this.Controls.Add(this.labIman);
             this.Controls.Add(this.barIman);
             this.Controls.Add(this.pbSkull);
@@ -302,6 +339,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBoss)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSkull)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMisilesHUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,6 +372,9 @@
         private System.Windows.Forms.Timer timerIman;
         private System.Windows.Forms.ProgressBar barIman;
         private System.Windows.Forms.Label labIman;
+        private System.Windows.Forms.Label labNumMisiles;
+        private System.Windows.Forms.Label labX;
+        private System.Windows.Forms.PictureBox pbMisilesHUD;
     }
 }
 
