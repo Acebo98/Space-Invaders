@@ -28,12 +28,6 @@ namespace Marcianos
         int numMisiles = 0;                                 //Número de misiles
         string rutaSkin = Environment.CurrentDirectory + "/data/skin.txt";              //Ruta de la skin
 
-        public frmMarcianos(int naveID)
-        {
-            InitializeComponent();
-            this.naveSkin = naveID;
-        }
-
         public frmMarcianos()
         {
             InitializeComponent();
@@ -199,7 +193,7 @@ namespace Marcianos
                 case 1:
                     {
                         //Reiniciamos el formulario de nuevo
-                        frmMarcianos nuevoJuego = new frmMarcianos(this.naveSkin);
+                        frmMarcianos nuevoJuego = new frmMarcianos();
                         nuevoJuego.Show();
                         this.Close();
                     }

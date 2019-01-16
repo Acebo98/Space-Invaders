@@ -27,13 +27,6 @@ namespace Marcianos
 
         public frmMenu() => InitializeComponent();
 
-        //Constructor que recibe la id de la nave (aka skin) [en desuso]
-        public frmMenu(int NaveI)
-        {
-            InitializeComponent();
-            this.naveI = NaveI;
-        }
-
         //Cargamos el formulario
         private void frmMenu_Load(object sender, EventArgs e)
         {
