@@ -103,7 +103,7 @@ namespace Marcianos
 
             try
             {
-                using (fs = new FileStream(ruta, FileMode.Create, FileAccess.Write))
+                using (fs = new FileStream(ruta, FileMode.Open, FileAccess.Read))
                 using (sr = new StreamReader(fs))
                 {
                     lectura = Convert.ToInt32(sr.ReadLine());

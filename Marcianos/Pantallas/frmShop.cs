@@ -22,6 +22,7 @@ namespace Marcianos
         int highScore;                                                                  //Puntuación máxima
         int naveI;                                                                      //Nave seleccionada
         string ruta = Environment.CurrentDirectory + "/data/score.txt";                 //Ruta de la maxima puntuacion
+        string rutaSkin = Environment.CurrentDirectory + "/data/skin.txt";              //Ruta de la skin
 
         public frmShop() => InitializeComponent();
 
@@ -48,11 +49,56 @@ namespace Marcianos
 
                 //Labels
                 this.confiLabs();
+
+                //Obtenemos la skin
+                bool exitoSkin = true;
+                int skin = new DAODatos().ObtenerSkin(rutaSkin, ref exitoSkin);
+                if (exitoSkin == true)
+                {
+                    switch (skin)
+                    {
+                        case 0:
+                            {
+                                pbN1.BackColor = System.Drawing.Color.Yellow;
+                                this.naveID(pbN1);
+                                this.desNaves(pbN1);
+                            }
+                            break;
+                        case 1:
+                            {
+                                pbN2.BackColor = System.Drawing.Color.Yellow;
+                                this.naveID(pbN2);
+                                this.desNaves(pbN2);
+                            }
+                            break;
+                        case 2:
+                            {
+                                pbN3.BackColor = System.Drawing.Color.Yellow;
+                                this.naveID(pbN3);
+                                this.desNaves(pbN3);
+                            }
+                            break;
+                        case 3:
+                            {
+                                pbN4.BackColor = System.Drawing.Color.Yellow;
+                                this.naveID(pbN4);
+                                this.desNaves(pbN4);
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("There has been an error loading the skin", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
             }
             else
             {
                 MessageBox.Show("There has been an error loading the score", "Error", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
@@ -67,36 +113,6 @@ namespace Marcianos
                     ((Label)cn).BackColor = System.Drawing.Color.Transparent;
                 }
             }
-        }
-
-        //Leemos la puntuacio maxima y la retornamos
-        private int leeMaxima()
-        {
-            FileStream fs = null;
-            StreamReader sr = null;
-            string lectura;
-            int retorno = 0;
-
-            try
-            {
-                fs = new FileStream(this.ruta, FileMode.OpenOrCreate, FileAccess.Read);
-                sr = new StreamReader(fs);
-                if ((lectura = sr.ReadLine()) != null)
-                    retorno = Convert.ToInt32(lectura);
-                else
-                    retorno = 0;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Save file modified", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (sr != null) sr.Close();
-                if (fs != null) fs.Close();
-            }
-
-            return retorno;
         }
 
         //Cargamos las fotos de las naves
