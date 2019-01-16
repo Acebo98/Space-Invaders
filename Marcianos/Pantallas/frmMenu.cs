@@ -165,6 +165,8 @@ namespace Marcianos
             labInfoShoot.Visible = this.controls;
             labMove.Visible = this.controls;
             labSpace.Visible = this.controls;
+            labMisiles.Visible = this.controls;
+            labQ.Visible = this.controls;
         }
 
         //Creamos estrellas al principio

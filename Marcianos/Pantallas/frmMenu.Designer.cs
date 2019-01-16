@@ -40,6 +40,8 @@
             this.labInfoMove = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
             this.labVersion = new System.Windows.Forms.Label();
+            this.labMisiles = new System.Windows.Forms.Label();
+            this.labQ = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labTitulo
@@ -47,18 +49,20 @@
             this.labTitulo.AutoSize = true;
             this.labTitulo.Font = new System.Drawing.Font("Bernard MT Condensed", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTitulo.ForeColor = System.Drawing.Color.White;
-            this.labTitulo.Location = new System.Drawing.Point(16, 65);
+            this.labTitulo.Location = new System.Drawing.Point(11, 42);
+            this.labTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labTitulo.Name = "labTitulo";
-            this.labTitulo.Size = new System.Drawing.Size(597, 114);
+            this.labTitulo.Size = new System.Drawing.Size(401, 76);
             this.labTitulo.TabIndex = 0;
             this.labTitulo.Text = "Space Invaders";
             // 
             // btnJugar
             // 
             this.btnJugar.Font = new System.Drawing.Font("Bernard MT Condensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJugar.Location = new System.Drawing.Point(193, 278);
+            this.btnJugar.Location = new System.Drawing.Point(129, 181);
+            this.btnJugar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnJugar.Name = "btnJugar";
-            this.btnJugar.Size = new System.Drawing.Size(218, 65);
+            this.btnJugar.Size = new System.Drawing.Size(145, 42);
             this.btnJugar.TabIndex = 2;
             this.btnJugar.Text = "Play";
             this.btnJugar.UseVisualStyleBackColor = true;
@@ -69,9 +73,10 @@
             // btnControles
             // 
             this.btnControles.Font = new System.Drawing.Font("Bernard MT Condensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnControles.Location = new System.Drawing.Point(193, 392);
+            this.btnControles.Location = new System.Drawing.Point(129, 255);
+            this.btnControles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnControles.Name = "btnControles";
-            this.btnControles.Size = new System.Drawing.Size(218, 65);
+            this.btnControles.Size = new System.Drawing.Size(145, 42);
             this.btnControles.TabIndex = 3;
             this.btnControles.Text = "Controls";
             this.btnControles.UseVisualStyleBackColor = true;
@@ -82,9 +87,10 @@
             // btnTienda
             // 
             this.btnTienda.Font = new System.Drawing.Font("Bernard MT Condensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTienda.Location = new System.Drawing.Point(193, 506);
+            this.btnTienda.Location = new System.Drawing.Point(129, 329);
+            this.btnTienda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTienda.Name = "btnTienda";
-            this.btnTienda.Size = new System.Drawing.Size(218, 65);
+            this.btnTienda.Size = new System.Drawing.Size(145, 42);
             this.btnTienda.TabIndex = 4;
             this.btnTienda.Text = "Shop";
             this.btnTienda.UseVisualStyleBackColor = true;
@@ -104,9 +110,10 @@
             this.labMove.BackColor = System.Drawing.Color.Transparent;
             this.labMove.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labMove.ForeColor = System.Drawing.Color.White;
-            this.labMove.Location = new System.Drawing.Point(457, 403);
+            this.labMove.Location = new System.Drawing.Point(305, 262);
+            this.labMove.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labMove.Name = "labMove";
-            this.labMove.Size = new System.Drawing.Size(105, 28);
+            this.labMove.Size = new System.Drawing.Size(72, 19);
             this.labMove.TabIndex = 5;
             this.labMove.Text = "A D (Keys)";
             // 
@@ -116,9 +123,10 @@
             this.labSpace.BackColor = System.Drawing.Color.Transparent;
             this.labSpace.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSpace.ForeColor = System.Drawing.Color.White;
-            this.labSpace.Location = new System.Drawing.Point(41, 403);
+            this.labSpace.Location = new System.Drawing.Point(32, 230);
+            this.labSpace.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labSpace.Name = "labSpace";
-            this.labSpace.Size = new System.Drawing.Size(104, 28);
+            this.labSpace.Size = new System.Drawing.Size(70, 19);
             this.labSpace.TabIndex = 6;
             this.labSpace.Text = "Space bar";
             // 
@@ -128,9 +136,10 @@
             this.labInfoShoot.BackColor = System.Drawing.Color.Transparent;
             this.labInfoShoot.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfoShoot.ForeColor = System.Drawing.Color.White;
-            this.labInfoShoot.Location = new System.Drawing.Point(59, 432);
+            this.labInfoShoot.Location = new System.Drawing.Point(44, 249);
+            this.labInfoShoot.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labInfoShoot.Name = "labInfoShoot";
-            this.labInfoShoot.Size = new System.Drawing.Size(64, 28);
+            this.labInfoShoot.Size = new System.Drawing.Size(43, 19);
             this.labInfoShoot.TabIndex = 7;
             this.labInfoShoot.Text = "Shoot";
             // 
@@ -140,18 +149,20 @@
             this.labInfoMove.BackColor = System.Drawing.Color.Transparent;
             this.labInfoMove.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfoMove.ForeColor = System.Drawing.Color.White;
-            this.labInfoMove.Location = new System.Drawing.Point(480, 432);
+            this.labInfoMove.Location = new System.Drawing.Point(320, 281);
+            this.labInfoMove.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labInfoMove.Name = "labInfoMove";
-            this.labInfoMove.Size = new System.Drawing.Size(59, 28);
+            this.labInfoMove.Size = new System.Drawing.Size(40, 19);
             this.labInfoMove.TabIndex = 8;
             this.labInfoMove.Text = "Move";
             // 
             // btnQuit
             // 
             this.btnQuit.Font = new System.Drawing.Font("Bernard MT Condensed", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.Location = new System.Drawing.Point(538, 626);
+            this.btnQuit.Location = new System.Drawing.Point(359, 403);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(75, 35);
+            this.btnQuit.Size = new System.Drawing.Size(50, 27);
             this.btnQuit.TabIndex = 9;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -164,18 +175,47 @@
             this.labVersion.AutoSize = true;
             this.labVersion.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labVersion.ForeColor = System.Drawing.Color.White;
-            this.labVersion.Location = new System.Drawing.Point(12, 629);
+            this.labVersion.Location = new System.Drawing.Point(8, 409);
+            this.labVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labVersion.Name = "labVersion";
-            this.labVersion.Size = new System.Drawing.Size(39, 28);
+            this.labVersion.Size = new System.Drawing.Size(27, 19);
             this.labVersion.TabIndex = 10;
             this.labVersion.Text = "1.0";
             // 
+            // labMisiles
+            // 
+            this.labMisiles.AutoSize = true;
+            this.labMisiles.BackColor = System.Drawing.Color.Transparent;
+            this.labMisiles.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labMisiles.ForeColor = System.Drawing.Color.White;
+            this.labMisiles.Location = new System.Drawing.Point(20, 302);
+            this.labMisiles.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labMisiles.Name = "labMisiles";
+            this.labMisiles.Size = new System.Drawing.Size(91, 19);
+            this.labMisiles.TabIndex = 12;
+            this.labMisiles.Text = "Throw Missile";
+            // 
+            // labQ
+            // 
+            this.labQ.AutoSize = true;
+            this.labQ.BackColor = System.Drawing.Color.Transparent;
+            this.labQ.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labQ.ForeColor = System.Drawing.Color.White;
+            this.labQ.Location = new System.Drawing.Point(39, 283);
+            this.labQ.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labQ.Name = "labQ";
+            this.labQ.Size = new System.Drawing.Size(55, 19);
+            this.labQ.TabIndex = 11;
+            this.labQ.Text = "Q (Key)";
+            // 
             // frmMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(625, 673);
+            this.ClientSize = new System.Drawing.Size(417, 437);
+            this.Controls.Add(this.labMisiles);
+            this.Controls.Add(this.labQ);
             this.Controls.Add(this.labVersion);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.labInfoMove);
@@ -186,6 +226,7 @@
             this.Controls.Add(this.btnControles);
             this.Controls.Add(this.btnJugar);
             this.Controls.Add(this.labTitulo);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenu";
@@ -209,5 +250,7 @@
         private System.Windows.Forms.Label labInfoMove;
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Label labVersion;
+        private System.Windows.Forms.Label labMisiles;
+        private System.Windows.Forms.Label labQ;
     }
 }

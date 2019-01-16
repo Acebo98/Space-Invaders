@@ -205,7 +205,7 @@ namespace Marcianos
                         theme.Stop();
 
                         //Menú principal
-                        frmMenu menu = new frmMenu(this.naveSkin);
+                        frmMenu menu = new frmMenu();
                         menu.Show();
                         this.Close();
                     }
