@@ -59,7 +59,7 @@ namespace Marcianos
                 sr = new StreamWriter(ruta, false);
                 sr.Write(score);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 exito = false;
             }
@@ -69,6 +69,52 @@ namespace Marcianos
             }
 
             return exito;
+        }
+
+        //Guardamos la skin (numero)
+        public bool GuardarSkin(int skin, string ruta)
+        {
+            FileStream fs = null;
+            StreamWriter sw = null;
+            bool exito = true;
+
+            try
+            {
+                using (fs = new FileStream(ruta, FileMode.Create, FileAccess.Write))
+                using (sw = new StreamWriter(fs))
+                {
+                    sw.Write(skin);
+                }
+            }
+            catch (Exception)
+            {
+                exito = false;
+            }
+
+            return exito;
+        }
+
+        //Obtenemos la skin
+        public int ObtenerSkin(string ruta, ref bool exito)
+        {
+            FileStream fs = null;
+            StreamReader sr = null;
+            int lectura = 0;
+
+            try
+            {
+                using (fs = new FileStream(ruta, FileMode.Create, FileAccess.Write))
+                using (sr = new StreamReader(fs))
+                {
+                    lectura = Convert.ToInt32(sr.ReadLine());
+                }
+            }
+            catch (Exception)
+            {
+                exito = false;
+            }
+
+            return lectura;
         }
     }
 }
