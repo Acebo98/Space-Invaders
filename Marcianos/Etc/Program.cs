@@ -16,7 +16,7 @@ namespace Marcianos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            frmMenu menu = new frmMenu(0);
+            frmMenu menu = new frmMenu();
             menu.Show();
             Application.Run();
         }

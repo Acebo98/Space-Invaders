@@ -27,7 +27,7 @@ namespace Marcianos
 
         public frmMenu() => InitializeComponent();
 
-        //Constructor que recibe la id de la nave (aka skin)
+        //Constructor que recibe la id de la nave (aka skin) [en desuso]
         public frmMenu(int NaveI)
         {
             InitializeComponent();
@@ -144,7 +144,7 @@ namespace Marcianos
             {
                 case "Play":
                     {
-                        frmMarcianos juego = new frmMarcianos(this.naveI);
+                        frmMarcianos juego = new frmMarcianos();
                         juego.Show();
                         this.Close();
                     }

@@ -26,11 +26,17 @@ namespace Marcianos
         int[] datos = new int[] { 0, 0, 0 };                //Guardamos los datos de la partida (0 => Tie, 1 => Meteoros, 2 => Tiempo sobrevivido)
         int tiempoPower = 30;                               //Tiempo del power up     
         int numMisiles = 0;                                 //Número de misiles
+        string rutaSkin = Environment.CurrentDirectory + "/data/skin.txt";              //Ruta de la skin
 
         public frmMarcianos(int naveID)
         {
             InitializeComponent();
             this.naveSkin = naveID;
+        }
+
+        public frmMarcianos()
+        {
+            InitializeComponent();
         }
 
         //Cargamos el formulario
@@ -62,25 +68,36 @@ namespace Marcianos
             pbSkull.Visible = false;
 
             //Skin
-            this.skin();
+            bool exito = true;
+            naveSkin = new DAODatos().ObtenerSkin(rutaSkin, ref exito);
+            if (exito == true)
+            {
+                this.skin();
 
-            //Estrellas iniciales
-            this.estrellasInicio();
+                //Estrellas iniciales
+                this.estrellasInicio();
 
-            //Tema
-            SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\theme.wav");
-            theme.PlayLooping();
+                //Tema
+                SoundPlayer theme = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\theme.wav");
+                theme.PlayLooping();
 
-            //Barra potenciador
-            barPotenciador.Maximum = 30;
-            barPotenciador.Value = barPotenciador.Maximum;
-            barPotenciador.Visible = false;
-            barIman.Maximum = 30;
-            barIman.Value = barIman.Maximum;
-            barIman.Visible = false;
+                //Barra potenciador
+                barPotenciador.Maximum = 30;
+                barPotenciador.Value = barPotenciador.Maximum;
+                barPotenciador.Visible = false;
+                barIman.Maximum = 30;
+                barIman.Value = barIman.Maximum;
+                barIman.Visible = false;
 
-            //Cargamos los enemigos en la lista
-            this.cargaEnemigos();
+                //Cargamos los enemigos en la lista
+                this.cargaEnemigos();
+            }
+            else
+            {
+                MessageBox.Show("There has been an error loading the skin", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         //Cargamos los enemigos del juego
