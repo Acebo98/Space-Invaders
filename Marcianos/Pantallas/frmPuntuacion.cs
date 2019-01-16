@@ -129,7 +129,8 @@ namespace Marcianos
                                 if (guardado == false)
                                 {
                                     timerPuntuacion.Stop();
-                                    MessageBox.Show("There has been an error saving the data", "Error", MessageBoxButtons.OK, 
+                                    MessageBox.Show("There has been an error saving the data", "Error", 
+                                        MessageBoxButtons.OK, 
                                         MessageBoxIcon.Error);
                                     this.Close();
                                 }
@@ -138,7 +139,8 @@ namespace Marcianos
                         else
                         {
                             timerPuntuacion.Stop();
-                            MessageBox.Show("Save file modified", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Save file modified", "Error", MessageBoxButtons.OK, 
+                                MessageBoxIcon.Error);
                             this.Close();
                         }
                     }
