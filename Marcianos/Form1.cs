@@ -248,7 +248,7 @@ namespace Marcianos
         //Contamos los segundos
         private void timerCuentaSegundos_Tick(object sender, EventArgs e) => this.datos[2]++;
 
-        //Temporizador del juego
+        //Temporizador del juego (UPDATE!!!!)
         private void timerJuego_Tick(object sender, EventArgs e)
         {
             this.Focus();       //Siempre hacemos focus al control
@@ -1342,7 +1342,7 @@ namespace Marcianos
             }
         }
 
-        //Golpeamos al boss
+        //Golpeamos al boss (sirve tanto para misiles como para balas)
         private void golpeaBoss()
         {
             foreach (Control bullet in this.Controls)
@@ -1356,6 +1356,15 @@ namespace Marcianos
                         this.creaExplosion((PictureBox)bullet);
                         this.Controls.Remove(bullet);
                         barVidaBoss.Increment(-1);
+                    }
+                }
+                else if (bullet is PictureBox && bullet.Tag == "misil")
+                {
+                    if (pbBoss.Bounds.IntersectsWith(bullet.Bounds) && pbBoss.Visible)
+                    {
+                        this.creaExplosionMisil((PictureBox)bullet);
+                        this.Controls.Remove(bullet);
+                        barVidaBoss.Increment(-15);
                     }
                 }
             }
