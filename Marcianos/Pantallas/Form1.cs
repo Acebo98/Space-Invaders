@@ -1544,7 +1544,7 @@ namespace Marcianos
         //Game Over
         private void gameOver()
         {
-            frmPuntuacion muestraPuntuacion = new frmPuntuacion(this.datos[0], this.datos[1], this.datos[2], this.muertoBoss, this.naveSkin);
+            frmPuntuacion muestraPuntuacion = new frmPuntuacion(this.datos[0], this.datos[1], this.datos[2], this.muertoBoss);
             muestraPuntuacion.Show();
             this.Close();
         }

@@ -27,16 +27,16 @@ namespace Marcianos
         int i = 0;                                                                      //Indica que score vamos a mostrar
         int naveID;                                                                     //ID de la nave
         string ruta = Environment.CurrentDirectory + "/data/score.txt";                 //Ruta de la maxima puntuacion
-        
+        string rutaSkin = Environment.CurrentDirectory + "/data/skin.txt";              //Ruta de la skin
+
         //Constructor con cada uno de los valores
-        public frmPuntuacion(int Enemigos, int Meteoros, int Tiempo, bool JefeMuerto, int naveID)
+        public frmPuntuacion(int Enemigos, int Meteoros, int Tiempo, bool JefeMuerto)
         {
             InitializeComponent();
             this.enemigos = Enemigos;
             this.meteoros = Meteoros;
             this.tiempo = Tiempo;
             this.jefeMuerto = JefeMuerto;
-            this.naveID = naveID;
         }
 
         //Cargamos el formulario
@@ -47,10 +47,6 @@ namespace Marcianos
             this.MinimizeBox = false;
             this.Text = "Final Score";
             this.FormBorderStyle = FormBorderStyle.None;
-
-            //Nueva puntuacion
-            labNew.Visible = false;
-            timerPuntuacion.Start();
 
             //Fondo y color de los labels
             confiLab();
@@ -66,18 +62,34 @@ namespace Marcianos
                 labGameOver.Text = "Game over!";
 
             //Skin
-            this.skin();
-
-            //Sonido
-            if (this.jefeMuerto)
+            bool exito = true;
+            naveID = new DAODatos().ObtenerSkin(rutaSkin, ref exito);
+            if (exito == true)
             {
-                SoundPlayer victoria = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\you-win.wav");
-                victoria.Play();
+                //Nueva puntuacion
+                labNew.Visible = false;
+                timerPuntuacion.Start();
+
+                //Skin de la nave
+                this.skin();
+
+                //Sonido
+                if (this.jefeMuerto)
+                {
+                    SoundPlayer victoria = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\you-win.wav");
+                    victoria.Play();
+                }
+                else
+                {
+                    SoundPlayer gameOver = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\game-over.wav");
+                    gameOver.Play();
+                }
             }
             else
             {
-                SoundPlayer gameOver = new SoundPlayer(Environment.CurrentDirectory + @"\sounds\game-over.wav");
-                gameOver.Play();
+                MessageBox.Show("There has been a problem loading the skin", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
@@ -156,7 +168,7 @@ namespace Marcianos
         {
             if (this.i == 4)
             {
-                frmMenu menu = new frmMenu(this.naveID);
+                frmMenu menu = new frmMenu();
                 menu.Show();
                 this.Close();
             }
