@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.IO;
 
 namespace Marcianos
 {
@@ -18,9 +19,11 @@ namespace Marcianos
     //-----------------------
     public partial class frmMenu : Form
     {
-        Random rnd = new Random();                      //Objeto para el random
-        bool controls = false;                          //Mostrar controles
-        int naveI;                                      //Indica la nave
+        Random rnd = new Random();                                              //Objeto para el random
+        bool controls = false;                                                  //Mostrar controles
+        int naveI;                                                              //Indica la nave
+        string rutaScore = Environment.CurrentDirectory + "/data/score.txt";    //Score
+        string rutaSkin = Environment.CurrentDirectory + "/data/skin.txt";      //Skin
 
         public frmMenu() => InitializeComponent();
 
@@ -39,6 +42,26 @@ namespace Marcianos
             this.MinimizeBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Text = "Menu";
+
+            //Creamos los ficheros de data y skin si no existen
+            DAODatos datos = new DAODatos();
+            if (Directory.Exists(Environment.CurrentDirectory + "/data/") == true)
+            {
+                if (File.Exists(rutaScore) == false)
+                {
+                    datos.GuardarPuntuacion(0, rutaScore);
+                }
+                if (File.Exists(rutaSkin) == false)
+                {
+                    datos.GuardarSkin(0, rutaSkin);
+                }
+            }
+            else
+            {
+                MessageBox.Show("The data file does not exists", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
 
             //Configuración
             this.confiLab();

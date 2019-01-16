@@ -21,7 +21,7 @@ namespace Marcianos
         Random rnd = new Random();                                                      //Objeto numeros aleatorios
         int highScore;                                                                  //Puntuación máxima
         int naveI;                                                                      //Nave seleccionada
-        string ruta = @"C:\Users\" + Environment.UserName + @"\Desktop\scores.txt";     //Ruta de la maxima puntuacion
+        string ruta = Environment.CurrentDirectory + "/data/score.txt";                 //Ruta de la maxima puntuacion
 
         public frmShop() => InitializeComponent();
 
@@ -37,14 +37,23 @@ namespace Marcianos
             this.estrellasInicio();
 
             //Puntuacion maxima
-            this.highScore = this.leeMaxima();
-            labHighScore.Text = "High-score: " + this.highScore;
+            bool exito = true;
+            this.highScore = new DAODatos().ObtenerPuntuacion(ruta, ref exito);
+            if (exito == true)
+            {
+                labHighScore.Text = "High-score: " + this.highScore;
 
-            //Naves
-            this.cargaNaves();
+                //Naves
+                this.cargaNaves();
 
-            //Labels
-            this.confiLabs();
+                //Labels
+                this.confiLabs();
+            }
+            else
+            {
+                MessageBox.Show("There has been an error loading the score", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Confi de los labels
