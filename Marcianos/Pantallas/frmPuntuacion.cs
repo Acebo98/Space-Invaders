@@ -26,7 +26,7 @@ namespace Marcianos
         int tiempo = 0;                                                                 //Tiempo sobrevivido
         int i = 0;                                                                      //Indica que score vamos a mostrar
         int naveID;                                                                     //ID de la nave
-        string ruta = @"C:\Users\" + Environment.UserName + @"\Desktop\scores.txt";     //Ruta de la maxima puntuacion
+        string ruta = Environment.CurrentDirectory + "/data/score.txt";                 //Ruta de la maxima puntuacion
         
         //Constructor con cada uno de los valores
         public frmPuntuacion(int Enemigos, int Meteoros, int Tiempo, bool JefeMuerto, int naveID)
@@ -114,12 +114,32 @@ namespace Marcianos
                         if (this.jefeMuerto)
                             score += 200;
                         labScoreFinal.Text += (score).ToString();
-                        int maxima = this.leeMaxima();
 
-                        if (score > maxima)
+                        //Obtenemos la puntuación máxima
+                        bool exito = true;
+                        int maxima = new DAODatos().ObtenerPuntuacion(this.ruta, ref exito);
+                        if (exito == true)
                         {
-                            labNew.Visible = true;
-                            this.guardaMaxima(score);
+                            if (score > maxima)
+                            {
+                                labNew.Visible = true;
+
+                                //Guardamos la score
+                                bool guardado = new DAODatos().GuardarPuntuacion(score, this.ruta);
+                                if (guardado == false)
+                                {
+                                    timerPuntuacion.Stop();
+                                    MessageBox.Show("There has been an error saving the data", "Error", MessageBoxButtons.OK, 
+                                        MessageBoxIcon.Error);
+                                    this.Close();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            timerPuntuacion.Stop();
+                            MessageBox.Show("Save file modified", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Close();
                         }
                     }
                     break;
@@ -127,57 +147,6 @@ namespace Marcianos
             if (this.i == 3)
                 timerPuntuacion.Stop();
             this.i++;
-        }
-
-        //Leemos la puntuacio maxima y la retornamos
-        private int leeMaxima()
-        {
-            FileStream fs = null;
-            StreamReader sr = null;
-            string lectura;
-            int retorno = 0;
-
-            try
-            {
-                fs = new FileStream(this.ruta, FileMode.OpenOrCreate, FileAccess.Read);
-                sr = new StreamReader(fs);
-                if ((lectura = sr.ReadLine()) != null)
-                    retorno = Convert.ToInt32(lectura);
-                else
-                    retorno = 0;
-            }
-            catch (Exception e)
-            {
-                timerPuntuacion.Stop();
-                MessageBox.Show("Save file modified", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (sr != null) sr.Close();
-                if (fs != null) fs.Close();
-            }
-
-            return retorno;
-        }
-
-        //Guardamos la puntuacion maxima
-        private void guardaMaxima(int maxima)
-        {
-            StreamWriter sr = null;
-
-            try                
-            {
-                sr = new StreamWriter(this.ruta, false);
-                sr.Write(maxima);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (sr != null) sr.Close();
-            }
         }
 
         //Presionamos una tecla para continuar

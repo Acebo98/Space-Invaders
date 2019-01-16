@@ -35,7 +35,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>space-invaders.ico</ApplicationIcon>
+    <ApplicationIcon>Etc\space-invaders.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -51,51 +51,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="DAODatos.cs" />
+    <Compile Include="Pantallas\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Pantallas\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMenu.cs">
+    <Compile Include="Pantallas\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMenu.Designer.cs">
+    <Compile Include="Pantallas\frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPause.cs">
+    <Compile Include="Pantallas\frmPause.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPause.Designer.cs">
+    <Compile Include="Pantallas\frmPause.Designer.cs">
       <DependentUpon>frmPause.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPuntuacion.cs">
+    <Compile Include="Pantallas\frmPuntuacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPuntuacion.Designer.cs">
+    <Compile Include="Pantallas\frmPuntuacion.Designer.cs">
       <DependentUpon>frmPuntuacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmShop.cs">
+    <Compile Include="Pantallas\frmShop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmShop.Designer.cs">
+    <Compile Include="Pantallas\frmShop.Designer.cs">
       <DependentUpon>frmShop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Etc\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Pantallas\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMenu.resx">
+    <EmbeddedResource Include="Pantallas\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPause.resx">
+    <EmbeddedResource Include="Pantallas\frmPause.resx">
       <DependentUpon>frmPause.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPuntuacion.resx">
+    <EmbeddedResource Include="Pantallas\frmPuntuacion.resx">
       <DependentUpon>frmPuntuacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmShop.resx">
+    <EmbeddedResource Include="Pantallas\frmShop.resx">
       <DependentUpon>frmShop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -119,7 +120,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Etc\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\x_wing.png" />
@@ -180,7 +181,7 @@
     <None Include="Resources\bullet_rebotadora.png" />
     <None Include="Resources\misiLanzado.png" />
     <None Include="Resources\misilLoot.png" />
-    <Content Include="space-invaders.ico" />
+    <Content Include="Etc\space-invaders.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
