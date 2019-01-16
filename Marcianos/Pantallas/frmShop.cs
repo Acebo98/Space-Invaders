@@ -52,10 +52,10 @@ namespace Marcianos
 
                 //Obtenemos la skin
                 bool exitoSkin = true;
-                int skin = new DAODatos().ObtenerSkin(rutaSkin, ref exitoSkin);
+                naveI = new DAODatos().ObtenerSkin(rutaSkin, ref exitoSkin);
                 if (exitoSkin == true)
                 {
-                    switch (skin)
+                    switch (naveI)
                     {
                         case 0:
                             {
@@ -147,7 +147,10 @@ namespace Marcianos
                 this.desNaves(pbNave);
             }
             else
-                MessageBox.Show("You don't have enought high-score!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            {
+                MessageBox.Show("You don't have enought high-score!", "Atention",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         //ID de la nave seleccionada
@@ -180,13 +183,25 @@ namespace Marcianos
         //Cerramos
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            if (this.confirmaPls())
+            if (this.confirmaPls() == true)
             {
-                frmMenu menu = new frmMenu(this.naveI);
-                menu.Show();
+                if (new DAODatos().GuardarSkin(naveI, rutaSkin) == true)
+                {
+                    frmMenu menu = new frmMenu();
+                    menu.Show();
+                }
+                else
+                {
+                    MessageBox.Show("There has been a problem saving the skin", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 this.Close();
             }
-            else MessageBox.Show("Please choose a skin", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else
+            {
+                MessageBox.Show("Please choose a skin", "Attention", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         //Miramos si podemos cerrar la tienda
