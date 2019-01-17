@@ -65,7 +65,11 @@ namespace Marcianos
                 }
                 else if (btnClicado == btnDelete)
                 {
-
+                    if (DialogResult.Yes == MessageBox.Show("Do you really wanna delete the data?", "Question", 
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    {
+                        dsPuntuaciones.Tables["Leaderboard"].Clear();
+                    }
                 }
             }
             catch (Exception err)
