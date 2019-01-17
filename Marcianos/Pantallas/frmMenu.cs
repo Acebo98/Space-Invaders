@@ -21,7 +21,6 @@ namespace Marcianos
     {
         Random rnd = new Random();                                              //Objeto para el random
         bool controls = false;                                                  //Mostrar controles
-        int naveI;                                                              //Indica la nave
         string rutaScore = Environment.CurrentDirectory + "/data/score.txt";    //Score
         string rutaSkin = Environment.CurrentDirectory + "/data/skin.txt";      //Skin
 
@@ -153,6 +152,11 @@ namespace Marcianos
                         frmShop tienda = new frmShop();
                         tienda.Show();
                         this.Close();
+                    }
+                    break;
+                case "Leaderboard":
+                    {
+
                     }
                     break;
             }
