@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labLeader = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.timerEstrellas = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +86,12 @@
             this.btnDelete.MouseEnter += new System.EventHandler(this.btn_Enter);
             this.btnDelete.MouseLeave += new System.EventHandler(this.btn_Leave);
             // 
+            // timerEstrellas
+            // 
+            this.timerEstrellas.Enabled = true;
+            this.timerEstrellas.Interval = 1;
+            this.timerEstrellas.Tick += new System.EventHandler(this.timerEstrellas_Tick);
+            // 
             // frmLeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,5 +118,6 @@
         private System.Windows.Forms.Label labLeader;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Timer timerEstrellas;
     }
 }
