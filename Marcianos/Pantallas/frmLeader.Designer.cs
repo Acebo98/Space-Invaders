@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvScores = new System.Windows.Forms.DataGridView();
             this.labLeader = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.timerEstrellas = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScores)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvScores
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 66);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(583, 241);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvScores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvScores.Location = new System.Drawing.Point(12, 66);
+            this.dgvScores.Name = "dgvScores";
+            this.dgvScores.Size = new System.Drawing.Size(583, 241);
+            this.dgvScores.TabIndex = 0;
             // 
             // labLeader
             // 
@@ -101,12 +101,12 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.labLeader);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvScores);
             this.Name = "frmLeader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLeader";
             this.Load += new System.EventHandler(this.frmLeader_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,7 +114,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvScores;
         private System.Windows.Forms.Label labLeader;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnDelete;

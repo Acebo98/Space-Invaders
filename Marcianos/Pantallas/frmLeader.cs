@@ -17,6 +17,8 @@ namespace Marcianos
     //---------------------------------------
     public partial class frmLeader : Form
     {
+        DataSet dsPuntuaciones = new DataSet("Space_Invaders");
+
         public frmLeader()
         {
             InitializeComponent();
@@ -30,6 +32,10 @@ namespace Marcianos
             this.MinimizeBox = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Text = "Leaderboard";
+
+            //Tabla de dataset
+            dsPuntuaciones.Tables.Add(crearTablaPuntuaciones());
+            configurarDGV();
 
             //Lables
             confiLab();
@@ -151,6 +157,60 @@ namespace Marcianos
                     ((Label)cn).ForeColor = System.Drawing.Color.Yellow;
                     ((Label)cn).BackColor = System.Drawing.Color.Transparent;
                 }
+        }
+
+        //Creamos la tabla de puntuaciones
+        private DataTable crearTablaPuntuaciones()
+        {
+            DataTable table = new DataTable("Leaderboard");
+
+            //Columnas
+            table.Columns.Add("id", typeof(int));
+            table.Columns.Add("nombre_jugador", typeof(string));
+            table.Columns.Add("fecha", typeof(DateTime));
+
+            //Incremento
+            table.Columns["id"].AutoIncrement = true;
+            table.Columns["id"].AutoIncrementSeed = 1;
+            table.Columns["id"].AutoIncrementStep = 1;
+
+            //No nulos
+            foreach (DataColumn column in table.Columns)
+            {
+                column.AllowDBNull = false;
+            }
+
+            //Clave primario
+            table.Constraints.Add("pk_score", table.Columns["id"], true);
+
+            return table;
+        }
+
+        //Configurar datagridview
+        private void configurarDGV()
+        {
+            //Columnas de la tabla
+            DataColumn cId = dsPuntuaciones.Tables["Leaderboard"].Columns["id"];
+            DataColumn cNombre = dsPuntuaciones.Tables["Leaderboard"].Columns["nombre_jugador"];
+            DataColumn cFecha = dsPuntuaciones.Tables["Leaderboard"].Columns["fecha"];
+
+            //Columnas del dgv
+            dgvScores.Columns.Add("id", "Identificador");
+            dgvScores.Columns.Add("nombre_jugador", "Jugador");
+            dgvScores.Columns.Add("fecha", "Fecha");
+
+            //Enlazamos el nombre de las columnas
+            dgvScores.Columns["id"].DataPropertyName = cId.Caption;
+            dgvScores.Columns["nombre_jugador"].DataPropertyName = cNombre.Caption;
+            dgvScores.Columns["fecha"].DataPropertyName = cFecha.Caption;
+
+            //Finalmente enlazamos la fuente de datos
+            dgvScores.DataSource = dsPuntuaciones.Tables["Space_Invaders"];
+            dgvScores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            //Configuración
+            dgvScores.Enabled = false;
+            dgvScores.Font = new Font("Verdana", 11);
         }
     }
 }
