@@ -18,6 +18,7 @@ namespace Marcianos
     public partial class frmLeader : Form
     {
         DataSet dsPuntuaciones = new DataSet("Space_Invaders");
+        string rutaSkin = Environment.CurrentDirectory + "/data/score.txt";      //Ruta del XML
 
         public frmLeader()
         {
@@ -49,15 +50,28 @@ namespace Marcianos
         {
             Button btnClicado = (Button)sender;
 
-            if (btnClicado == btnBack)
+            try
             {
-                frmMenu menu = new frmMenu();
-                menu.Show();
-                this.Close();
-            }
-            else if (btnClicado == btnDelete)
-            {
+                if (btnClicado == btnBack)
+                {
+                    //Guardamos los datos
+                    dsPuntuaciones.WriteXml(rutaSkin);
 
+                    //Menu
+                    frmMenu menu = new frmMenu();
+                    menu.Show();
+
+                    this.Close();
+                }
+                else if (btnClicado == btnDelete)
+                {
+
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("There has been an error saving the data", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -195,9 +209,9 @@ namespace Marcianos
             DataColumn cFecha = dsPuntuaciones.Tables["Leaderboard"].Columns["fecha"];
 
             //Columnas del dgv
-            dgvScores.Columns.Add("id", "Identificador");
-            dgvScores.Columns.Add("nombre_jugador", "Jugador");
-            dgvScores.Columns.Add("fecha", "Fecha");
+            dgvScores.Columns.Add("id", "Identifier");
+            dgvScores.Columns.Add("nombre_jugador", "Player");
+            dgvScores.Columns.Add("fecha", "Date");
 
             //Enlazamos el nombre de las columnas
             dgvScores.Columns["id"].DataPropertyName = cId.Caption;
