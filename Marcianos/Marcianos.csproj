@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pantallas\frmLeader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\frmLeader.Designer.cs">
+      <DependentUpon>frmLeader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\DAODatos.cs" />
     <Compile Include="Pantallas\Form1.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pantallas\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\frmLeader.resx">
+      <DependentUpon>frmLeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>

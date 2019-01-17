@@ -156,7 +156,9 @@ namespace Marcianos
                     break;
                 case "Leaderboard":
                     {
-
+                        frmLeader frmLeader = new frmLeader();
+                        frmLeader.Show();
+                        this.Close();
                     }
                     break;
             }
