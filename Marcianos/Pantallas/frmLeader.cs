@@ -45,6 +45,10 @@ namespace Marcianos
                         dsPuntuaciones.Tables["Leaderboard"].Columns["id"], true);
                     configurarDGV();
                 }
+                if (dgvScores.Rows.Count == 0)
+                {
+                    labNoData.Visible = true;
+                }
 
                 //Lables
                 confiLab();

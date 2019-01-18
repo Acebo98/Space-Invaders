@@ -34,6 +34,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.timerEstrellas = new System.Windows.Forms.Timer(this.components);
+            this.labNoData = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,12 +93,26 @@
             this.timerEstrellas.Interval = 1;
             this.timerEstrellas.Tick += new System.EventHandler(this.timerEstrellas_Tick);
             // 
+            // labNoData
+            // 
+            this.labNoData.AutoSize = true;
+            this.labNoData.Font = new System.Drawing.Font("Bernard MT Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labNoData.ForeColor = System.Drawing.Color.White;
+            this.labNoData.Location = new System.Drawing.Point(519, 44);
+            this.labNoData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labNoData.Name = "labNoData";
+            this.labNoData.Size = new System.Drawing.Size(76, 19);
+            this.labNoData.TabIndex = 12;
+            this.labNoData.Text = "(no scores)";
+            this.labNoData.Visible = false;
+            // 
             // frmLeader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(607, 352);
+            this.Controls.Add(this.labNoData);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.labLeader);
@@ -119,5 +134,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Timer timerEstrellas;
+        private System.Windows.Forms.Label labNoData;
     }
 }
