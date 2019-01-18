@@ -27,3 +27,4 @@ E:\Workspace C#\Marcianos\Marcianos\obj\Debug\Marcianos.csproj.CoreCompileInputs
 E:\Workspace C#\Marcianos\Marcianos\obj\Debug\Space Invaders.exe
 E:\Workspace C#\Marcianos\Marcianos\obj\Debug\Space Invaders.pdb
 E:\Workspace C#\Marcianos\Marcianos\obj\Debug\Marcianos.frmLeader.resources
+E:\Workspace C#\Marcianos\Marcianos\obj\Debug\Marcianos.frmIntroScore.resources

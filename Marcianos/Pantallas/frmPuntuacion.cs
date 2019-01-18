@@ -257,14 +257,14 @@ namespace Marcianos
 
             if (btnClicado == btnSave)
             {
+                frmIntroScore score = new frmIntroScore();
+                score.ShowDialog();
+            }
 
-            }
-            else if (btnClicado == btnBack)
-            {
-                frmMenu menu = new frmMenu();
-                menu.Show();
-                this.Close();
-            }
+            //Abrimos el menu principal
+            frmMenu menu = new frmMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }
