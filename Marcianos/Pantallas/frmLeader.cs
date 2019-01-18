@@ -18,7 +18,7 @@ namespace Marcianos
     public partial class frmLeader : Form
     {
         DataSet dsPuntuaciones = new DataSet("Space_Invaders");
-        string rutaSkin = Environment.CurrentDirectory + "/data/leaderboard.txt";      //Ruta del XML
+        string rutaLeader = Environment.CurrentDirectory + "/data/leaderboard.txt";      //Ruta del XML
 
         public frmLeader()
         {
@@ -28,21 +28,32 @@ namespace Marcianos
         //Cargamos el componente
         private void frmLeader_Load(object sender, EventArgs e)
         {
-            //Confi del formulario
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.Text = "Leaderboard";
+            try
+            {
+                //Confi del formulario
+                this.MaximizeBox = false;
+                this.MinimizeBox = false;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Text = "Leaderboard";
 
-            //Tabla de dataset
-            dsPuntuaciones.Tables.Add(crearTablaPuntuaciones());
-            configurarDGV();
+                //Tabla de dataset
+                dsPuntuaciones.ReadXml(rutaLeader);
+                dsPuntuaciones.Tables["Leaderboard"].Constraints.Add("pk_score", 
+                    dsPuntuaciones.Tables["Leaderboard"].Columns["id"], true);
+                configurarDGV();
 
-            //Lables
-            confiLab();
+                //Lables
+                confiLab();
 
-            //Estrellas
-            estrellasInicio();
+                //Estrellas
+                estrellasInicio();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("There has been a problem with the leaderboard", "Error",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         //Seleccionamos uno de los botones
@@ -55,7 +66,7 @@ namespace Marcianos
                 if (btnClicado == btnBack)
                 {
                     //Guardamos los datos
-                    dsPuntuaciones.WriteXml(rutaSkin);
+                    dsPuntuaciones.WriteXml(rutaLeader);
 
                     //Menu
                     frmMenu menu = new frmMenu();
@@ -227,7 +238,7 @@ namespace Marcianos
             dgvScores.Columns["fecha"].DataPropertyName = cFecha.Caption;
 
             //Finalmente enlazamos la fuente de datos
-            dgvScores.DataSource = dsPuntuaciones.Tables["Space_Invaders"];
+            dgvScores.DataSource = dsPuntuaciones.Tables["Leaderboard"];
             dgvScores.Columns["id"].Visible = false;
             dgvScores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
