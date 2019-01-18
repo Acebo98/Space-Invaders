@@ -163,6 +163,7 @@
             this.btnBack.TabIndex = 10;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnSeleccion_Click);
             this.btnBack.MouseEnter += new System.EventHandler(this.btn_Enter);
             this.btnBack.MouseLeave += new System.EventHandler(this.btn_Leave);
             // 

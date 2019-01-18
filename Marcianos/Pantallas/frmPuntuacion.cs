@@ -126,10 +126,17 @@ namespace Marcianos
                     break;
                 case 3:
                     {
+                        //Calculamos la puntuación
                         int score = (this.enemigos * 2) + this.tiempo + this.meteoros;
                         if (this.jefeMuerto)
                             score += 200;
                         labScoreFinal.Text += (score).ToString();
+
+                        //Mostramos ambos botones
+                        btnBack.Visible = true;
+                        btnBack.Enabled = true;
+                        btnSave.Visible = true;
+                        btnSave.Enabled = true;
 
                         //Obtenemos la puntuación máxima
                         bool exito = true;
@@ -158,11 +165,12 @@ namespace Marcianos
                                 MessageBoxIcon.Error);
                             this.Close();
                         }
+
+                        //Paramos el timer
+                        timerPuntuacion.Stop();
                     }
                     break;
             }
-            if (this.i == 3)
-                timerPuntuacion.Stop();
             this.i++;
         }
 
