@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<Space_Invaders>
+  <Leaderboard>
+    <id>1</id>
+    <nombre_jugador>acebo</nombre_jugador>
+    <score>12</score>
+    <fecha>2019-01-18T21:41:35.7366329+01:00</fecha>
+  </Leaderboard>
+</Space_Invaders>

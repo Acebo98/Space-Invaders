@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Marcianos
 {
@@ -37,10 +38,13 @@ namespace Marcianos
                 this.Text = "Leaderboard";
 
                 //Tabla de dataset
-                dsPuntuaciones.ReadXml(rutaLeader);
-                dsPuntuaciones.Tables["Leaderboard"].Constraints.Add("pk_score", 
-                    dsPuntuaciones.Tables["Leaderboard"].Columns["id"], true);
-                configurarDGV();
+                if (File.Exists(rutaLeader) == true)
+                {
+                    dsPuntuaciones.ReadXml(rutaLeader);
+                    dsPuntuaciones.Tables["Leaderboard"].Constraints.Add("pk_score",
+                        dsPuntuaciones.Tables["Leaderboard"].Columns["id"], true);
+                    configurarDGV();
+                }
 
                 //Lables
                 confiLab();
@@ -65,8 +69,11 @@ namespace Marcianos
             {
                 if (btnClicado == btnBack)
                 {
-                    //Guardamos los datos
-                    dsPuntuaciones.WriteXml(rutaLeader);
+                    //Guardamos los datos si hay datos
+                    if (dgvScores.Rows.Count > 0)
+                    {
+                        dsPuntuaciones.WriteXml(rutaLeader);
+                    }
 
                     //Menu
                     frmMenu menu = new frmMenu();

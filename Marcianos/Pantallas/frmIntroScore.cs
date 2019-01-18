@@ -39,7 +39,10 @@ namespace Marcianos
 
                 //Cargamos la tabla o la creamos               
                 dsLeaderboard.Tables.Add(crearTablaPuntuaciones());
-                dsLeaderboard.ReadXml(rutaLeader);               
+                if (File.Exists(rutaLeader) == true)
+                {
+                    dsLeaderboard.ReadXml(rutaLeader);
+                }
                 
                 //Configuración
                 confiLab();
