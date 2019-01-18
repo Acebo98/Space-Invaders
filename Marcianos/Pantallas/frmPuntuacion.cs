@@ -28,6 +28,7 @@ namespace Marcianos
         int naveID;                                                                     //ID de la nave
         string ruta = Environment.CurrentDirectory + "/data/score.txt";                 //Ruta de la maxima puntuacion
         string rutaSkin = Environment.CurrentDirectory + "/data/skin.txt";              //Ruta de la skin
+        int score = 0;                                                                  //Puntuación
 
         //Constructor con cada uno de los valores
         public frmPuntuacion(int Enemigos, int Meteoros, int Tiempo, bool JefeMuerto)
@@ -127,7 +128,7 @@ namespace Marcianos
                 case 3:
                     {
                         //Calculamos la puntuación
-                        int score = (this.enemigos * 2) + this.tiempo + this.meteoros;
+                        score = (this.enemigos * 2) + this.tiempo + this.meteoros;
                         if (this.jefeMuerto)
                             score += 200;
                         labScoreFinal.Text += (score).ToString();
@@ -257,8 +258,8 @@ namespace Marcianos
 
             if (btnClicado == btnSave)
             {
-                frmIntroScore score = new frmIntroScore();
-                score.ShowDialog();
+                frmIntroScore introScore = new frmIntroScore(score);
+                introScore.ShowDialog();
             }
 
             //Abrimos el menu principal

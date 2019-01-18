@@ -12,22 +12,40 @@ namespace Marcianos
 {
     public partial class frmIntroScore : Form
     {
-        public frmIntroScore()
+        DataSet dsLeaderboard = new DataSet("Space_Invaders");
+        string rutaLeader = Environment.CurrentDirectory + "/data/leaderboard.txt";
+        int score;
+
+        public frmIntroScore(int Score)
         {
             InitializeComponent();
+            score = Score;
         }
 
         //Cargamos el formulario
         private void frmIntroScore_Load(object sender, EventArgs e)
         {
-            //Confi del formulario
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.BackColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = FormBorderStyle.None;
+            try
+            {
+                //Confi del formulario
+                this.MaximizeBox = false;
+                this.MinimizeBox = false;
+                this.BackColor = System.Drawing.Color.Black;
+                this.FormBorderStyle = FormBorderStyle.None;
 
-            //Configuración
-            confiLab();
+                //Cargamos el leaderboard
+                labScore.Text += score.ToString();
+                dsLeaderboard.Tables.Add(crearTablaPuntuaciones());
+
+                //Configuración
+                confiLab();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("There has been a problem with the leaderboard", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         //Configuración de los labels del formulario
@@ -46,22 +64,58 @@ namespace Marcianos
         {
             Button btnClicado = (Button)sender;
 
-            if (btnClicado == btnConfirm)
+            try
             {
-                string nombre = tbNombre.Text.Trim();
-                if (nombre.Length > 0)
+                if (btnClicado == btnConfirm)
                 {
+                    string nombre = tbNombre.Text.Trim();
+                    if (nombre.Length > 0)
+                    {
+                        DataRow row = dsLeaderboard.Tables["Leaderboard"].NewRow();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Enter a name", "Important", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else if (btnClicado == btnCancel)
+                {
+                    this.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("There has been a problem with the leaderboard", "Error",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-                }
-                else
-                {
-                    MessageBox.Show("Enter a name", "Important", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else if (btnClicado == btnCancel)
+        //Creamos la tabla de puntuaciones
+        private DataTable crearTablaPuntuaciones()
+        {
+            DataTable table = new DataTable("Leaderboard");
+
+            //Columnas
+            table.Columns.Add("id", typeof(int));
+            table.Columns.Add("nombre_jugador", typeof(string));
+            table.Columns.Add("score", typeof(int));
+            table.Columns.Add("fecha", typeof(DateTime));
+
+            //Incremento
+            table.Columns["id"].AutoIncrement = true;
+            table.Columns["id"].AutoIncrementSeed = 1;
+            table.Columns["id"].AutoIncrementStep = 1;
+
+            //No nulos
+            foreach (DataColumn column in table.Columns)
             {
-                this.Close();
+                column.AllowDBNull = false;
             }
+
+            //Clave primario
+            table.Constraints.Add("pk_score", table.Columns["id"], true);
+
+            return table;
         }
     }
 }
