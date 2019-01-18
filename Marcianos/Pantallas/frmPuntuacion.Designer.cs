@@ -201,7 +201,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPuntuacion";
             this.Load += new System.EventHandler(this.frmPuntuacion_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmPuntuacion_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pbNave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

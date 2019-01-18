@@ -174,17 +174,6 @@ namespace Marcianos
             this.i++;
         }
 
-        //Presionamos una tecla para continuar
-        private void frmPuntuacion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (this.i == 4)
-            {
-                frmMenu menu = new frmMenu();
-                menu.Show();
-                this.Close();
-            }
-        }
-
         //Creamos una estrella
         private void creaEstrella()
         {
