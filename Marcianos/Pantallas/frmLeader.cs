@@ -78,21 +78,20 @@ namespace Marcianos
                     {
                         dsPuntuaciones.WriteXml(rutaLeader);
                     }
-
-                    //Menu
-                    frmMenu menu = new frmMenu();
-                    menu.Show();
-
-                    this.Close();
                 }
                 else if (btnClicado == btnDelete)
                 {
                     if (DialogResult.Yes == MessageBox.Show("Do you really wanna delete the data?", "Question", 
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     {
-                        dsPuntuaciones.Tables["Leaderboard"].Clear();
+                        File.Delete(rutaLeader);
                     }
                 }
+
+                //Menu
+                frmMenu menu = new frmMenu();
+                menu.Show();
+                this.Close();
             }
             catch (Exception err)
             {
