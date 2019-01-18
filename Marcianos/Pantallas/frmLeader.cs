@@ -188,34 +188,6 @@ namespace Marcianos
                 }
         }
 
-        //Creamos la tabla de puntuaciones
-        private DataTable crearTablaPuntuaciones()
-        {
-            DataTable table = new DataTable("Leaderboard");
-
-            //Columnas
-            table.Columns.Add("id", typeof(int));
-            table.Columns.Add("nombre_jugador", typeof(string));
-            table.Columns.Add("score", typeof(int));
-            table.Columns.Add("fecha", typeof(DateTime));
-
-            //Incremento
-            table.Columns["id"].AutoIncrement = true;
-            table.Columns["id"].AutoIncrementSeed = 1;
-            table.Columns["id"].AutoIncrementStep = 1;
-
-            //No nulos
-            foreach (DataColumn column in table.Columns)
-            {
-                column.AllowDBNull = false;
-            }
-
-            //Clave primario
-            table.Constraints.Add("pk_score", table.Columns["id"], true);
-
-            return table;
-        }
-
         //Configurar datagridview
         private void configurarDGV()
         {

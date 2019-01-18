@@ -1,9 +1,0 @@
-<?xml version="1.0" standalone="yes"?>
-<Space_Invaders>
-  <Leaderboard>
-    <id>1</id>
-    <nombre_jugador>paquito</nombre_jugador>
-    <score>39</score>
-    <fecha>2019-01-18T21:19:07.2891397+01:00</fecha>
-  </Leaderboard>
-</Space_Invaders>

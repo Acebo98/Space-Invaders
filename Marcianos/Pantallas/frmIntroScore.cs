@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Marcianos
 {
@@ -35,12 +36,15 @@ namespace Marcianos
 
                 //Cargamos el leaderboard
                 labScore.Text += score.ToString();
-                dsLeaderboard.Tables.Add(crearTablaPuntuaciones());
 
+                //Cargamos la tabla o la creamos               
+                dsLeaderboard.Tables.Add(crearTablaPuntuaciones());
+                dsLeaderboard.ReadXml(rutaLeader);               
+                
                 //Configuración
                 confiLab();
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 MessageBox.Show("There has been a problem with the leaderboard", "Error", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
