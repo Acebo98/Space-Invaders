@@ -18,7 +18,7 @@ namespace Marcianos
     public partial class frmLeader : Form
     {
         DataSet dsPuntuaciones = new DataSet("Space_Invaders");
-        string rutaSkin = Environment.CurrentDirectory + "/data/score.txt";      //Ruta del XML
+        string rutaSkin = Environment.CurrentDirectory + "/data/leaderboard.txt";      //Ruta del XML
 
         public frmLeader()
         {

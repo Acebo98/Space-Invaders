@@ -51,7 +51,6 @@ namespace Marcianos
             //Fondo y color de los labels
             confiLab();
             this.BackColor = System.Drawing.Color.Black;
-            this.labPress.Visible = false;
             this.estrellasInicio();
 
             //Titulo
@@ -60,6 +59,12 @@ namespace Marcianos
                 labGameOver.Text = "You won!";
             else
                 labGameOver.Text = "Game over!";
+
+            //Botones no visibles
+            btnBack.Visible = false;
+            btnBack.Enabled = false;
+            btnSave.Visible = false;
+            btnSave.Enabled = false;
 
             //Skin
             bool exito = true;
@@ -121,7 +126,6 @@ namespace Marcianos
                     break;
                 case 3:
                     {
-                        labPress.Visible = true;
                         int score = (this.enemigos * 2) + this.tiempo + this.meteoros;
                         if (this.jefeMuerto)
                             score += 200;
@@ -142,8 +146,7 @@ namespace Marcianos
                                 {
                                     timerPuntuacion.Stop();
                                     MessageBox.Show("There has been an error saving the data", "Error", 
-                                        MessageBoxButtons.OK, 
-                                        MessageBoxIcon.Error);
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     this.Close();
                                 }
                             }
@@ -232,6 +235,39 @@ namespace Marcianos
 
             for (int i = 0; i < stars; i++)
                 this.creaEstrella(rnd.Next(0, this.Width), rnd.Next(0, this.Height));
+        }
+
+        //Quitamos el raton de encima
+        private void btn_Leave(object sender, EventArgs e)
+        {
+            Button btnHover = new Button();
+            btnHover = (Button)sender;
+            btnHover.ForeColor = System.Drawing.Color.Black;
+        }
+
+        //Pasamos el raton por encima
+        private void btn_Enter(object sender, EventArgs e)
+        {
+            Button btnHover = new Button();
+            btnHover = (Button)sender;
+            btnHover.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        //Seleccionamos uno de los 2 botones
+        private void btnSeleccion_Click(object sender, EventArgs e)
+        {
+            Button btnClicado = (Button)sender;
+
+            if (btnClicado == btnSave)
+            {
+
+            }
+            else if (btnClicado == btnBack)
+            {
+                frmMenu menu = new frmMenu();
+                menu.Show();
+                this.Close();
+            }
         }
     }
 }
