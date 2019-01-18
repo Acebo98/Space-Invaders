@@ -13,7 +13,7 @@ namespace Marcianos
     public partial class frmIntroScore : Form
     {
         DataSet dsLeaderboard = new DataSet("Space_Invaders");
-        string rutaLeader = Environment.CurrentDirectory + "/data/leaderboard.txt";
+        string rutaLeader = Environment.CurrentDirectory + "\\data\\leaderboard.txt";
         int score;
 
         public frmIntroScore(int Score)
@@ -71,11 +71,21 @@ namespace Marcianos
                     string nombre = tbNombre.Text.Trim();
                     if (nombre.Length > 0)
                     {
+                        //Datos
                         DataRow row = dsLeaderboard.Tables["Leaderboard"].NewRow();
+                        row["nombre_jugador"] = tbNombre.Text.Trim();
+                        row["score"] = score;
+                        row["fecha"] = DateTime.Now;
+                        dsLeaderboard.Tables["Leaderboard"].Rows.Add(row);
+
+                        //Guardamos
+                        dsLeaderboard.WriteXml(rutaLeader);
+                        this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Enter a name", "Important", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("You must enter a name", "Important", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else if (btnClicado == btnCancel)
