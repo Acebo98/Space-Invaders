@@ -185,6 +185,7 @@ namespace Marcianos
             //Columnas
             table.Columns.Add("id", typeof(int));
             table.Columns.Add("nombre_jugador", typeof(string));
+            table.Columns.Add("score", typeof(int));
             table.Columns.Add("fecha", typeof(DateTime));
 
             //Incremento
@@ -210,20 +211,24 @@ namespace Marcianos
             //Columnas de la tabla
             DataColumn cId = dsPuntuaciones.Tables["Leaderboard"].Columns["id"];
             DataColumn cNombre = dsPuntuaciones.Tables["Leaderboard"].Columns["nombre_jugador"];
+            DataColumn cScore = dsPuntuaciones.Tables["Leaderboard"].Columns["score"];
             DataColumn cFecha = dsPuntuaciones.Tables["Leaderboard"].Columns["fecha"];
-
+            
             //Columnas del dgv
             dgvScores.Columns.Add("id", "Identifier");
             dgvScores.Columns.Add("nombre_jugador", "Player");
+            dgvScores.Columns.Add("score", "Score");
             dgvScores.Columns.Add("fecha", "Date");
 
             //Enlazamos el nombre de las columnas
             dgvScores.Columns["id"].DataPropertyName = cId.Caption;
             dgvScores.Columns["nombre_jugador"].DataPropertyName = cNombre.Caption;
+            dgvScores.Columns["score"].DataPropertyName = cScore.Caption;
             dgvScores.Columns["fecha"].DataPropertyName = cFecha.Caption;
 
             //Finalmente enlazamos la fuente de datos
             dgvScores.DataSource = dsPuntuaciones.Tables["Space_Invaders"];
+            dgvScores.Columns["id"].Visible = false;
             dgvScores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             //Configuración
